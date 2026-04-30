@@ -2,7 +2,6 @@
 
 ### 1. Клонируй репозиторий
 git clone https://github.com/PM-YandexPracticum/SkillSwap_48_3
-cd SkillSwap_48_3
 
 ### 2. Установи зависимости
 npm install --legacy-peer-deps
@@ -16,9 +15,4 @@ npm run dev — Запустить дев-сервер
 npm run build — Собрать проект  
 npm run lint — Проверить код  
 
-## Структура
 
-src/
-├── pages/     # Страницы
-├── api/       # Запросы к мокам
-└── app/       # Роутинг
