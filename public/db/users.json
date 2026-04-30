@@ -1,0 +1,23 @@
+[
+  {
+    "id": "user1",
+    "email": "anna@example.com",
+    "name": "Анна",
+    "role": "user",
+    "skills": ["1", "4"]
+  },
+  {
+    "id": "user2",
+    "email": "ivan@example.com",
+    "name": "Иван",
+    "role": "user",
+    "skills": ["2"]
+  },
+  {
+    "id": "user3",
+    "email": "maria@example.com",
+    "name": "Мария",
+    "role": "user",
+    "skills": ["3"]
+  }
+]

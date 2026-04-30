@@ -1,0 +1,46 @@
+[
+  {
+    "id": "1",
+    "title": "React Development",
+    "description": "Научу создавать SPA на React с нуля, использовать хуки, контекст и роутинг",
+    "type": "teach",
+    "category": "programming",
+    "authorId": "user1",
+    "authorName": "Анна",
+    "tags": ["react", "typescript", "frontend"],
+    "createdAt": "2026-04-01"
+  },
+  {
+    "id": "2",
+    "title": "English Speaking",
+    "description": "Хочу улучшить разговорный английский для работы и путешествий",
+    "type": "learn",
+    "category": "languages",
+    "authorId": "user2",
+    "authorName": "Иван",
+    "tags": ["english", "speaking", "fluency"],
+    "createdAt": "2026-04-02"
+  },
+  {
+    "id": "3",
+    "title": "UI/UX Design",
+    "description": "Научу основам дизайна интерфейсов, Figma, прототипированию",
+    "type": "teach",
+    "category": "design",
+    "authorId": "user3",
+    "authorName": "Мария",
+    "tags": ["figma", "ui", "ux"],
+    "createdAt": "2026-04-03"
+  },
+  {
+    "id": "4",
+    "title": "Python Programming",
+    "description": "Хочу научиться писать на Python для анализа данных",
+    "type": "learn",
+    "category": "programming",
+    "authorId": "user1",
+    "authorName": "Анна",
+    "tags": ["python", "data-science"],
+    "createdAt": "2026-04-04"
+  }
+]
