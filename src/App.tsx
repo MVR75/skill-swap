@@ -5,9 +5,15 @@ function App() {
     <BrowserRouter>
       <div>
         <nav style={{ padding: '1rem', borderBottom: '1px solid #ccc' }}>
-          <Link to="/" style={{ marginRight: '1rem' }}>Каталог</Link>
-          <Link to="/profile" style={{ marginRight: '1rem' }}>Профиль</Link>
-          <Link to="/favorites" style={{ marginRight: '1rem' }}>Избранное</Link>
+          <Link to="/" style={{ marginRight: '1rem' }}>
+            Каталог
+          </Link>
+          <Link to="/profile" style={{ marginRight: '1rem' }}>
+            Профиль
+          </Link>
+          <Link to="/favorites" style={{ marginRight: '1rem' }}>
+            Избранное
+          </Link>
           <Link to="/create">Создать навык</Link>
         </nav>
 

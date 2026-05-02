@@ -17,5 +17,11 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'arrow-body-style': 'off',
   },
-  ignorePatterns: ['dist', 'node_modules', '*.config.js', '*.config.cjs', 'vite.config.ts'],
+  ignorePatterns: [
+    'dist',
+    'node_modules',
+    '*.config.js',
+    '*.config.cjs',
+    'vite.config.ts',
+  ],
 };

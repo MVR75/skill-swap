@@ -8,15 +8,15 @@ import CreateSkillPage from '../pages/create/CreateSkillPage';
 import NotFoundPage from '../pages/not-found/NotFoundPage';
 
 export const AppRouter = () => (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/skill/:id" element={<SkillPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/favorites" element={<FavoritesPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/create" element={<CreateSkillPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </BrowserRouter>
-  );
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/skill/:id" element={<SkillPage />} />
+      <Route path="/profile" element={<ProfilePage />} />
+      <Route path="/favorites" element={<FavoritesPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/create" element={<CreateSkillPage />} />
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
+  </BrowserRouter>
+);
