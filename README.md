@@ -4,15 +4,17 @@
 
 ## Стек технологий
 
-React 18 Библиотека для интерфейсов
-TypeScript Типизация
-Redux Toolkit Управление состоянием
-React Router v6 Маршрутизация
-CSS Modules Стилизация компонентов
-Jest + React Testing Library Тестирование
-ESLint + Prettier + Stylelint Линтеры и форматтеры
-Vite Сборка
-@mdi/react Иконки
+| Технология | Назначение |
+|------------|------------|
+| React 18 | Библиотека для интерфейсов |
+| TypeScript | Типизация |
+| Redux Toolkit | Управление состоянием |
+| React Router v6 | Маршрутизация |
+| CSS Modules | Стилизация компонентов |
+| Jest + React Testing Library | Тестирование |
+| ESLint + Prettier + Stylelint | Линтеры и форматтеры |
+| Vite | Сборка |
+| @mdi/react | Иконки |
 
 ## Как начать работу
 
@@ -33,37 +35,16 @@ Vite Сборка
 
 ## Команды
 
-npm run dev Запустить dev-сервер
-npm run build Собрать проект
-npm run preview Посмотреть сборку локально
-npm run lint Проверить код линтерами
-npm run lint:fix Исправить ошибки линтеров
-npm run format Отформатировать код
-npm run test Запустить тесты
-npm run test:coverage Тесты с покрытием
-
-## Структура проекта
-
-src/
-├── api/ # методы работы с мок-JSON (axios/fetch)
-├── app/ # инициализация, провайдеры, глобальные стили
-├── entities/ # модели домена (Skill, User, Request)
-├── features/
-│ ├── auth/
-│ ├── skills/
-│ ├── favorites/
-│ └── requests/
-├── widgets/ # готовые фич-блоки (SkillCard, FiltersBar)
-├── pages/ # главная, профайл, skill, favorites
-├── shared/
-│ ├── ui/ # атомы/молекулы
-│ ├── hooks/ # useDebounce, useLocalStorage ...
-│ └── lib/ # helpers, constants
-└── index.tsx
-public/
-db/
-├── skills.json
-└── users.json
+| Команда | Действие |
+|---------|----------|
+| `npm run dev` | Запустить дев-сервер |
+| `npm run build` | Собрать проект |
+| `npm run preview` | Посмотреть сборку локально |
+| `npm run lint` | Проверить код линтерами |
+| `npm run lint:fix` | Исправить ошибки линтеров |
+| `npm run format` | Отформатировать код |
+| `npm run test` | Запустить тесты |
+| `npm run test:coverage` | Тесты с покрытием |
 
 ## Моковые данные
 
