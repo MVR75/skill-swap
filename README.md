@@ -62,17 +62,6 @@
 - Пропсы описываются через интерфейс ComponentNameProps
 - Компонент и стили лежат в одной папке
 
-  import styles from './Component.module.css';
-
-  interface ComponentProps {
-  title: string;
-  onClick?: () => void;
-  }
-
-  export const Component = ({ title, onClick }: ComponentProps) => {
-  return <div className={styles.container}>{title}</div>;
-  };
-
 ### Стили
 
 - CSS Modules
@@ -83,19 +72,6 @@
 
 - Общие типы лежат в shared/types/
 - Типы компонента — внутри его папки
-
-  export interface Skill {
-  id: string;
-  title: string;
-  description: string;
-  type: 'teach' | 'learn';
-  category: string;
-  authorId: string;
-  authorName: string;
-  imageUrl: string;
-  tags: string[];
-  createdAt: string;
-  }
 
 ### Иконки
 
@@ -108,10 +84,6 @@
 
 - Ветки: feature/название-задачи
 - Коммиты: Conventional Commits
-
-  feat: добавить компонент SkillCard
-  fix: исправить фильтрацию по категории
-  refactor: вынести типы в отдельный файл
 
 ## Pull Requests
 
