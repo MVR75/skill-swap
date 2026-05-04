@@ -172,3 +172,56 @@
   border-radius: 50%;
   object-fit: cover;
 }
+
+.logoLink,
+.navLink,
+.skillsButton,
+.iconButton,
+.loginButton,
+.registerButton,
+.userButton {
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    opacity 0.2s ease,
+    transform 0.1s ease;
+}
+
+.logoLink:hover,
+.navLink:hover,
+.skillsButton:hover,
+.iconButton:hover,
+.userButton:hover {
+  opacity: 0.75;
+}
+
+.loginButton:hover {
+  background-color: #f0f8e8;
+}
+
+.registerButton:hover {
+  background-color: #9ccc65;
+  border-color: #9ccc65;
+}
+
+.logoLink:active,
+.navLink:active,
+.skillsButton:active,
+.iconButton:active,
+.loginButton:active,
+.registerButton:active,
+.userButton:active {
+  transform: translateY(1px);
+}
+
+.logoLink:focus-visible,
+.navLink:focus-visible,
+.skillsButton:focus-visible,
+.iconButton:focus-visible,
+.loginButton:focus-visible,
+.registerButton:focus-visible,
+.userButton:focus-visible {
+  outline: 2px solid #abd875;
+  outline-offset: 4px;
+}
