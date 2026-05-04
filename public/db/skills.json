@@ -8,7 +8,8 @@
     "authorId": "user1",
     "authorName": "Анна",
     "tags": ["react", "typescript", "frontend"],
-    "createdAt": "2026-04-01"
+    "createdAt": "2026-04-01",
+    "imageUrl": "https://img.freepik.com/premium-photo/close-up-portrait-young-woman-against-black-background_1048944-9882947.jpg?semt=ais_incoming&w=740&q=80"
   },
   {
     "id": "2",
@@ -19,7 +20,8 @@
     "authorId": "user2",
     "authorName": "Иван",
     "tags": ["english", "speaking", "fluency"],
-    "createdAt": "2026-04-02"
+    "createdAt": "2026-04-02",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=59a428b27729b5092a78b08c90626385_l-5648147-images-thumbs&n=13"
   },
   {
     "id": "3",
@@ -30,7 +32,8 @@
     "authorId": "user3",
     "authorName": "Мария",
     "tags": ["figma", "ui", "ux"],
-    "createdAt": "2026-04-03"
+    "createdAt": "2026-04-03",
+    "imageUrl": "https://img.freepik.com/premium-photo/head-portrait-young-beautiful-surprised-woman_224780-12.jpg?semt=ais_hybrid&w=740"
   },
   {
     "id": "4",
@@ -38,9 +41,202 @@
     "description": "Хочу научиться писать на Python для анализа данных",
     "type": "learn",
     "category": "programming",
-    "authorId": "user1",
-    "authorName": "Анна",
+    "authorId": "user4",
+    "authorName": "Антон",
     "tags": ["python", "data-science"],
-    "createdAt": "2026-04-04"
+    "createdAt": "2026-04-04",
+    "imageUrl": "https://img.freepik.com/free-psd/front-view-young-man-posing-studio_23-2150767422.jpg?semt=ais_hybrid&w=740&q=80"
+  },
+  {
+    "id": "5",
+    "title": "JavaScript Basics",
+    "description": "Научу основам JavaScript, работе с DOM, массивами, объектами и функциями",
+    "type": "teach",
+    "category": "programming",
+    "authorId": "user5",
+    "authorName": "Дмитрий",
+    "tags": ["javascript", "frontend", "dom"],
+    "createdAt": "2026-04-05",
+    "imageUrl": "https://yt3.googleusercontent.com/ytc/AIdro_mbBTLLS_IkEFVQt2aiSJB6UaUtlVUpAuJCJhxK4NW3Ub8=s900-c-k-c0x00ffffff-no-rj"
+  },
+  {
+    "id": "6",
+    "title": "German for Beginners",
+    "description": "Хочу выучить немецкий язык с нуля для учебы и общения",
+    "type": "learn",
+    "category": "languages",
+    "authorId": "user6",
+    "authorName": "Елена",
+    "tags": ["german", "beginner", "grammar"],
+    "createdAt": "2026-04-06",
+    "imageUrl": "https://i.pinimg.com/736x/c5/0e/e6/c50ee63761eb485f39de48614aa5c2be.jpg"
+  },
+  {
+    "id": "7",
+    "title": "Figma Prototyping",
+    "description": "Научу создавать интерактивные прототипы в Figma и готовить макеты к разработке",
+    "type": "teach",
+    "category": "design",
+    "authorId": "user7",
+    "authorName": "Олег",
+    "tags": ["figma", "prototype", "design"],
+    "createdAt": "2026-04-07",
+    "imageUrl": "https://images.meme-arsenal.com/f8b936f8665a548b4d8bd72a357d7361.jpg"
+  },
+  {
+    "id": "8",
+    "title": "Node.js Backend",
+    "description": "Хочу научиться создавать backend-приложения на Node.js и Express",
+    "type": "learn",
+    "category": "programming",
+    "authorId": "user8",
+    "authorName": "Ксения",
+    "tags": ["nodejs", "express", "backend"],
+    "createdAt": "2026-04-08",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=c1e8cd9af1961245b201d949491eec90_l-5130570-images-thumbs&n=13"
+  },
+  {
+    "id": "9",
+    "title": "Public Speaking",
+    "description": "Научу уверенно выступать перед аудиторией и структурировать презентации",
+    "type": "teach",
+    "category": "soft-skills",
+    "authorId": "user9",
+    "authorName": "Сергей",
+    "tags": ["speaking", "presentation", "confidence"],
+    "createdAt": "2026-04-09",
+    "imageUrl": "https://img.freepik.com/premium-photo/positive-happy-caucasian-mature-middleaged-man-smiling-with-toothy-smile-wearing-glasses-showing-okay-gesture-with-both-hands-isolated-white-background_650366-6207.jpg?semt=ais_hybrid&w=740"
+  },
+  {
+    "id": "10",
+    "title": "Project Management",
+    "description": "Хочу изучить основы управления проектами, планирования и работы с командой",
+    "type": "learn",
+    "category": "management",
+    "authorId": "user10",
+    "authorName": "Алина",
+    "tags": ["management", "planning", "teamwork"],
+    "createdAt": "2026-04-10",
+    "imageUrl": "https://img.freepik.com/fotos-premium/mujer-caucasica-rubia-joven-aislo-reir-divertirse_1187-53209.jpg?semt=ais_hybrid"
+  },
+  {
+    "id": "11",
+    "title": "SQL Databases",
+    "description": "Научу писать SQL-запросы, проектировать таблицы и работать с PostgreSQL",
+    "type": "teach",
+    "category": "programming",
+    "authorId": "user11",
+    "authorName": "Павел",
+    "tags": ["sql", "postgresql", "database"],
+    "createdAt": "2026-04-11",
+    "imageUrl": "https://img.freepik.com/premium-photo/street-portrait-homeless-man-city-created-with-generative-ai_762026-1771.jpg"
+  },
+  {
+    "id": "12",
+    "title": "Mobile Photography",
+    "description": "Хочу научиться красиво фотографировать на телефон и обрабатывать снимки",
+    "type": "learn",
+    "category": "creative",
+    "authorId": "user12",
+    "authorName": "Наталья",
+    "tags": ["photography", "mobile", "editing"],
+    "createdAt": "2026-04-12",
+    "imageUrl": "https://img.freepik.com/premium-photo/portrait-young-beautiful-serious-woman-sad-girl_509092-5429.jpg?semt=ais_hybrid&w=740&q=80"
+  },
+  {
+    "id": "13",
+    "title": "TypeScript Advanced",
+    "description": "Научу продвинутым возможностям TypeScript: generic, utility types и типизации API",
+    "type": "teach",
+    "category": "programming",
+    "authorId": "user13",
+    "authorName": "Виктор",
+    "tags": ["typescript", "types", "frontend"],
+    "createdAt": "2026-04-13",
+    "imageUrl": "https://i.pinimg.com/originals/33/53/e8/3353e89fa1f7f773aa830563aca0f90c.jpg?nii=t"
+  },
+  {
+    "id": "14",
+    "title": "Spanish Conversation",
+    "description": "Хочу практиковать разговорный испанский и расширить словарный запас",
+    "type": "learn",
+    "category": "languages",
+    "authorId": "user14",
+    "authorName": "Юлия",
+    "tags": ["spanish", "conversation", "vocabulary"],
+    "createdAt": "2026-04-14",
+    "imageUrl": "https://i.pinimg.com/736x/09/d9/16/09d916d43b9117f53ed6dd7290807325.jpg"
+  },
+  {
+    "id": "15",
+    "title": "Git and GitHub",
+    "description": "Научу работать с Git, ветками, pull request и командной разработкой на GitHub",
+    "type": "teach",
+    "category": "programming",
+    "authorId": "user15",
+    "authorName": "Максим",
+    "tags": ["git", "github", "workflow"],
+    "createdAt": "2026-04-15",
+    "imageUrl": "https://img.freepik.com/free-photo/medium-shot-man-sticking-out-tongue_23-2150171207.jpg?semt=ais_hybrid"
+  },
+  {
+    "id": "16",
+    "title": "Product Design",
+    "description": "Хочу понять процесс создания цифрового продукта от идеи до готового интерфейса",
+    "type": "learn",
+    "category": "design",
+    "authorId": "user16",
+    "authorName": "Валерия",
+    "tags": ["product-design", "ux", "research"],
+    "createdAt": "2026-04-16",
+    "imageUrl": "https://i.pinimg.com/736x/56/b9/63/56b963107c64d8f5c02b7e81ea2027e4.jpg"
+  },
+  {
+    "id": "17",
+    "title": "Data Analysis with Excel",
+    "description": "Научу анализировать данные в Excel, строить таблицы, графики и использовать формулы",
+    "type": "teach",
+    "category": "analytics",
+    "authorId": "user17",
+    "authorName": "Артем",
+    "tags": ["excel", "analytics", "charts"],
+    "createdAt": "2026-04-17",
+    "imageUrl": "https://media.istockphoto.com/id/1477080023/ru/фото/серьезный-деловой-и-портрет-человека-в-офисе-для-профессионала-гордости-и-предпринимательства.jpg?s=170667a&w=0&k=20&c=MKNL9O8FydYan3gWdiv8PyikMcHVVvV5F0vVd4bC1bg="
+  },
+  {
+    "id": "18",
+    "title": "Machine Learning Basics",
+    "description": "Хочу разобраться в основах машинного обучения и научиться строить простые модели",
+    "type": "learn",
+    "category": "programming",
+    "authorId": "user18",
+    "authorName": "Михаил",
+    "tags": ["machine-learning", "python", "ai"],
+    "createdAt": "2026-04-18",
+    "imageUrl": "https://i.pinimg.com/736x/4f/0e/93/4f0e9319727ef9683e336110a5a05349.jpg"
+  },
+  {
+    "id": "19",
+    "title": "Content Writing",
+    "description": "Научу писать тексты для сайтов, блогов и социальных сетей",
+    "type": "teach",
+    "category": "marketing",
+    "authorId": "user19",
+    "authorName": "Дарья",
+    "tags": ["copywriting", "content", "marketing"],
+    "createdAt": "2026-04-19",
+    "imageUrl": "https://i.pinimg.com/736x/de/da/81/deda811e570b5395e8e2affe66e72996.jpg"
+  },
+  {
+    "id": "20",
+    "title": "HTML and CSS Layout",
+    "description": "Хочу научиться верстать адаптивные страницы на HTML и CSS",
+    "type": "learn",
+    "category": "programming",
+    "authorId": "user20",
+    "authorName": "Роман",
+    "tags": ["html", "css", "layout"],
+    "createdAt": "2026-04-20",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=fd1df557532bfee2af5aaa5bda0015dd_l-13095363-images-thumbs&n=13"
   }
 ]
