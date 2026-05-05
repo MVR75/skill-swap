@@ -9,10 +9,14 @@
   margin-bottom: 32px;
 }
 
+/* В расчете длины каждой колонки используется  формула 100vh - 468px,
+  где 468 это сумма отступов футера (36 с каждой стороны), длина блока с фильтрами (324),
+  отступ между фильтрами и карточками (24) и два гэпа между колонками (24 * 2).
+  итоговая длина списка с ссылками будет равна длине блока с карточками*/
 .footer__list {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(3, 324px);
+  grid-template-columns: repeat(3, calc((100vw - 468px) / 3));
   grid-template-rows: repeat(2, 1fr);
   row-gap: 12px;
   column-gap: 24px;
