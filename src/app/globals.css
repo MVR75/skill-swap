@@ -1,0 +1,128 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+:root {
+  /* цвета: основные */
+  --color-primary: #abd27a;
+  --color-link: #508826;
+  --color-error: #bf3920;
+
+  /* текст */
+  --color-text: #253017;
+
+  /* фон*/
+  --color-bg-page: #f9faf7;
+  --color-bg-card: #ffffff;
+
+  /* теги по категориям */
+  --color-tag-business: #eee7f7;
+  --color-tag-languages: #ebe5c5;
+  --color-tag-home: #f7ebe5;
+  --color-tag-creative: #f7e7f2;
+  --color-tag-education: #e7f2f6;
+  --color-tag-health: #e9f7e7;
+
+  /* шрифты */
+  --font-primary: 'Roboto', sans-serif;
+  --font-secondary: 'Open Sans', sans-serif;
+
+  /* размеры шрифта */
+  --font-size-h1: 32px;
+  --font-size-h2: 24px;
+  --font-size-h3: 20px;
+  --font-size-h4: 16px;
+  --font-size-body: 16px;
+  --font-size-small: 12px;
+
+  /* высота строк */
+  --line-height-h1: 40px;
+  --line-height-h2: 28px;
+  --line-height-h3: 24px;
+  --line-height-h4: 24px;
+  --line-height-body: 24px;
+  --line-height-small: 16px;
+
+  /* вес шрифта */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* отступы */
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-36: 36px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-60: 60px;
+  --space-64: 64px;
+
+  /* радиусы */
+  --radius-sm: 12px; /* кнопки, инпуты, карточки */
+  --radius-tag: 20px;
+  --radius-full: 50%;
+}
+
+body {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-text);
+  background-color: var(--color-bg-page);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a {
+  color: var(--color-link);
+}
