@@ -62,8 +62,10 @@ svg {
   --color-tag-health: #e9f7e7;
 
   /* шрифты */
-  --font-primary: 'Roboto', sans-serif;
-  --font-secondary: 'Open Sans', sans-serif;
+  /* --- Шрифты --- */
+  --font-heading: 'Jost', sans-serif; /* заголовки H1-H4 */
+  --font-primary: 'Roboto', sans-serif; /* основной текст */
+  --font-secondary: 'Open Sans', sans-serif; /* имена в карточках */
 
   /* размеры шрифта */
   --font-size-h1: 32px;
