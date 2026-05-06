@@ -1,0 +1,22 @@
+.radioGroup {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-inline-size: 0;
+}
+
+.radioGroup__legend {
+  padding: 0;
+  margin: 0;
+  font-family: Jost, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -1.1%;
+  margin-bottom: 20px;
+}
+
+.radioGroup__radioContainer {
+  display: flex;
+  gap: 12px;
+}
