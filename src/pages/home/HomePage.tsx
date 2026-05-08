@@ -25,7 +25,7 @@ const HomePage = () => {
 
   const { visibleItems, isLoading, hasMore, observerRef } = useInfiniteScroll({
     items: users,
-    pageSize: 6,
+    pageSize: 6
   });
 
   return (
@@ -35,14 +35,8 @@ const HomePage = () => {
       <div className={styles.grid}>
         {visibleItems.map((user) => (
           <article key={user.id} className={styles.card}>
-            <img
-              src={user.avatarUrl}
-              alt={user.name}
-              className={styles.avatar}
-            />
-            <h2 className={styles.name}>
-              {user.name}, {user.age}
-            </h2>
+            <img src={user.avatarUrl} alt={user.name} className={styles.avatar} />
+            <h2 className={styles.name}>{user.name}, {user.age}</h2>
             <p className={styles.city}>{user.city}</p>
             <h3 className={styles.skill}>{user.teachTitle}</h3>
             <p className={styles.about}>{user.shortAbout}</p>
