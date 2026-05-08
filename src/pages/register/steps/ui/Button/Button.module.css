@@ -34,8 +34,13 @@
 }
 
 .primary:hover:not(:disabled) {
-  background-color: #c2dba4;
-  color: var(--color-bg-card);
+  background-color: var(--color-primary);
+  opacity: 0.85;
+}
+
+.primary:active:not(:disabled) {
+  background-color: var(--color-link);
+  opacity: 1;
 }
 
 .outline {
@@ -45,6 +50,10 @@
 }
 
 .outline:hover:not(:disabled) {
+  border-color: var(--color-primary);
+}
+
+.outline:active:not(:disabled) {
   border-color: var(--color-link);
 }
 

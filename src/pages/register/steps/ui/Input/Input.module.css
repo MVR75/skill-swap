@@ -40,6 +40,10 @@
   opacity: 0.5;
 }
 
+.input:hover:not(:focus) {
+  border-color: var(--color-primary);
+}
+
 .input:focus {
   border-color: var(--color-link);
 }
