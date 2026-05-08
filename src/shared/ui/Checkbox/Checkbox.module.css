@@ -1,0 +1,32 @@
+.checkbox {
+  display: flex;
+  height: 32px;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.checkbox_disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.checkbox__input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkbox__icon {
+  pointer-events: none;
+}
+
+.checkbox__input:focus-visible + .checkbox__icon {
+  outline: 2px solid #ABD27A;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.checkbox__label {
+  letter-spacing: 2%;
+}
