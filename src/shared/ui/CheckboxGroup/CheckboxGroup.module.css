@@ -1,0 +1,28 @@
+.checkboxGroup {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-inline-size: 0;
+}
+
+.checkboxGroup__legend {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-h3);
+  letter-spacing: -1.1%;
+  margin-bottom: 16px;
+}
+
+.checkboxGroup__items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-bottom: 12px;
+}
+
+.checkboxGroup__hideButton {
+  display: flex;
+  gap: 4px;
+  letter-spacing: 2%;
+  color: var(--color-link);
+}
