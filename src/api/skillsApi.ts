@@ -23,15 +23,3 @@ export const fetchSkills = async (): Promise<Skill[]> => {
 
   return skills;
 };
-
-export const fetchSkillById = async (id: string): Promise<Skill> => {
-  const skills = await fetchSkills();
-
-  const skill = skills.find((s) => s.id === id);
-
-  if (!skill) {
-    throw new Error('Навык не найден');
-  }
-
-  return skill;
-};
