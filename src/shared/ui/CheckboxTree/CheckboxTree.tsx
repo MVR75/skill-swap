@@ -2,8 +2,9 @@ import { useState, type FC } from 'react';
 import { CheckboxUI } from '../Checkbox/Checkbox';
 import type { TCheckboxTreeUIProps } from './type';
 import styles from './CheckboxTree.module.css';
-import arrowUp from '../../../../public/icons/chevron-up.svg';
-import arrowDown from '../../../../public/icons/vector.svg';
+
+const arrowUp = '/icons/chevron-up.svg';
+const arrowDown = '/icons/vector.svg';
 
 export const CheckboxTreeUI: FC<TCheckboxTreeUIProps> = ({
   name,
