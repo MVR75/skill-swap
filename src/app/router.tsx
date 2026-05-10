@@ -6,6 +6,7 @@ import FavoritesPage from '../pages/favorites/FavoritesPage';
 import LoginPage from '../pages/login/LoginPage';
 import CreateSkillPage from '../pages/create/CreateSkillPage';
 import NotFoundPage from '../pages/not-found/NotFoundPage';
+import { RegisterPage } from '../pages/register/RegisterPage';
 
 export const AppRouter = () => (
   <BrowserRouter>
@@ -15,6 +16,10 @@ export const AppRouter = () => (
       <Route path="/profile" element={<ProfilePage />} />
       <Route path="/favorites" element={<FavoritesPage />} />
       <Route path="/login" element={<LoginPage />} />
+      <Route
+        path="/register"
+        element={<RegisterPage onClose={() => console.log('close')} />}
+      />
       <Route path="/create" element={<CreateSkillPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
