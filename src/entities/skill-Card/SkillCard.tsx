@@ -22,7 +22,7 @@ const SkillCard: React.FC<SkillCardProps> = (props) => {
     <div className={style.card}>
         <div className={style.card__info}>
             <Like onClick={()=>{setLike(!like)}} onFavorite={like}></Like>
-            <div>
+            <div className={style.card__bio}>
                 <h3 className={style.card__title}>Иван</h3>
                 <p className={style.card__subtitle}>Санкт-Петербург, 34 года</p>
             </div>
@@ -42,7 +42,6 @@ const SkillCard: React.FC<SkillCardProps> = (props) => {
             <ul className={style.card__skillsList}>
                 <Skills title='Тайм менеджмент' colorTag='tag'></Skills>
                 <Skills title='Медитация' colorTag='tag'></Skills>
-                <Skills title='Навык' colorTag='tag'></Skills>
             </ul>
         </div>
         <div className={style.card__actions}>

@@ -1,9 +1,7 @@
 .tag{
     padding: 8px 12px;
-    max-width:max-content;
     background-color: rgb(173, 173, 173);
     border-radius: 20px;
     font-size: 12px;
     color: black;
-    margin: 0px;
 }
