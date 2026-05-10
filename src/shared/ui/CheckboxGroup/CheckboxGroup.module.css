@@ -17,12 +17,12 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding-bottom: 12px;
 }
 
 .checkboxGroup__hideButton {
   display: flex;
   gap: 4px;
+  margin-top: 12px;
   letter-spacing: 2%;
   color: var(--color-link);
 }
