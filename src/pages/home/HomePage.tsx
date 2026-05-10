@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { RadioGroupUI } from '../../shared/ui/RadioGroup/RadioGroup';
+import { useState } from "react";
+import { RadioGroupUI } from "../../shared/ui/RadioGroup/RadioGroup";
 
 const HomePage = () => {
   const [state, setState] = useState('any');
@@ -11,9 +11,9 @@ const HomePage = () => {
         name="gender"
         legend="Пол автора"
         options={[
-          { value: 'any', label: 'Не имеет значения' },
-          { value: 'man', label: 'Мужской' },
-          { value: 'woman', label: 'Женский' },
+          { value: "any", label: 'Не имеет значения' },
+          { value: "man", label: 'Мужской' },
+          { value: "woman", label: 'Женский' }
         ]}
         value={state}
         onChange={setState}
@@ -22,4 +22,5 @@ const HomePage = () => {
     </>
   );
 };
+
 export default HomePage;
