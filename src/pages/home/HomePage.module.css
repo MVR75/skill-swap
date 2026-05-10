@@ -1,0 +1,87 @@
+.page {
+  padding: 36px;
+  background: #f9faf7;
+  min-height: 100vh;
+}
+
+.title {
+  font-family: 'Jost', sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #253017;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 8px;
+}
+
+.name {
+  font-family: 'Jost', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0;
+  color: #253017;
+}
+
+.city {
+  margin: 0;
+  font-size: 14px;
+  color: #69735d;
+}
+
+.skill {
+  font-family: 'Jost', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 8px 0 4px;
+  color: #508826;
+}
+
+.about {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #253017;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+  min-height: 80px;
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #e4e8df;
+  border-top-color: #abd27a;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
