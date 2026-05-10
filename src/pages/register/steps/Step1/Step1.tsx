@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { Input } from '../ui/Input/Input';
-import { Button } from '../ui/Button/Button';
+import { Input } from '../../../../shared/ui/Input/Input';
+import { Button } from '../../../../shared/ui/Button/Button';
 import { step1Schema, type Step1Data } from './schema';
 import styles from './Step1.module.css';
 
