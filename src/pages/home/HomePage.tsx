@@ -1,6 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FiltersBarUI } from "../../widgets/FiltersBar/FiltersBarUI";
 import { Footer } from "../../widgets/Footer/Footer";
+import { Header } from "../../widgets/Header";
+import style from './HomePage.module.css';
+import SkeletonCard from "../../entities/skeleton-Card/SkeletonCard";
+import { fetchSkills } from "../../api/skillsApi";
+import type { TSkillCard } from "../../entities/types";
 
 const genderOptions = [
   { value: "any", label: "Не имеет значения" },
@@ -45,6 +50,25 @@ const HomePage = () => {
   const [cityGroupState, setCityGroupState] = useState<string[]>([]);
   const [businessTreeState, setBusinessTreeState] = useState<string[]>([]);
   const [artTreeState, setArtTreeState] = useState<string[]>([]);
+  const [skills, setSkills] = useState<TSkillCard[]>([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(()=>{
+    const loadingSkills = async() =>{
+      try {
+        const data = await fetchSkills()
+        setSkills(data.users);
+      } catch (error) {
+        console.log(error)
+      }
+    finally{
+      setLoading(false)
+    }
+  }
+  loadingSkills()
+  },[])
+
+  console.log(skills)
 
   const skillsFilter = {
     type: "tree" as const,
@@ -94,16 +118,24 @@ const HomePage = () => {
 
   return (
     <>
-      <h1>Catalog</h1>
-
+    <Header></Header>
+    <div className={style.homePage}>
+      <div className={style.homePage__filter}>
       <FiltersBarUI
         skillExchangeIntentFilter={skillExchangeIntentFilter}
         skillsFilter={skillsFilter}
         genderFilter={genderFilter}
         cityFilter={cityFilter}
-      />
-
-      <Footer/>
+      /> 
+      </div>
+      {loading ? <p>Загрузка</p> : 
+      <div className={style.homePage__cards}>
+      <SkeletonCard title='Популярное' skills={skills}></SkeletonCard>
+      <SkeletonCard title='Новое' skills={skills}></SkeletonCard>
+      <SkeletonCard title='Рекомендуем' skills={skills}></SkeletonCard>
+      </div>}
+    </div>
+    <Footer/> 
     </>
   );
 };

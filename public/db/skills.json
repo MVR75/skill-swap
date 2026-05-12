@@ -23,7 +23,8 @@
             "subcategory": "music",
             "title": "Музыка и звук",
             "category": "creative",
-            "categoryTitle": "Творчество и искусство"
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
           }
         ],
         "wantsToLearn": [
@@ -31,13 +32,15 @@
             "subcategory": "time-management",
             "title": "Тайм-менеджмент",
             "category": "business",
-            "categoryTitle": "Бизнес и карьера"
+            "categoryTitle": "Бизнес и карьера",
+            "color": "#eee7f7"
           },
           {
             "subcategory": "yoga-meditation",
             "title": "Йога и медитация",
             "category": "health",
-            "categoryTitle": "Здоровье и лайфстайл"
+            "categoryTitle": "Здоровье и лайфстайл",
+            "color": "#e8ecf7"
           }
         ]
       }
@@ -65,7 +68,8 @@
             "subcategory": "english",
             "title": "Английский",
             "category": "languages",
-            "categoryTitle": "Иностранные языки"
+            "categoryTitle": "Иностранные языки",
+            "color": "#ebe5c5"
           }
         ],
         "wantsToLearn": [
@@ -73,13 +77,16 @@
             "subcategory": "mindfulness",
             "title": "Осознанность",
             "category": "health",
-            "categoryTitle": "Здоровье и лайфстайл"
+            "categoryTitle": "Здоровье и лайфстайл",
+            "color": "#e9f7e7"
+
           },
           {
             "subcategory": "photography",
             "title": "Фотография",
             "category": "creative",
-            "categoryTitle": "Творчество и искусство"
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
           }
         ]
       }
@@ -107,7 +114,8 @@
             "subcategory": "marketing",
             "title": "Маркетинг и реклама",
             "category": "business",
-            "categoryTitle": "Бизнес и карьера"
+            "categoryTitle": "Бизнес и карьера",
+            "color": "#eee7f7"
           }
         ],
         "wantsToLearn": [
@@ -115,13 +123,15 @@
             "subcategory": "video-editing",
             "title": "Видеомонтаж",
             "category": "creative",
-            "categoryTitle": "Творчество и искусство"
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
           },
           {
             "subcategory": "spanish",
             "title": "Испанский",
             "category": "languages",
-            "categoryTitle": "Иностранные языки"
+            "categoryTitle": "Иностранные языки",
+            "color": "#e7f2f6"
           }
         ]
       }
@@ -149,7 +159,8 @@
             "subcategory": "drawing",
             "title": "Рисование и иллюстрация",
             "category": "creative",
-            "categoryTitle": "Творчество и искусство"
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
           }
         ],
         "wantsToLearn": [
@@ -157,13 +168,15 @@
             "subcategory": "french",
             "title": "Французский",
             "category": "languages",
-            "categoryTitle": "Иностранные языки"
+            "categoryTitle": "Иностранные языки",
+            "color": "#ebe5c5"
           },
           {
             "subcategory": "personal-brand",
             "title": "Личный бренд",
             "category": "business",
-            "categoryTitle": "Бизнес и карьера"
+            "categoryTitle": "Бизнес и карьера",
+            "color": "#eee7f7"
           }
         ]
       }
@@ -191,7 +204,8 @@
             "subcategory": "cleaning",
             "title": "Уборка и организация",
             "category": "home",
-            "categoryTitle": "Дом и уют"
+            "categoryTitle": "Дом и уют",
+            "color": "#f7ebe5"
           }
         ],
         "wantsToLearn": [
@@ -199,13 +213,15 @@
             "subcategory": "entrepreneurship",
             "title": "Предпринимательство",
             "category": "business",
-            "categoryTitle": "Бизнес и карьера"
+            "categoryTitle": "Бизнес и карьера",
+            "color": "#eee7f7"
           },
           {
             "subcategory": "decor-diy",
             "title": "Декор и DIY",
             "category": "creative",
-            "categoryTitle": "Творчество и искусство"
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7ebe5"
           }
         ]
       }
@@ -233,7 +249,8 @@
             "subcategory": "team-management",
             "title": "Управление командой",
             "category": "business",
-            "categoryTitle": "Бизнес и карьера"
+            "categoryTitle": "Бизнес и карьера",
+            "color": "#eee7f7"
           }
         ],
         "wantsToLearn": [
@@ -241,13 +258,15 @@
             "subcategory": "work-life-balance",
             "title": "Баланс жизни и работы",
             "category": "health",
-            "categoryTitle": "Здоровье и лайфстайл"
+            "categoryTitle": "Здоровье и лайфстайл",
+            "color": "#e9f7e7"
           },
           {
             "subcategory": "photography",
             "title": "Фотография",
             "category": "creative",
-            "categoryTitle": "Творчество и искусство"
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
           }
         ]
       }
@@ -275,7 +294,8 @@
             "subcategory": "photography",
             "title": "Фотография",
             "category": "creative",
-            "categoryTitle": "Творчество и искусство"
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
           }
         ],
         "wantsToLearn": [
@@ -283,13 +303,15 @@
             "subcategory": "japanese",
             "title": "Японский",
             "category": "languages",
-            "categoryTitle": "Иностранные языки"
+            "categoryTitle": "Иностранные языки",
+            "color": "#ebe5c5"
           },
           {
             "subcategory": "fitness",
             "title": "Физические тренировки",
             "category": "health",
-            "categoryTitle": "Здоровье и лайфстайл"
+            "categoryTitle": "Здоровье и лайфстайл",
+            "color": "#e9f7e7"
           }
         ]
       }
@@ -317,7 +339,8 @@
             "subcategory": "cooking",
             "title": "Приготовление еды",
             "category": "home",
-            "categoryTitle": "Дом и уют"
+            "categoryTitle": "Дом и уют",
+            "color": "#f7ebe5"
           }
         ],
         "wantsToLearn": [
@@ -325,13 +348,15 @@
             "subcategory": "german",
             "title": "Немецкий",
             "category": "languages",
-            "categoryTitle": "Иностранные языки"
+            "categoryTitle": "Иностранные языки",
+            "color": "#ebe5c5"
           },
           {
             "subcategory": "sales",
             "title": "Продажи и переговоры",
             "category": "business",
-            "categoryTitle": "Бизнес и карьера"
+            "categoryTitle": "Бизнес и карьера",
+            "color": "#eee7f7"
           }
         ]
       }
@@ -359,7 +384,8 @@
             "subcategory": "creative-writing",
             "title": "Креативное письмо",
             "category": "creative",
-            "categoryTitle": "Творчество и искусство"
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
           }
         ],
         "wantsToLearn": [
@@ -367,13 +393,15 @@
             "subcategory": "speed-reading",
             "title": "Скорочтение",
             "category": "education",
-            "categoryTitle": "Образование и развитие"
+            "categoryTitle": "Образование и развитие",
+            "color": "#e7f2f6"
           },
           {
             "subcategory": "acting",
             "title": "Актёрское мастерство",
             "category": "creative",
-            "categoryTitle": "Творчество и искусство"
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
           }
         ]
       }
@@ -400,7 +428,8 @@
             "subcategory": "resume",
             "title": "Резюме и собеседование",
             "category": "business",
-            "categoryTitle": "Бизнес и карьера"
+            "categoryTitle": "Бизнес и карьера",
+            "color": "#eee7f7"
           }
         ],
         "wantsToLearn": [
@@ -408,13 +437,15 @@
             "subcategory": "repair",
             "title": "Ремонт",
             "category": "home",
-            "categoryTitle": "Дом и уют"
+            "categoryTitle": "Дом и уют",
+             "color": "#f7ebe5"
           },
           {
             "subcategory": "music",
             "title": "Музыка и звук",
             "category": "creative",
-            "categoryTitle": "Творчество и искусство"
+            "categoryTitle": "Творчество и искусство",
+             "color": "#f7e7f2"
           }
         ]
       }
@@ -444,7 +475,8 @@
             "subcategory": "yoga-meditation",
             "title": "Йога и медитация",
             "category": "health",
-            "categoryTitle": "Здоровье и лайфстайл"
+            "categoryTitle": "Здоровье и лайфстайл",
+            "color": "#e9f7e7"
           }
         ],
         "wantsToLearn": [
@@ -452,13 +484,15 @@
             "subcategory": "chinese",
             "title": "Китайский",
             "category": "languages",
-            "categoryTitle": "Иностранные языки"
+            "categoryTitle": "Иностранные языки",
+            "color": "#ebe5c5"
           },
           {
             "subcategory": "home-finance",
             "title": "Домашние финансы",
             "category": "home",
-            "categoryTitle": "Дом и уют"
+            "categoryTitle": "Дом и уют",
+            "color": "#f7ebe5"
           }
         ]
       }
@@ -486,7 +520,8 @@
             "subcategory": "video-editing",
             "title": "Видеомонтаж",
             "category": "creative",
-            "categoryTitle": "Творчество и искусство"
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
           }
         ],
         "wantsToLearn": [
@@ -494,13 +529,22 @@
             "subcategory": "marketing",
             "title": "Маркетинг и реклама",
             "category": "business",
-            "categoryTitle": "Бизнес и карьера"
+            "categoryTitle": "Бизнес и карьера",
+            "color": "#eee7f7"
           },
           {
             "subcategory": "fitness",
             "title": "Физические тренировки",
             "category": "health",
-            "categoryTitle": "Здоровье и лайфстайл"
+            "categoryTitle": "Здоровье и лайфстайл",
+            "color": "#e9f7e7"
+          },
+          {
+            "subcategory": "plants",
+            "title": "Домашние растения",
+            "category": "home",
+            "categoryTitle": "Дом и уют",
+            "color": "#f7ebe5"
           }
         ]
       }
@@ -529,7 +573,8 @@
             "subcategory": "plants",
             "title": "Домашние растения",
             "category": "home",
-            "categoryTitle": "Дом и уют"
+            "categoryTitle": "Дом и уют",
+            "color": "#f7ebe5"
           }
         ],
         "wantsToLearn": [
@@ -537,13 +582,15 @@
             "subcategory": "french",
             "title": "Французский",
             "category": "languages",
-            "categoryTitle": "Иностранные языки"
+            "categoryTitle": "Иностранные языки",
+            "color": "#ebe5c5"
           },
           {
             "subcategory": "self-development",
             "title": "Личностное развитие",
             "category": "education",
-            "categoryTitle": "Образование и развитие"
+            "categoryTitle": "Образование и развитие",
+            "color": "#e7f2f6"
           }
         ]
       }
@@ -570,7 +617,8 @@
             "subcategory": "german",
             "title": "Немецкий",
             "category": "languages",
-            "categoryTitle": "Иностранные языки"
+            "categoryTitle": "Иностранные языки",
+            "color": "#ebe5c5"
           }
         ],
         "wantsToLearn": [
@@ -578,13 +626,15 @@
             "subcategory": "drawing",
             "title": "Рисование и иллюстрация",
             "category": "creative",
-            "categoryTitle": "Творчество и искусство"
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
           },
           {
             "subcategory": "entrepreneurship",
             "title": "Предпринимательство",
             "category": "business",
-            "categoryTitle": "Бизнес и карьера"
+            "categoryTitle": "Бизнес и карьера",
+            "color": "#eee7f7"
           }
         ]
       }
@@ -612,7 +662,8 @@
             "subcategory": "teaching-skills",
             "title": "Навыки преподавания",
             "category": "education",
-            "categoryTitle": "Образование и развитие"
+            "categoryTitle": "Образование и развитие",
+            "color": "#e7f2f6"
           }
         ],
         "wantsToLearn": [
@@ -620,13 +671,15 @@
             "subcategory": "photography",
             "title": "Фотография",
             "category": "creative",
-            "categoryTitle": "Творчество и искусство"
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
           },
           {
             "subcategory": "cooking",
             "title": "Приготовление еды",
             "category": "home",
-            "categoryTitle": "Дом и уют"
+            "categoryTitle": "Дом и уют",
+            "color": "#f7ebe5"
           }
         ]
       }
@@ -654,7 +707,8 @@
             "subcategory": "fitness",
             "title": "Физические тренировки",
             "category": "health",
-            "categoryTitle": "Здоровье и лайфстайл"
+            "categoryTitle": "Здоровье и лайфстайл",
+            "color": "#e9f7e7"
           }
         ],
         "wantsToLearn": [
@@ -662,13 +716,15 @@
             "subcategory": "english",
             "title": "Английский",
             "category": "languages",
-            "categoryTitle": "Иностранные языки"
+            "categoryTitle": "Иностранные языки",
+            "color": "#e7f2f6"
           },
           {
             "subcategory": "project-management",
             "title": "Проектное управление",
             "category": "business",
-            "categoryTitle": "Бизнес и карьера"
+            "categoryTitle": "Бизнес и карьера",
+            "color": "#eee7f7"
           }
         ]
       }
@@ -695,7 +751,8 @@
             "subcategory": "french",
             "title": "Французский",
             "category": "languages",
-            "categoryTitle": "Иностранные языки"
+            "categoryTitle": "Иностранные языки",
+            "color": "#ebe5c5"
           }
         ],
         "wantsToLearn": [
@@ -703,13 +760,15 @@
             "subcategory": "cognitive-techniques",
             "title": "Когнитивные техники",
             "category": "education",
-            "categoryTitle": "Образование и развитие"
+            "categoryTitle": "Образование и развитие",
+            "color": "#e7f2f6"
           },
           {
             "subcategory": "mental-health",
             "title": "Ментальное здоровье",
             "category": "health",
-            "categoryTitle": "Здоровье и лайфстайл"
+            "categoryTitle": "Здоровье и лайфстайл",
+            "color": "#e9f7e7"
           }
         ]
       }
@@ -737,7 +796,8 @@
             "subcategory": "home-finance",
             "title": "Домашние финансы",
             "category": "home",
-            "categoryTitle": "Дом и уют"
+            "categoryTitle": "Дом и уют",
+            "color": "#f7ebe5"
           }
         ],
         "wantsToLearn": [
@@ -745,13 +805,15 @@
             "subcategory": "music",
             "title": "Музыка и звук",
             "category": "creative",
-            "categoryTitle": "Творчество и искусство"
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
           },
           {
             "subcategory": "sleep-recovery",
             "title": "Сон и восстановление",
             "category": "health",
-            "categoryTitle": "Здоровье и лайфстайл"
+            "categoryTitle": "Здоровье и лайфстайл",
+            "color": "#e9f7e7"
           }
         ]
       }
@@ -780,7 +842,8 @@
             "subcategory": "mindfulness",
             "title": "Осознанность",
             "category": "health",
-            "categoryTitle": "Здоровье и лайфстайл"
+            "categoryTitle": "Здоровье и лайфстайл",
+             "color": "#e9f7e7"
           }
         ],
         "wantsToLearn": [
@@ -788,13 +851,15 @@
             "subcategory": "team-management",
             "title": "Управление командой",
             "category": "business",
-            "categoryTitle": "Бизнес и карьера"
+            "categoryTitle": "Бизнес и карьера",
+             "color": "#eee7f7"
           },
           {
             "subcategory": "spanish",
             "title": "Испанский",
             "category": "languages",
-            "categoryTitle": "Иностранные языки"
+            "categoryTitle": "Иностранные языки",
+             "color": "#ebe5c5"
           }
         ]
       }
@@ -822,7 +887,8 @@
             "subcategory": "ielts-toefl",
             "title": "Подготовка к экзаменам (IELTS, TOEFL)",
             "category": "languages",
-            "categoryTitle": "Иностранные языки"
+            "categoryTitle": "Иностранные языки",
+             "color": "#ebe5c5"
           }
         ],
         "wantsToLearn": [
@@ -830,13 +896,15 @@
             "subcategory": "creative-writing",
             "title": "Креативное письмо",
             "category": "creative",
-            "categoryTitle": "Творчество и искусство"
+            "categoryTitle": "Творчество и искусство",
+             "color": "#f7e7f2"
           },
           {
             "subcategory": "repair",
             "title": "Ремонт",
             "category": "home",
-            "categoryTitle": "Дом и уют"
+            "categoryTitle": "Дом и уют",
+             "color": "#f7ebe5"
           }
         ]
       }

@@ -8,7 +8,7 @@ interface SkillsProps {
 
 const Skills: React.FC<SkillsProps> = (props) => {
     return (
-        <p className={style[props.colorTag]}>{props.title}</p>
+        <p className={style.tag} style={{'--tag-color': props.colorTag}as React.CSSProperties}>{props.title}</p>
     );
 };
 

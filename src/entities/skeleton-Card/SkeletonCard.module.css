@@ -14,6 +14,7 @@
 grid-area: title;
 font-family: var(--font-heading),serif;
 font-size: var(--font-size-h1);
+font-weight: var(--font-weight-medium);
 }
 
 .button{
