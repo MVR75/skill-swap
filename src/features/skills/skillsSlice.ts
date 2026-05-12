@@ -34,5 +34,10 @@ export const skillsSlice = createSlice({
       .addCase(getSkills.fulfilled, (state, action) => {
         state.cards = action.payload;
       })
+  },
+  selectors: {
+    selectAllSkillCards: (state) => state.cards
   }
 });
+
+export const { selectAllSkillCards } = skillsSlice.selectors;
