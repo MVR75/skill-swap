@@ -7,21 +7,34 @@ import LoginPage from '../pages/login/LoginPage';
 import CreateSkillPage from '../pages/create/CreateSkillPage';
 import { ErrorPage } from '../pages/error/ErrorPage';
 import { RegisterPage } from '../pages/register/RegisterPage';
+import { useEffect } from 'react';
+import { useDispatch } from './store';
+import { getSkills } from '../features/skills/skillsSlice';
+import { getCategories } from '../features/categories/CategoriesSlice';
 
-export const AppRouter = () => (
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/skill/:id" element={<SkillPage />} />
-      <Route path="/profile" element={<ProfilePage />} />
-      <Route path="/favorites" element={<FavoritesPage />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route
-        path="/register"
-        element={<RegisterPage onClose={() => console.log('close')} />}
-      />
-      <Route path="/create" element={<CreateSkillPage />} />
-      <Route path="*" element={<ErrorPage code={404} />} />
-    </Routes>
-  </BrowserRouter>
-);
+export const AppRouter = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getSkills());
+    dispatch(getCategories());
+  });
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/skill/:id" element={<SkillPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/favorites" element={<FavoritesPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route
+          path="/register"
+          element={<RegisterPage onClose={() => console.log('close')} />}
+        />
+        <Route path="/create" element={<CreateSkillPage />} />
+        <Route path="*" element={<ErrorPage code={404} />} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
