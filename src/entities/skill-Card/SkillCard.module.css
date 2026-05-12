@@ -1,34 +1,39 @@
 .card {
     display: flex;
     position: relative;
-    gap: 20px;
     flex-direction: column;
     justify-content: space-between;
     align-items:start;
-    padding:20px 20px;
-    width: 320px;
-    height: 358px;
-    border-radius: 20px;
-    background-color: #fff;
+    padding:var( --space-20);
+    width: 324px;
+    height: 368px;
+    border-radius: var(--radius-tag);
+    background-color: var(--color-bg-card);
+    font-family: var(--font-secondary),serif;
 }
 
 .card__info{
     display: flex;
-    gap:12px;
+    width: 100%;
+    gap: var(--space-12);
     flex-direction: row-reverse;
-    justify-content: space-between;
+    justify-content: start;
     align-items: center;
 }
 
+.card__bio{
+    display: flex;
+    flex-direction: column;
+    width: content;
+    justify-content: center;
+}
+
 .card__title{
-    font-size: 20px;
-    padding: 0px;
-    margin: 0px;
+    font-size: var(--font-size-h3);
 }
 
 .card__subtitle{
-    padding: 0px;
-    margin: 0px;
+    font-size: var( --font-size-small);
 }
 
 .card__imageWrapper, 
@@ -37,36 +42,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0px;
     width: 100px;
     height: 100px;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
 }
 .card__imageWrapper{
-background-color: #ABD27A; 
+background-color: var(--color-primary);
 }
 
 .card__skills{
 display: flex;
 flex-direction: column;
-gap: 12px;
+gap: var(--space-12);
 align-items: start;
-margin: 0px;
-padding: 0px;
 }
 
 .card__skillsList{
-    padding: 0px;
-    margin: 0px;
     display: flex;
     flex-direction: row;
-    gap: 4px;
+    gap: var(--space-4);
 }
 
-.card__actions{
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-}
 
