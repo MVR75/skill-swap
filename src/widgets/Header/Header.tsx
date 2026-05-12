@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
+import { Button } from '../../shared/ui/Button/Button';
 
 export interface HeaderProps {
   isAuthenticated?: boolean;
@@ -146,20 +147,20 @@ export function Header({
           </>
         ) : (
           <div className={styles.authButtons}>
-            <button
-              type="button"
-              className={styles.loginButton}
+            <Button
+              variant="outline"
               onClick={onLoginClick}
+              className={styles.loginButton}
             >
               Войти
-            </button>
-            <button
-              type="button"
-              className={styles.registerButton}
+            </Button>
+            <Button
+              variant="primary"
               onClick={onRegisterClick}
+              className={styles.registerButton}
             >
               Регистрация
-            </button>
+            </Button>
           </div>
         )}
       </div>
