@@ -1,0 +1,95 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  padding: 80px 32px 32px;
+  background-color: transparent;
+}
+
+.modal {
+  width: 100%;
+  max-width: 1136px;
+  padding: 60px;
+  border: 1px solid #25301d;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-bg-card);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 40px;
+  row-gap: 40px;
+}
+
+.category {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  column-gap: 12px;
+  align-items: start;
+}
+
+.iconWrapper {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+  object-fit: contain;
+}
+
+.categoryContent {
+  min-width: 0;
+}
+
+.categoryTitle {
+  margin-bottom: 14px;
+  font-size: var(--font-size-h2);
+  line-height: var(--line-height-h2);
+  font-weight: var(--font-weight-medium);
+  font-family: var(--font-heading);
+  color: var(--color-text);
+}
+
+.subcategories {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.subcategory {
+  margin: 0;
+}
+
+.subcategoryButton {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  text-align: left;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.subcategoryButton:hover {
+  color: var(--color-primary);
+}
+
+.message {
+  margin: 0;
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  color: var(--color-text);
+}
