@@ -1,0 +1,23 @@
+.filtersBar {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  border-radius: 12px;
+  overflow-y: auto;
+  background-color: var(--color-bg-card);
+}
+
+.filtersBar__title {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-h2);
+  line-height: var(--line-height-h2);
+  letter-spacing: -1.1%;
+}
+
+.filtersBar__componentsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}

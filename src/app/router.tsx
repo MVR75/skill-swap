@@ -5,7 +5,7 @@ import ProfilePage from '../pages/profile/ProfilePage';
 import FavoritesPage from '../pages/favorites/FavoritesPage';
 import LoginPage from '../pages/login/LoginPage';
 import CreateSkillPage from '../pages/create/CreateSkillPage';
-import NotFoundPage from '../pages/not-found/NotFoundPage';
+import { ErrorPage } from '../pages/error/ErrorPage';
 import { RegisterPage } from '../pages/register/RegisterPage';
 import { useEffect } from 'react';
 import { useDispatch } from './store';
@@ -33,7 +33,7 @@ export const AppRouter = () => {
           element={<RegisterPage onClose={() => console.log('close')} />}
         />
         <Route path="/create" element={<CreateSkillPage />} />
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path="*" element={<ErrorPage code={404} />} />
       </Routes>
     </BrowserRouter>
   );

@@ -20,6 +20,7 @@ export const RadioGroupUI: FC<TRadioGroupProps> = ({
       >
         {options.map(item => (
           <RadioUI
+            key={item.value}
             name={name}
             value={item.value}
             checked={value===item.value}
