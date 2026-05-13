@@ -11,7 +11,7 @@ export const getCategories = createAsyncThunk<
     return await fetchCategories();
   } catch (err) {
     const message =
-      err instanceof Error ? err.message : 'Не удалось загрузить данные';
+      err instanceof Error ? err.message : 'РќРµ СѓРґР°Р»РѕСЃСЊ Р·Р°РіСЂСѓР·РёС‚СЊ РґР°РЅРЅС‹Рµ';
     return rejectWithValue(message);
   }
 });
@@ -33,5 +33,10 @@ export const categoriesSlice = createSlice({
       .addCase(getCategories.fulfilled, (state, action) => {
         state.categories = action.payload;
       })
+  },
+  selectors: {
+    selectCategories: (state) => state.categories
   }
 });
+
+export const { selectCategories } = categoriesSlice.selectors;
