@@ -52,7 +52,7 @@
   width: 60px;
   height: 4px;
   border-radius: 2px;
-  background-color: #69735d;
+  background-color: var(--color-text);
   opacity: 0.3;
 }
 
