@@ -88,7 +88,7 @@ export function Step2({ onSubmit, onBack, initialData }: Step2Props) {
           name="avatar"
           control={control}
           render={({ field }) => (
-            <AvatarUpload value={field.value} onChange={field.onChange} />
+            <AvatarUpload value={field.value} onChange={field.onChange} icon={"/icons/Icon-regg.svg"}/>
           )}
         />
         {errors.avatar && (

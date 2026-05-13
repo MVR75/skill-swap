@@ -4,9 +4,11 @@ import styles from './AvatarUpload.module.css';
 type AvatarUploadProps = {
   value: File | null;
   onChange: (file: File | null) => void;
+  icon?: string;
+  style?: string;
 };
 
-export function AvatarUpload({ value, onChange }: AvatarUploadProps) {
+export function AvatarUpload({ value, onChange, icon, style }: AvatarUploadProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
@@ -39,6 +41,7 @@ export function AvatarUpload({ value, onChange }: AvatarUploadProps) {
       <button
         type="button"
         className={styles.avatarButton}
+        style={{width:style, height: style}}
         onClick={handleClick}
         aria-label={value ? 'Изменить аватар' : 'Загрузить аватар'}
       >
@@ -51,7 +54,7 @@ export function AvatarUpload({ value, onChange }: AvatarUploadProps) {
           />
         ) : (
           <img
-            src="/icons/Icon-regg.svg"
+            src={icon}
             alt=""
             className={styles.placeholder}
             aria-hidden="true"
