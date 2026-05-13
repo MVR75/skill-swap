@@ -6,6 +6,8 @@ import {
   changeGender,
   changeSkillIntent,
   changeSkills,
+  clearFilter,
+  selectActiveFilterValues,
   selectCities,
   selectGender,
   selectSkillExchangeIntent,
@@ -37,6 +39,7 @@ export const FiltersBar = () => {
   const skills = useSelector(selectSkills);
   const gender = useSelector(selectGender);
   const cities = useSelector(selectCities);
+  const activeFilterValues = useSelector(selectActiveFilterValues);
 
   const cityOptions = useMemo(() => {
     const uniqueCities = new Set(skillCards.map((card) => card.city));
@@ -105,6 +108,8 @@ export const FiltersBar = () => {
       skillsFilter={skillsFilter}
       genderFilter={genderFilter}
       cityFilter={cityFilter}
+      filterCount={activeFilterValues.length}
+      onClear={() => dispatch(clearFilter())}
     />
   );
 };

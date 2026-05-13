@@ -29,7 +29,8 @@ export const filtersSlice = createSlice({
     },
     changeCities: (state, action: PayloadAction<string[]>) => {
       state.city = action.payload;
-    }
+    },
+    clearFilter: () => initialState
   },
   selectors: {
     selectSkillExchangeIntent: (state) => state.skillExchangeIntent,
@@ -37,6 +38,27 @@ export const filtersSlice = createSlice({
     selectGender: (state) => state.gender,
     selectCities: (state) => state.city,
     selectAllFilters: (state) => state,
+    selectActiveFilterValues: (state) => {
+      const values: string[] = [];
+
+      if (state.gender !== 'any') {
+        values.push(state.gender);
+      }
+
+      if (state.skillExchangeIntent !== 'all') {
+        values.push(state.skillExchangeIntent);
+      }
+
+      if (state.city.length > 0) {
+        values.push(...state.city);
+      }
+
+      if (state.skills.length > 0) {
+        values.push(...state.skills);
+      }
+
+      return values;
+    }
   }
 });
 
@@ -45,12 +67,14 @@ export const {
   selectGender,
   selectCities,
   selectSkills,
-  selectAllFilters
+  selectAllFilters,
+  selectActiveFilterValues
 } = filtersSlice.selectors;
 
 export const {
   changeSkillIntent,
   changeGender,
   changeCities,
-  changeSkills
+  changeSkills,
+  clearFilter
 } = filtersSlice.actions;

@@ -4,14 +4,28 @@ import { CheckboxGroupUI } from '../../shared/ui/CheckboxGroup/CheckboxGroup';
 import type { TFiltersBarUIProps } from './type';
 import styles from './FiltersBarUI.module.css';
 
+const crossIcon = '/icons/cross.svg';
+
 export const FiltersBarUI: FC<TFiltersBarUIProps> = ({
   skillExchangeIntentFilter,
   skillsFilter,
   genderFilter,
-  cityFilter
+  cityFilter,
+  filterCount,
+  onClear
 }) => (
   <aside className={styles.filtersBar}>
-    <h2 className={styles.filtersBar__title}>Фильтры</h2>
+    <div className={styles.filtersBar__titleContainer}>
+      <h2 className={styles.filtersBar__title}>{`Фильтры ${filterCount ? `(${filterCount})` : ''}`}</h2>
+      <button className={styles.filtersBar__clearButton} type='button' onClick={onClear}>
+        Сбросить
+        <img
+          src={crossIcon}
+          alt=''
+          aria-hidden='true'
+        />
+      </button>
+    </div>
     <div className={styles.filtersBar__componentsContainer}>
       <RadioGroupUI {...skillExchangeIntentFilter}/>
       <CheckboxGroupUI {...skillsFilter} />
