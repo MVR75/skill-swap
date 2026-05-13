@@ -5,6 +5,10 @@ import { selectAllFilters } from "../filters/filtersSlice";
 export const selectFilteredSkillCards = createSelector(
   [selectAllSkillCards, selectAllFilters],
   (cards, filters) => {
+    const isSkillSelected = (cardSkills: string[]) =>
+      (filters.skills.length === 0 && cardSkills.length > 0) ||
+      filters.skills.some((skill) => cardSkills.includes(skill));
+
     return cards.filter((card) => {
       const matchesGender =
         filters.gender === "any" || card.gender === filters.gender;
@@ -20,24 +24,20 @@ export const selectFilteredSkillCards = createSelector(
         (skill) => skill.subcategory
       );
 
-      const matchesSkills =
-        filters.skills.length === 0 ||
-        filters.skills.some((skill) =>
-          cardCanTeachSkills.includes(skill) ||
-          cardWantsToLearnSkills.includes(skill)
-        );
-
       const matchesSkillExchangeIntent =
-        filters.skillExchangeIntent === "all" ||
+        (filters.skillExchangeIntent === "all" &&
+          isSkillSelected([
+            ...cardCanTeachSkills,
+            ...cardWantsToLearnSkills
+          ])) ||
         (filters.skillExchangeIntent === "canTeach" &&
-          filters.skills.some((skill) => cardCanTeachSkills.includes(skill))) ||
-        (filters.skillExchangeIntent === "wantToLearn" &&
-          filters.skills.some((skill) => cardWantsToLearnSkills.includes(skill)));
+          isSkillSelected(cardCanTeachSkills)) ||
+        (filters.skillExchangeIntent === "wantsToLearn" &&
+          isSkillSelected(cardWantsToLearnSkills));
 
       return (
         matchesGender &&
         matchesCity &&
-        matchesSkills &&
         matchesSkillExchangeIntent
       );
     });

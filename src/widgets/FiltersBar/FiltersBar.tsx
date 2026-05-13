@@ -11,6 +11,7 @@ import {
   selectSkillExchangeIntent,
   selectSkills
 } from "../../features/filters/filtersSlice";
+import { selectAllSkillCards } from "../../features/skills/skillsSlice";
 import { FiltersBarUI } from "./FiltersBarUI";
 import { mapCategoriesToSkillTrees } from "./model/mapCategoriesToSkillTrees";
 
@@ -26,24 +27,27 @@ const genderOptions = [
   { value: "female", label: "Женский" },
 ];
 
-const cityOptions = [
-  { value: "moscow", label: "Москва" },
-  { value: "spb", label: "Санкт-Петербург" },
-  { value: "nsk", label: "Новосибирск" },
-  { value: "ekb", label: "Екатеринбург" },
-  { value: "kazan", label: "Казань" },
-  { value: "sochi", label: "Сочи" },
-];
-
 export const FiltersBar = () => {
   const dispatch = useDispatch();
 
   const categories = useSelector(selectCategories);
+  const skillCards = useSelector(selectAllSkillCards);
 
   const skillExchangeIntent = useSelector(selectSkillExchangeIntent);
   const skills = useSelector(selectSkills);
   const gender = useSelector(selectGender);
   const cities = useSelector(selectCities);
+
+  const cityOptions = useMemo(() => {
+    const uniqueCities = new Set(skillCards.map((card) => card.city));
+
+    return Array.from(uniqueCities)
+      .sort((cityA, cityB) => cityA.localeCompare(cityB))
+      .map((city) => ({
+        value: city,
+        label: city
+      }));
+  }, [skillCards]);
 
   const skillTrees = useMemo(() => {
     const handleCategorySkillsChange = (
