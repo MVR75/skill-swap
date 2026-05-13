@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { FiltersBarUI } from "../../widgets/FiltersBar/FiltersBarUI";
-import { Footer } from "../../widgets/Footer/Footer";
-import { Header } from "../../widgets/Header";
 import style from './HomePage.module.css';
 import SkeletonCard from "../../entities/skeleton-Card/SkeletonCard";
 import { fetchSkills } from "../../api/skillsApi";
@@ -61,14 +59,12 @@ const HomePage = () => {
       } catch (error) {
         console.log(error)
       }
-    finally{
-      setLoading(false)
+      finally{
+        setLoading(false)
+      }
     }
-  }
-  loadingSkills()
+    loadingSkills()
   },[])
-
-  console.log(skills)
 
   const skillsFilter = {
     type: "tree" as const,
@@ -117,26 +113,23 @@ const HomePage = () => {
   };
 
   return (
-    <>
-    <Header></Header>
     <div className={style.homePage}>
       <div className={style.homePage__filter}>
-      <FiltersBarUI
-        skillExchangeIntentFilter={skillExchangeIntentFilter}
-        skillsFilter={skillsFilter}
-        genderFilter={genderFilter}
-        cityFilter={cityFilter}
-      /> 
+        <FiltersBarUI
+          skillExchangeIntentFilter={skillExchangeIntentFilter}
+          skillsFilter={skillsFilter}
+          genderFilter={genderFilter}
+          cityFilter={cityFilter}
+        /> 
       </div>
       {loading ? <p>Загрузка</p> : 
-      <div className={style.homePage__cards}>
-      <SkeletonCard title='Популярное' skills={skills}></SkeletonCard>
-      <SkeletonCard title='Новое' skills={skills}></SkeletonCard>
-      <SkeletonCard title='Рекомендуем' skills={skills}></SkeletonCard>
-      </div>}
+        <div className={style.homePage__cards}>
+          <SkeletonCard title='Популярное' skills={skills}></SkeletonCard>
+          <SkeletonCard title='Новое' skills={skills}></SkeletonCard>
+          <SkeletonCard title='Рекомендуем' skills={skills}></SkeletonCard>
+        </div>
+      }
     </div>
-    <Footer/> 
-    </>
   );
 };
 
