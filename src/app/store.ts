@@ -6,11 +6,13 @@ import {
   useSelector as selectorHook
 } from 'react-redux';
 import { skillsSlice } from "../features/skills/skillsSlice";
-import { categoriesSlice } from "../features/categories/CategoriesSlice";
+import { categoriesSlice } from "../features/categories/categoriesSlice";
+import { filtersSlice } from "../features/filters/filtersSlice";
 
 export const rootReducer = combineSlices(
   skillsSlice,
-  categoriesSlice
+  categoriesSlice,
+  filtersSlice
 );
 
 export const store = configureStore({
