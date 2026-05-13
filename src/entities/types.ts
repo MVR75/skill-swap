@@ -3,6 +3,7 @@ export type TSkillCategory = {
   title: string;
   category: string;
   categoryTitle: string;
+  color: string;
 };
 
 export type TSkillCard = {
