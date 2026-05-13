@@ -1,25 +1,29 @@
-export type SkillType = 'teach' | 'learn';
+import type { TSkillCard } from "../entities/types";
 
-export type Skill = {
-  id: string;
-  title: string;
-  description: string;
-  type: SkillType;
-  category: string;
-  authorId: string;
-  authorName: string;
-  tags: string[];
-  createdAt: string;
+type TSkillsResponse = {
+  users: TSkillCard[];
 };
 
-export const fetchSkills = async (): Promise<Skill[]> => {
+export const fetchSkills = async (): Promise<TSkillsResponse> => {
   const response = await fetch('/db/skills.json');
 
   if (!response.ok) {
     throw new Error('Ошибка загрузки');
   }
 
-  const skills: Skill[] = await response.json();
+  const skills: TSkillsResponse = await response.json();
 
   return skills;
+};
+
+export const fetchSkillById = async (id: string): Promise<Skill> => {
+  const skills = await fetchSkills();
+
+  const skill = skills.find((s) => s.id === id);
+
+  if (!skill) {
+    throw new Error('Навык не найден');
+  }
+
+  return skill;
 };
