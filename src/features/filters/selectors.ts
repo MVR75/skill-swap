@@ -1,6 +1,7 @@
 import { createSelector } from "@reduxjs/toolkit";
-import { selectActiveFilterValues } from "./filtersSlice";
+import { selectAllFilters } from "./filtersSlice";
 import { selectCategories } from "../categories/categoriesSlice";
+import type { TActiveFilterItem } from './types';
 
 const selectSkillLabels = createSelector(
   [selectCategories],
@@ -27,25 +28,47 @@ const skillExchangeIntentLabels = {
   wantsToLearn: 'Хочу научиться'
 };
 
-export const selectActiveFilterLabels = createSelector(
-  [selectActiveFilterValues, selectSkillLabels],
-  (values, skillLabels) => {
-    return values.map((value) => {
-      if (value in genderLabels) {
-        return genderLabels[value as keyof typeof genderLabels];
-      }
+export const selectActiveFilterItems = createSelector(
+  [selectAllFilters, selectSkillLabels],
+  (filters, skillLabels) => {
+    const activeFilterItems: TActiveFilterItem[] = [];
 
-      if (value in skillExchangeIntentLabels) {
-        return skillExchangeIntentLabels[
-          value as keyof typeof skillExchangeIntentLabels
-        ];
-      }
+    if (filters.gender !== 'any') {
+      activeFilterItems.push({
+        type: 'gender',
+        value: filters.gender,
+        label: genderLabels[filters.gender as keyof typeof genderLabels]
+      });
+    }
 
-      const skillLabel = skillLabels.get(value);
+    if (filters.skillExchangeIntent !== 'all') {
+      activeFilterItems.push({
+        type: 'skillExchangeIntent',
+        value: filters.skillExchangeIntent,
+        label: skillExchangeIntentLabels[filters.skillExchangeIntent as keyof typeof skillExchangeIntentLabels]
+      });
+    }
 
-      if (skillLabel) return skillLabel;
+    if (filters.city.length > 0) {
+      const cityItems: TActiveFilterItem[] = filters.city.map((item) => ({
+        type: 'city',
+        value: item,
+        label: item
+      }));
 
-      return value;
-    });
+      activeFilterItems.push(...cityItems);
+    }
+
+    if (filters.skills.length > 0) {
+      const skillsItems: TActiveFilterItem[] = filters.skills.map((skill) => ({
+        type: 'skill',
+        value: skill,
+        label: skillLabels.get(skill) ?? skill
+      }));
+
+      activeFilterItems.push(...skillsItems);
+    }
+
+    return activeFilterItems;
   }
 );

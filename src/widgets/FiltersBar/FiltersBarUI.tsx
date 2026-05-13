@@ -4,7 +4,7 @@ import { CheckboxGroupUI } from '../../shared/ui/CheckboxGroup/CheckboxGroup';
 import type { TFiltersBarUIProps } from './type';
 import styles from './FiltersBarUI.module.css';
 
-const crossIcon = '/icons/cross.svg';
+const crossIcon = '/icons/cross-green.svg';
 
 export const FiltersBarUI: FC<TFiltersBarUIProps> = ({
   skillExchangeIntentFilter,
@@ -17,14 +17,14 @@ export const FiltersBarUI: FC<TFiltersBarUIProps> = ({
   <aside className={styles.filtersBar}>
     <div className={styles.filtersBar__titleContainer}>
       <h2 className={styles.filtersBar__title}>{`Фильтры ${filterCount ? `(${filterCount})` : ''}`}</h2>
-      <button className={styles.filtersBar__clearButton} type='button' onClick={onClear}>
+      {filterCount > 0 && <button className={styles.filtersBar__clearButton} type='button' onClick={onClear}>
         Сбросить
         <img
           src={crossIcon}
           alt=''
           aria-hidden='true'
         />
-      </button>
+      </button>}
     </div>
     <div className={styles.filtersBar__componentsContainer}>
       <RadioGroupUI {...skillExchangeIntentFilter}/>

@@ -6,8 +6,7 @@ import {
   changeGender,
   changeSkillIntent,
   changeSkills,
-  clearFilter,
-  selectActiveFilterValues,
+  clearFilters,
   selectCities,
   selectGender,
   selectSkillExchangeIntent,
@@ -16,6 +15,7 @@ import {
 import { selectAllSkillCards } from "../../features/skills/skillsSlice";
 import { FiltersBarUI } from "./FiltersBarUI";
 import { mapCategoriesToSkillTrees } from "./model/mapCategoriesToSkillTrees";
+import { selectActiveFilterItems } from "../../features/filters/selectors";
 
 const skillExchangeIntentOptions = [
   { value: "all", label: "Все" },
@@ -39,7 +39,8 @@ export const FiltersBar = () => {
   const skills = useSelector(selectSkills);
   const gender = useSelector(selectGender);
   const cities = useSelector(selectCities);
-  const activeFilterValues = useSelector(selectActiveFilterValues);
+
+  const activeFilterItems = useSelector(selectActiveFilterItems);
 
   const cityOptions = useMemo(() => {
     const uniqueCities = new Set(skillCards.map((card) => card.city));
@@ -108,8 +109,8 @@ export const FiltersBar = () => {
       skillsFilter={skillsFilter}
       genderFilter={genderFilter}
       cityFilter={cityFilter}
-      filterCount={activeFilterValues.length}
-      onClear={() => dispatch(clearFilter())}
+      filterCount={activeFilterItems.length}
+      onClear={() => dispatch(clearFilters())}
     />
   );
 };

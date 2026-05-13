@@ -1,4 +1,5 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import type { TDeleteFilterPayload } from "./types";
 
 type TFiltersState = {
   skillExchangeIntent: string;
@@ -30,35 +31,31 @@ export const filtersSlice = createSlice({
     changeCities: (state, action: PayloadAction<string[]>) => {
       state.city = action.payload;
     },
-    clearFilter: () => initialState
+    clearFilters: () => initialState,
+    deleteFilter: (state, action: PayloadAction<TDeleteFilterPayload>) => {
+      if (action.payload.type === 'gender') {
+        state.gender = 'any';
+      }
+
+      if (action.payload.type === 'skillExchangeIntent') {
+        state.skillExchangeIntent = 'all';
+      }
+
+      if (action.payload.type === 'city') {
+        state.city = state.city.filter((item) => item !== action.payload.value);
+      }
+
+      if (action.payload.type === 'skill') {
+        state.skills = state.skills.filter((skill) => skill !== action.payload.value);
+      }
+    }
   },
   selectors: {
     selectSkillExchangeIntent: (state) => state.skillExchangeIntent,
     selectSkills: (state) => state.skills,
     selectGender: (state) => state.gender,
     selectCities: (state) => state.city,
-    selectAllFilters: (state) => state,
-    selectActiveFilterValues: (state) => {
-      const values: string[] = [];
-
-      if (state.gender !== 'any') {
-        values.push(state.gender);
-      }
-
-      if (state.skillExchangeIntent !== 'all') {
-        values.push(state.skillExchangeIntent);
-      }
-
-      if (state.city.length > 0) {
-        values.push(...state.city);
-      }
-
-      if (state.skills.length > 0) {
-        values.push(...state.skills);
-      }
-
-      return values;
-    }
+    selectAllFilters: (state) => state
   }
 });
 
@@ -67,8 +64,7 @@ export const {
   selectGender,
   selectCities,
   selectSkills,
-  selectAllFilters,
-  selectActiveFilterValues
+  selectAllFilters
 } = filtersSlice.selectors;
 
 export const {
@@ -76,5 +72,6 @@ export const {
   changeGender,
   changeCities,
   changeSkills,
-  clearFilter
+  clearFilters,
+  deleteFilter
 } = filtersSlice.actions;
