@@ -1,12 +1,11 @@
 .header {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: var(--space-32);
   min-height: 88px;
-  padding: 20px 32px;
-  background-color: #f8faf5;
-  color: #25351f;
-  font: inherit;
+  padding: var(--space-20) var(--space-32);
+  background-color: var(--color-bg-page);
+  color: var(--color-text);
 }
 
 .logoLink {
@@ -26,29 +25,23 @@
 .nav {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: var(--space-32);
   flex-shrink: 0;
 }
 
 .navLink {
   color: inherit;
-  font-size: 18px;
-  line-height: 1.2;
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
   text-decoration: none;
 }
 
 .skillsButton {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 0;
-  border: none;
-  background: transparent;
-  color: inherit;
-  font: inherit;
-  font-size: 18px;
-  line-height: 1.2;
-  cursor: pointer;
+  gap: var(--space-8);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
 }
 
 .chevronIcon {
@@ -59,14 +52,14 @@
 .search {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--space-12);
   flex: 1;
   max-width: 700px;
   min-width: 240px;
   height: 56px;
-  padding: 0 20px;
-  border-radius: 16px;
-  background-color: #ffffff;
+  padding: 0 var(--space-20);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-bg-card);
 }
 
 .searchIcon {
@@ -80,20 +73,20 @@
   border: none;
   outline: none;
   background: transparent;
-  color: #25351f;
-  font: inherit;
-  font-size: 18px;
-  line-height: 1.2;
+  color: var(--color-text);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
 }
 
 .searchInput::placeholder {
-  color: #7d8677;
+  color: var(--color-text);
+  opacity: 0.5;
 }
 
 .actions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: var(--space-16);
   margin-left: auto;
   flex-shrink: 0;
 }
@@ -104,10 +97,6 @@
   justify-content: center;
   width: 44px;
   height: 44px;
-  padding: 0;
-  border: none;
-  background: transparent;
-  cursor: pointer;
 }
 
 .themeIcon {
@@ -123,53 +112,34 @@
 .authButtons {
   display: flex;
   align-items: center;
-  gap: 12px;
-}
-
-.loginButton,
-.registerButton {
-  min-height: 52px;
-  padding: 0 28px;
-  border-radius: 14px;
-  font: inherit;
-  font-size: 18px;
-  line-height: 1.2;
-  cursor: pointer;
+  gap: var(--space-12);
 }
 
 .loginButton {
-  border: 1px solid #abd875;
-  background-color: transparent;
-  color: #25351f;
+  width: 92px;
+  height: 48px;
 }
 
 .registerButton {
-  border: 1px solid #abd875;
-  background-color: #abd875;
-  color: #25351f;
+  width: 208px;
+  height: 48px;
 }
 
 .userButton {
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 0;
-  border: none;
-  background: transparent;
-  color: inherit;
-  font: inherit;
-  cursor: pointer;
+  gap: var(--space-16);
 }
 
 .userName {
-  font-size: 20px;
-  line-height: 1.2;
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-h3);
 }
 
 .avatar {
   width: 56px;
   height: 56px;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   object-fit: cover;
 }
 
@@ -177,8 +147,6 @@
 .navLink,
 .skillsButton,
 .iconButton,
-.loginButton,
-.registerButton,
 .userButton {
   transition:
     color 0.2s ease,
@@ -196,21 +164,10 @@
   opacity: 0.75;
 }
 
-.loginButton:hover {
-  background-color: #f0f8e8;
-}
-
-.registerButton:hover {
-  background-color: #9ccc65;
-  border-color: #9ccc65;
-}
-
 .logoLink:active,
 .navLink:active,
 .skillsButton:active,
 .iconButton:active,
-.loginButton:active,
-.registerButton:active,
 .userButton:active {
   transform: translateY(1px);
 }
@@ -219,9 +176,7 @@
 .navLink:focus-visible,
 .skillsButton:focus-visible,
 .iconButton:focus-visible,
-.loginButton:focus-visible,
-.registerButton:focus-visible,
 .userButton:focus-visible {
-  outline: 2px solid #abd875;
+  outline: 2px solid var(--color-primary);
   outline-offset: 4px;
 }
