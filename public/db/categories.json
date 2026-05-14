@@ -1,0 +1,212 @@
+[
+  {
+    "id": "business",
+    "title": "Бизнес и карьера",
+    "color": "#EEE7F7",
+    "subcategories": [
+      {
+        "id": "team-management",
+        "title": "Управление командой"
+      },
+      {
+        "id": "marketing",
+        "title": "Маркетинг и реклама"
+      },
+      {
+        "id": "sales-negotiation",
+        "title": "Продажи и переговоры"
+      },
+      {
+        "id": "personal-brand",
+        "title": "Личный бренд"
+      },
+      {
+        "id": "resume-interview",
+        "title": "Резюме и собеседование"
+      },
+      {
+        "id": "time-management",
+        "title": "Тайм-менеджмент"
+      },
+      {
+        "id": "project-management",
+        "title": "Проектное управление"
+      },
+      {
+        "id": "entrepreneurship",
+        "title": "Предпринимательство"
+      }
+    ]
+  },
+  {
+    "id": "creative",
+    "title": "Творчество и искусство",
+    "color": "#EBE5C5",
+    "subcategories": [
+      {
+        "id": "drawing-illustration",
+        "title": "Рисование и иллюстрация"
+      },
+      {
+        "id": "photography",
+        "title": "Фотография"
+      },
+      {
+        "id": "video-editing",
+        "title": "Видеомонтаж"
+      },
+      {
+        "id": "music",
+        "title": "Музыка и звук"
+      },
+      {
+        "id": "acting",
+        "title": "Актёрское мастерство"
+      },
+      {
+        "id": "creative-writing",
+        "title": "Креативное письмо"
+      },
+      {
+        "id": "art-therapy",
+        "title": "Арт-терапия"
+      },
+      {
+        "id": "decor-diy",
+        "title": "Декор и DIY"
+      }
+    ]
+  },
+  {
+    "id": "languages",
+    "title": "Иностранные языки",
+    "color": "#F7EBE5",
+    "subcategories": [
+      {
+        "id": "english",
+        "title": "Английский"
+      },
+      {
+        "id": "french",
+        "title": "Французский"
+      },
+      {
+        "id": "spanish",
+        "title": "Испанский"
+      },
+      {
+        "id": "german",
+        "title": "Немецкий"
+      },
+      {
+        "id": "chinese",
+        "title": "Китайский"
+      },
+      {
+        "id": "japanese",
+        "title": "Японский"
+      },
+      {
+        "id": "exam-preparation",
+        "title": "Подготовка к экзаменам (IELTS, TOEFL)"
+      }
+    ]
+  },
+  {
+    "id": "education",
+    "title": "Образование и развитие",
+    "color": "#E7F2F6",
+    "subcategories": [
+      {
+        "id": "personal-development",
+        "title": "Личностное развитие"
+      },
+      {
+        "id": "learning-skills",
+        "title": "Навыки обучения"
+      },
+      {
+        "id": "cognitive-techniques",
+        "title": "Когнитивные техники"
+      },
+      {
+        "id": "speed-reading",
+        "title": "Скорочтение"
+      },
+      {
+        "id": "teaching-skills",
+        "title": "Навыки преподавания"
+      },
+      {
+        "id": "coaching",
+        "title": "Коучинг"
+      }
+    ]
+  },
+  {
+    "id": "home",
+    "title": "Дом и уют",
+    "color": "#F7EBE5",
+    "subcategories": [
+      {
+        "id": "cleaning-organization",
+        "title": "Уборка и организация"
+      },
+      {
+        "id": "home-finance",
+        "title": "Домашние финансы"
+      },
+      {
+        "id": "cooking",
+        "title": "Приготовление еды"
+      },
+      {
+        "id": "houseplants",
+        "title": "Домашние растения"
+      },
+      {
+        "id": "repair",
+        "title": "Ремонт"
+      },
+      {
+        "id": "storage",
+        "title": "Хранение вещей"
+      }
+    ]
+  },
+  {
+    "id": "health",
+    "title": "Здоровье и лайфстайл",
+    "color": "#E9F7E7",
+    "subcategories": [
+      {
+        "id": "yoga-meditation",
+        "title": "Йога и медитация"
+      },
+      {
+        "id": "nutrition-healthy-lifestyle",
+        "title": "Питание и ЗОЖ"
+      },
+      {
+        "id": "mental-health",
+        "title": "Ментальное здоровье"
+      },
+      {
+        "id": "mindfulness",
+        "title": "Осознанность"
+      },
+      {
+        "id": "fitness",
+        "title": "Физические тренировки"
+      },
+      {
+        "id": "sleep-recovery",
+        "title": "Сон и восстановление"
+      },
+      {
+        "id": "work-life-balance",
+        "title": "Баланс жизни и работы"
+      }
+    ]
+  }
+]

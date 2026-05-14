@@ -1,0 +1,9 @@
+.homePage{
+  display: grid;
+  grid-template-columns: 324px 1fr;
+  gap: 24px;
+}
+
+.homePage__filter{
+  height: fit-content;
+}

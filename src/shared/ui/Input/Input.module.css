@@ -1,0 +1,81 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: 100%;
+}
+
+.label {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-h4);
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-text);
+}
+
+.inputWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  padding: var(--space-12) var(--space-16);
+  padding-right: var(--space-48);
+  border: 1px solid #69735d; /* TODO: вынести в --color-input-border */
+  border-radius: var(--radius-sm);
+  background-color: var(--color-bg-card);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+  color: var(--color-text);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.input::placeholder {
+  color: var(--color-text);
+  opacity: 0.5;
+}
+
+.input:hover:not(:focus) {
+  border-color: var(--color-primary);
+}
+
+.input:focus {
+  border-color: var(--color-link);
+}
+
+.inputError {
+  border-color: var(--color-error);
+}
+
+.rightIcon {
+  position: absolute;
+  top: 50%;
+  right: var(--space-16);
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+}
+
+.hint {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-text);
+  opacity: 0.6;
+}
+
+.error {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-error);
+}
