@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
-import { CheckboxGroupUI } from '../../../../../../shared/ui/CheckboxGroup/CheckboxGroup';
+import { CheckboxGroupUI } from '../../../../shared/ui/CheckboxGroup/CheckboxGroup';
 import styles from './CategoryDropdown.module.css';
 
 type Option = {
@@ -14,7 +14,10 @@ type CategoryDropdownProps = {
   value: string[];
   onChange: (value: string[]) => void;
   disabled?: boolean;
+  mode?: 'single' | 'multi';
 };
+
+const MAX_VISIBLE_LABELS = 2;
 
 export function CategoryDropdown({
   label,
@@ -23,6 +26,7 @@ export function CategoryDropdown({
   value,
   onChange,
   disabled = false,
+  mode = 'multi',
 }: CategoryDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -65,21 +69,40 @@ export function CategoryDropdown({
     setIsOpen((prev) => !prev);
   };
 
-  const triggerText =
-    value.length === 0
-      ? placeholder
-      : options
-          .filter((option) => value.includes(option.value))
-          .map((option) => option.label)
-          .join(', ');
+  const handleChange = (newValue: string[]) => {
+    if (mode === 'single') {
+      const added = newValue.find((v) => !value.includes(v));
+      onChange(added ? [added] : []);
+      setIsOpen(false);
+      return;
+    }
+    onChange(newValue);
+  };
+
+  const selectedLabels = options
+    .filter((option) => value.includes(option.value))
+    .map((option) => option.label);
+
+  const fieldId = `category-dropdown-${label.replace(/\s+/g, '-')}`;
+
+  let triggerText: string;
+  if (value.length === 0) {
+    triggerText = placeholder;
+  } else if (selectedLabels.length <= MAX_VISIBLE_LABELS) {
+    triggerText = selectedLabels.join(', ');
+  } else {
+    const visible = selectedLabels.slice(0, MAX_VISIBLE_LABELS);
+    const rest = selectedLabels.length - MAX_VISIBLE_LABELS;
+    triggerText = `${visible.join(', ')} и ещё ${rest}`;
+  }
 
   return (
     <div className={styles.field} ref={containerRef}>
-      <label id={`datepicker-label-${label}`} className={styles.label}>
+      <label id={fieldId} className={styles.label}>
         {label}
       </label>
       <button
-        aria-labelledby={`datepicker-label-${label}`}
+        aria-labelledby={fieldId}
         type="button"
         className={`${styles.trigger} ${isOpen ? styles.triggerOpen : ''} ${
           value.length === 0 ? styles.triggerPlaceholder : ''
@@ -105,7 +128,7 @@ export function CategoryDropdown({
             name={label}
             options={options}
             value={value}
-            onChange={onChange}
+            onChange={handleChange}
           />
         </div>
       )}
