@@ -3,10 +3,10 @@ import { zodResolver } from '@hookform/resolvers/zod';
 
 import { useSelector } from '../../../../app/store';
 import { Input } from '../../../../shared/ui/Input/Input';
-import { Button } from '../../../../shared/ui/Button/Button';
+import { Button } from '../../../../shared/ui/button/Button';
 import { AvatarUpload } from '../../../../shared/ui/AvatarUpload/AvatarUpload';
 
-import { CategoryDropdown } from './ui/CategoryDropdown/CategoryDropdown';
+import { CategoryDropdown } from '../../ui/CategoryDropdown/CategoryDropdown';
 import { DatePicker } from './ui/DatePicker/DatePicker';
 
 import { step2Schema, type Step2Data } from './schema';

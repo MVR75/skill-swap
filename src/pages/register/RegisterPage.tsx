@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
-import { useDispatch } from '../../app/store';
+import { useDispatch, useSelector } from '../../app/store';
 import { getCategories } from '../../features/categories/categoriesSlice';
 import { Step1 } from './steps/Step1/Step1';
+import { Step2 } from './steps/Step2/Step2';
+import { Step3 } from './steps/Step3/Step3';
+import { PreviewModal } from './components/PreviewModal/PreviewModal';
+import { NotificationModal } from '../../shared/ui/NotificationModal/NotificationModal';
 import type { Step1Data } from './steps/Step1/schema';
 import type { Step2Data, Step3Data, RegisterFormData } from './types';
 import styles from './RegisterPage.module.css';
-import { Step2 } from './steps/Step2/Step2';
 
 type RegisterPageProps = {
   onClose: () => void;
@@ -42,12 +45,28 @@ const STEP_CONTENT: Record<StepNumber, StepContent> = {
 export function RegisterPage({ onClose }: RegisterPageProps) {
   const [currentStep, setCurrentStep] = useState<StepNumber>(1);
   const [formData, setFormData] = useState<Partial<RegisterFormData>>({});
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+  const [isNotificationOpen, setIsNotificationOpen] = useState(false);
+  const [previewPhotos, setPreviewPhotos] = useState<string[]>([]);
 
   const dispatch = useDispatch();
+  const categories = useSelector((state) => state.categories.categories);
 
   useEffect(() => {
     dispatch(getCategories());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (!isPreviewOpen || !formData.teachImages?.length) {
+      return;
+    }
+    const urls = formData.teachImages.map((file) => URL.createObjectURL(file));
+    setPreviewPhotos(urls);
+    return () => {
+      urls.forEach((url) => URL.revokeObjectURL(url));
+      setPreviewPhotos([]);
+    };
+  }, [isPreviewOpen, formData.teachImages]);
 
   const handleStep1Submit = (data: Step1Data) => {
     setFormData((prev) => ({ ...prev, ...data }));
@@ -60,15 +79,41 @@ export function RegisterPage({ onClose }: RegisterPageProps) {
   };
 
   const handleStep3Submit = (data: Step3Data) => {
-    const finalData = { ...formData, ...data };
-    console.log('Регистрация завершена');
-    void finalData;
+    setFormData((prev) => ({ ...prev, ...data }));
+    setIsPreviewOpen(true);
+  };
+
+  const handlePreviewEdit = () => {
+    setIsPreviewOpen(false);
+  };
+
+  const handlePreviewDone = () => {
+    setIsPreviewOpen(false);
+    setIsNotificationOpen(true);
+  };
+
+  const handleNotificationDone = () => {
+    console.log('Регистрация завершена:', formData);
+    setIsNotificationOpen(false);
+    onClose();
   };
 
   const handleBack = () => {
     if (currentStep === 2) setCurrentStep(1);
     if (currentStep === 3) setCurrentStep(2);
   };
+
+  const categoryId = formData.teachCategories?.[0];
+  const subcategoryIds = formData.teachSubcategories ?? [];
+
+  const category = categories.find((cat) => cat.id === categoryId);
+  const categoryTitle = category?.title ?? '';
+  const subcategoryTitle = category
+    ? category.subcategories
+        .filter((sub) => subcategoryIds.includes(sub.id))
+        .map((sub) => sub.title)
+        .join(', ')
+    : '';
 
   const content = STEP_CONTENT[currentStep];
 
@@ -124,18 +169,11 @@ export function RegisterPage({ onClose }: RegisterPageProps) {
             />
           )}
           {currentStep === 3 && (
-            <div>
-              <p>Step3 (заглушка)</p>
-              <button type="button" onClick={handleBack}>
-                Назад
-              </button>
-              <button
-                type="button"
-                onClick={() => handleStep3Submit({} as Step3Data)}
-              >
-                Завершить (тест)
-              </button>
-            </div>
+            <Step3
+              onSubmit={handleStep3Submit}
+              onBack={handleBack}
+              initialData={formData}
+            />
           )}
         </section>
 
@@ -150,6 +188,28 @@ export function RegisterPage({ onClose }: RegisterPageProps) {
           <p className={styles.welcomeText}>{content.text}</p>
         </aside>
       </main>
+
+      <PreviewModal
+        isOpen={isPreviewOpen}
+        data={{
+          teachTitle: formData.teachTitle ?? '',
+          teachAbout: formData.teachAbout ?? '',
+          teachPhotos: previewPhotos,
+          categoryTitle,
+          subcategoryTitle,
+        }}
+        onEdit={handlePreviewEdit}
+        onDone={handlePreviewDone}
+      />
+
+      <NotificationModal
+        isOpen={isNotificationOpen}
+        onClose={handleNotificationDone}
+        title="Ваше предложение создано"
+        message="Теперь вы можете предложить обмен"
+        icon="success"
+        buttonText="Готово"
+      />
     </div>
   );
 }
