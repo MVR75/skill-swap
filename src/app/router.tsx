@@ -11,7 +11,7 @@ import { Layout } from './layout/Layout';
 import { useEffect } from 'react';
 import { useDispatch } from './store';
 import { getSkills } from '../features/skills/skillsSlice';
-import { getCategories } from '../features/categories/CategoriesSlice';
+import { getCategories } from '../features/categories/categoriesSlice';
 
 export const AppRouter = () => {
   const dispatch = useDispatch();
@@ -41,4 +41,3 @@ export const AppRouter = () => {
   </BrowserRouter>
 );
 };
-
