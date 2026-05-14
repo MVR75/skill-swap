@@ -31,12 +31,8 @@ const LoginPage = () => {
     <main className={styles.page}>
       <header className={styles.header}>
         <a href="/" className={styles.logo} aria-label="SkillSwap">
-            <img
-              className={styles.logoIcon}
-              src="/logo.svg"
-              alt="SkillSwap"
-            />
-          </a>
+          <img className={styles.logoIcon} src="/logo.svg" alt="SkillSwap" />
+        </a>
         <button className={styles.closeButton} type="button">
           <span>Закрыть</span>
           <span className={styles.closeIcon} aria-hidden="true">
@@ -103,12 +99,16 @@ const LoginPage = () => {
                   <button
                     className={styles.eyeButton}
                     type="button"
-                    aria-label={showPassword ? 'Скрыть пароль' : 'Показать пароль'}
+                    aria-label={
+                      showPassword ? 'Скрыть пароль' : 'Показать пароль'
+                    }
                     onClick={() => setShowPassword((current) => !current)}
                   >
                     <img
                       className={styles.eyeIcon}
-                      src={showPassword ? '/icons/eye-slash.svg' : '/icons/eye.svg'}
+                      src={
+                        showPassword ? '/icons/eye-slash.svg' : '/icons/eye.svg'
+                      }
                       alt=""
                       aria-hidden="true"
                     />
@@ -118,8 +118,8 @@ const LoginPage = () => {
 
               {hasError && (
                 <p className={styles.errorMessage}>
-                  Email или пароль введён неверно. Пожалуйста проверьте правильность
-                  введённых данных
+                  Email или пароль введён неверно. Пожалуйста проверьте
+                  правильность введённых данных
                 </p>
               )}
 
@@ -136,7 +136,7 @@ const LoginPage = () => {
                 Войти
               </button>
 
-              <a className={styles.registerLink} href="/registration">
+              <a className={styles.registerLink} href="/register">
                 Зарегистрироваться
               </a>
             </form>
