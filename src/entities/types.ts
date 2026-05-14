@@ -3,11 +3,13 @@ export type TSkillCategory = {
   title: string;
   category: string;
   categoryTitle: string;
+  color: string;
 };
 
 export type TSkillCard = {
   id: string;
   name: string;
+  favorites: boolean;
   city: string;
   age: number;
   birthDate: string;

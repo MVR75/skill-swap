@@ -1,0 +1,73 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-32);
+  background: rgba(142, 142, 142, 0.6);
+  backdrop-filter: blur(4px);
+}
+
+.modal {
+  width: 556px;
+  height: 420px;
+  padding: 60px 60px 80px;
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-card);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.iconWrapper {
+  margin-bottom: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  width: 100px;
+  height: 100px;
+}
+
+.title {
+  margin: 0 0 8px;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h2);
+  line-height: var(--line-height-h2);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+}
+
+.message {
+  margin: 0 0 auto;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text);
+  max-width: 344px;
+}
+
+.button {
+  width: 436px;
+  min-height: 48px;
+  margin-top: 20px;
+}
+
+@media (max-width: 620px) {
+  .modal {
+    width: 100%;
+    height: auto;
+    min-height: 420px;
+    padding: 40px 24px 48px;
+  }
+
+  .button {
+    width: 100%;
+  }
+}

@@ -5,22 +5,17 @@ import {
   useDispatch as dispatchHook,
   useSelector as selectorHook,
 } from 'react-redux';
-<<<<<<< feature/register-step-2
-import { skillsSlice } from '../features/skills/skillsSlice';
-import { categoriesSlice } from '../features/categories/categoriesSlice';
-
-export const rootReducer = combineSlices(skillsSlice, categoriesSlice);
-=======
 import { skillsSlice } from "../features/skills/skillsSlice";
 import { categoriesSlice } from "../features/categories/categoriesSlice";
 import { filtersSlice } from "../features/filters/filtersSlice";
+import { userSlice } from "../features/Users/userSlice";
 
 export const rootReducer = combineSlices(
   skillsSlice,
   categoriesSlice,
-  filtersSlice
+  filtersSlice,
+  userSlice
 );
->>>>>>> main
 
 export const store = configureStore({
   reducer: rootReducer,

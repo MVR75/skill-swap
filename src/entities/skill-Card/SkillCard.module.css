@@ -63,4 +63,18 @@ align-items: start;
     gap: var(--space-4);
 }
 
+.categoryNumber{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-tag);
+    padding: var(--space-8) var(--space-12);
+    width: 38px;
+    height: 32px;
+    background-color: var(--color-tag-number);
+    font-size: var(--font-size-small);
+}
 
+.button{
+    width: 284px !important;
+}

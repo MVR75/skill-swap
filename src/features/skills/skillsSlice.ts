@@ -1,5 +1,7 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import type { TSkillCard } from "../../entities/types"
+// features/skills/skillsSlice.ts
+
+import { createAsyncThunk, createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import type { TSkillCard } from "../../entities/types";
 import { fetchSkills } from "../../api/skillsApi";
 
 export const getSkills = createAsyncThunk<
@@ -11,15 +13,14 @@ export const getSkills = createAsyncThunk<
     const response = await fetchSkills();
     return response.users;
   } catch (err) {
-    const message =
-      err instanceof Error ? err.message : 'Не удалось загрузить данные';
+    const message = err instanceof Error ? err.message : 'Не удалось загрузить данные';
     return rejectWithValue(message);
   }
 });
 
 type TSkillsState = {
   cards: TSkillCard[];
-}
+};
 
 const initialState: TSkillsState = {
   cards: []
@@ -30,14 +31,14 @@ export const skillsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder
-      .addCase(getSkills.fulfilled, (state, action) => {
-        state.cards = action.payload;
-      })
+    builder.addCase(getSkills.fulfilled, (state, action) => {
+      state.cards = action.payload;
+    });
   },
   selectors: {
-    selectAllSkillCards: (state) => state.cards
+    selectAllSkillCards: (state) => state.cards,
+    selectSkillCardById: (state, id: string) => state.cards.find(card => card.id === id),
   }
 });
 
-export const { selectAllSkillCards } = skillsSlice.selectors;
+export const { selectAllSkillCards, selectSkillCardById } = skillsSlice.selectors;

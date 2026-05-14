@@ -5,6 +5,7 @@
       "name": "Иван",
       "city": "Санкт-Петербург",
       "age": 34,
+      "favorites": false,
       "birthDate": "1992-01-01",
       "gender": "male",
       "email": "ivan.sokolov@mail.ru",
@@ -23,7 +24,8 @@
             "subcategory": "music",
             "title": "Музыка и звук",
             "category": "creative",
-            "categoryTitle": "Творчество и искусство"
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
           }
         ],
         "wantsToLearn": [
@@ -31,13 +33,15 @@
             "subcategory": "time-management",
             "title": "Тайм-менеджмент",
             "category": "business",
-            "categoryTitle": "Бизнес и карьера"
+            "categoryTitle": "Бизнес и карьера",
+            "color": "#eee7f7"
           },
           {
             "subcategory": "yoga-meditation",
             "title": "Йога и медитация",
             "category": "health",
-            "categoryTitle": "Здоровье и лайфстайл"
+            "categoryTitle": "Здоровье и лайфстайл",
+            "color": "#e8ecf7"
           }
         ]
       }
@@ -47,6 +51,7 @@
       "name": "Илона",
       "city": "Екатеринбург",
       "age": 33,
+      "favorites": false,
       "birthDate": "1993-01-01",
       "gender": "female",
       "email": "ilona.kuznetsova@mail.ru",
@@ -65,7 +70,8 @@
             "subcategory": "english",
             "title": "Английский",
             "category": "languages",
-            "categoryTitle": "Иностранные языки"
+            "categoryTitle": "Иностранные языки",
+            "color": "#ebe5c5"
           }
         ],
         "wantsToLearn": [
@@ -73,13 +79,16 @@
             "subcategory": "mindfulness",
             "title": "Осознанность",
             "category": "health",
-            "categoryTitle": "Здоровье и лайфстайл"
+            "categoryTitle": "Здоровье и лайфстайл",
+            "color": "#e9f7e7"
+
           },
           {
             "subcategory": "photography",
             "title": "Фотография",
             "category": "creative",
-            "categoryTitle": "Творчество и искусство"
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
           }
         ]
       }
@@ -89,6 +98,7 @@
       "name": "Михаил",
       "city": "Новосибирск",
       "age": 29,
+      "favorites": false,
       "birthDate": "1997-01-01",
       "gender": "male",
       "email": "mikhail.orlov@mail.ru",
@@ -107,7 +117,8 @@
             "subcategory": "marketing",
             "title": "Маркетинг и реклама",
             "category": "business",
-            "categoryTitle": "Бизнес и карьера"
+            "categoryTitle": "Бизнес и карьера",
+            "color": "#eee7f7"
           }
         ],
         "wantsToLearn": [
@@ -115,13 +126,15 @@
             "subcategory": "video-editing",
             "title": "Видеомонтаж",
             "category": "creative",
-            "categoryTitle": "Творчество и искусство"
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
           },
           {
             "subcategory": "spanish",
             "title": "Испанский",
             "category": "languages",
-            "categoryTitle": "Иностранные языки"
+            "categoryTitle": "Иностранные языки",
+            "color": "#e7f2f6"
           }
         ]
       }
@@ -131,6 +144,7 @@
       "name": "Мария",
       "city": "Краснодар",
       "age": 21,
+      "favorites": false,
       "birthDate": "2005-01-01",
       "gender": "female",
       "email": "maria.volkova@mail.ru",
@@ -149,7 +163,8 @@
             "subcategory": "drawing",
             "title": "Рисование и иллюстрация",
             "category": "creative",
-            "categoryTitle": "Творчество и искусство"
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
           }
         ],
         "wantsToLearn": [
@@ -157,13 +172,15 @@
             "subcategory": "french",
             "title": "Французский",
             "category": "languages",
-            "categoryTitle": "Иностранные языки"
+            "categoryTitle": "Иностранные языки",
+            "color": "#ebe5c5"
           },
           {
             "subcategory": "personal-brand",
             "title": "Личный бренд",
             "category": "business",
-            "categoryTitle": "Бизнес и карьера"
+            "categoryTitle": "Бизнес и карьера",
+            "color": "#eee7f7"
           }
         ]
       }
@@ -173,6 +190,7 @@
       "name": "Виктория",
       "city": "Кемерово",
       "age": 30,
+      "favorites": false,
       "birthDate": "1996-01-01",
       "gender": "female",
       "email": "viktoria.morozova@mail.ru",
@@ -191,7 +209,8 @@
             "subcategory": "cleaning",
             "title": "Уборка и организация",
             "category": "home",
-            "categoryTitle": "Дом и уют"
+            "categoryTitle": "Дом и уют",
+            "color": "#f7ebe5"
           }
         ],
         "wantsToLearn": [
@@ -199,13 +218,15 @@
             "subcategory": "entrepreneurship",
             "title": "Предпринимательство",
             "category": "business",
-            "categoryTitle": "Бизнес и карьера"
+            "categoryTitle": "Бизнес и карьера",
+            "color": "#eee7f7"
           },
           {
             "subcategory": "decor-diy",
             "title": "Декор и DIY",
             "category": "creative",
-            "categoryTitle": "Творчество и искусство"
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7ebe5"
           }
         ]
       }
@@ -215,6 +236,7 @@
       "name": "Алексей",
       "city": "Москва",
       "age": 38,
+      "favorites": false,
       "birthDate": "1988-01-01",
       "gender": "male",
       "email": "alexey.petrov@mail.ru",
@@ -233,7 +255,8 @@
             "subcategory": "team-management",
             "title": "Управление командой",
             "category": "business",
-            "categoryTitle": "Бизнес и карьера"
+            "categoryTitle": "Бизнес и карьера",
+            "color": "#eee7f7"
           }
         ],
         "wantsToLearn": [
@@ -241,13 +264,15 @@
             "subcategory": "work-life-balance",
             "title": "Баланс жизни и работы",
             "category": "health",
-            "categoryTitle": "Здоровье и лайфстайл"
+            "categoryTitle": "Здоровье и лайфстайл",
+            "color": "#e9f7e7"
           },
           {
             "subcategory": "photography",
             "title": "Фотография",
             "category": "creative",
-            "categoryTitle": "Творчество и искусство"
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
           }
         ]
       }
@@ -257,6 +282,7 @@
       "name": "Анна",
       "city": "Казань",
       "age": 27,
+      "favorites": false,
       "birthDate": "1999-01-01",
       "gender": "female",
       "email": "anna.fedorova@mail.ru",
@@ -275,7 +301,8 @@
             "subcategory": "photography",
             "title": "Фотография",
             "category": "creative",
-            "categoryTitle": "Творчество и искусство"
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
           }
         ],
         "wantsToLearn": [
@@ -283,13 +310,15 @@
             "subcategory": "japanese",
             "title": "Японский",
             "category": "languages",
-            "categoryTitle": "Иностранные языки"
+            "categoryTitle": "Иностранные языки",
+            "color": "#ebe5c5"
           },
           {
             "subcategory": "fitness",
             "title": "Физические тренировки",
             "category": "health",
-            "categoryTitle": "Здоровье и лайфстайл"
+            "categoryTitle": "Здоровье и лайфстайл",
+            "color": "#e9f7e7"
           }
         ]
       }
@@ -299,6 +328,7 @@
       "name": "Дмитрий",
       "city": "Москва",
       "age": 41,
+      "favorites": false,
       "birthDate": "1985-01-01",
       "gender": "male",
       "email": "dmitry.lebedev@mail.ru",
@@ -317,7 +347,8 @@
             "subcategory": "cooking",
             "title": "Приготовление еды",
             "category": "home",
-            "categoryTitle": "Дом и уют"
+            "categoryTitle": "Дом и уют",
+            "color": "#f7ebe5"
           }
         ],
         "wantsToLearn": [
@@ -325,13 +356,15 @@
             "subcategory": "german",
             "title": "Немецкий",
             "category": "languages",
-            "categoryTitle": "Иностранные языки"
+            "categoryTitle": "Иностранные языки",
+            "color": "#ebe5c5"
           },
           {
             "subcategory": "sales",
             "title": "Продажи и переговоры",
             "category": "business",
-            "categoryTitle": "Бизнес и карьера"
+            "categoryTitle": "Бизнес и карьера",
+            "color": "#eee7f7"
           }
         ]
       }
@@ -341,6 +374,7 @@
       "name": "Елена",
       "city": "Санкт-Петербург",
       "age": 36,
+      "favorites": false,
       "birthDate": "1990-01-01",
       "gender": "female",
       "email": "elena.nikitina@mail.ru",
@@ -359,7 +393,8 @@
             "subcategory": "creative-writing",
             "title": "Креативное письмо",
             "category": "creative",
-            "categoryTitle": "Творчество и искусство"
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
           }
         ],
         "wantsToLearn": [
@@ -367,13 +402,15 @@
             "subcategory": "speed-reading",
             "title": "Скорочтение",
             "category": "education",
-            "categoryTitle": "Образование и развитие"
+            "categoryTitle": "Образование и развитие",
+            "color": "#e7f2f6"
           },
           {
             "subcategory": "acting",
             "title": "Актёрское мастерство",
             "category": "creative",
-            "categoryTitle": "Творчество и искусство"
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
           }
         ]
       }
@@ -383,6 +420,7 @@
       "name": "Павел",
       "city": "Новосибирск",
       "age": 32,
+      "favorites": false,
       "birthDate": "1994-01-01",
       "gender": "male",
       "email": "pavel.egorov@mail.ru",
@@ -400,7 +438,8 @@
             "subcategory": "resume",
             "title": "Резюме и собеседование",
             "category": "business",
-            "categoryTitle": "Бизнес и карьера"
+            "categoryTitle": "Бизнес и карьера",
+            "color": "#eee7f7"
           }
         ],
         "wantsToLearn": [
@@ -408,13 +447,15 @@
             "subcategory": "repair",
             "title": "Ремонт",
             "category": "home",
-            "categoryTitle": "Дом и уют"
+            "categoryTitle": "Дом и уют",
+             "color": "#f7ebe5"
           },
           {
             "subcategory": "music",
             "title": "Музыка и звук",
             "category": "creative",
-            "categoryTitle": "Творчество и искусство"
+            "categoryTitle": "Творчество и искусство",
+             "color": "#f7e7f2"
           }
         ]
       }
@@ -424,6 +465,7 @@
       "name": "София",
       "city": "Екатеринбург",
       "age": 25,
+      "favorites": false,
       "birthDate": "2001-01-01",
       "gender": "female",
       "email": "sofia.belova@mail.ru",
@@ -444,7 +486,8 @@
             "subcategory": "yoga-meditation",
             "title": "Йога и медитация",
             "category": "health",
-            "categoryTitle": "Здоровье и лайфстайл"
+            "categoryTitle": "Здоровье и лайфстайл",
+            "color": "#e9f7e7"
           }
         ],
         "wantsToLearn": [
@@ -452,13 +495,15 @@
             "subcategory": "chinese",
             "title": "Китайский",
             "category": "languages",
-            "categoryTitle": "Иностранные языки"
+            "categoryTitle": "Иностранные языки",
+            "color": "#ebe5c5"
           },
           {
             "subcategory": "home-finance",
             "title": "Домашние финансы",
             "category": "home",
-            "categoryTitle": "Дом и уют"
+            "categoryTitle": "Дом и уют",
+            "color": "#f7ebe5"
           }
         ]
       }
@@ -468,6 +513,7 @@
       "name": "Роман",
       "city": "Казань",
       "age": 28,
+      "favorites": false,
       "birthDate": "1998-01-01",
       "gender": "male",
       "email": "roman.smirnov@mail.ru",
@@ -486,7 +532,8 @@
             "subcategory": "video-editing",
             "title": "Видеомонтаж",
             "category": "creative",
-            "categoryTitle": "Творчество и искусство"
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
           }
         ],
         "wantsToLearn": [
@@ -494,13 +541,22 @@
             "subcategory": "marketing",
             "title": "Маркетинг и реклама",
             "category": "business",
-            "categoryTitle": "Бизнес и карьера"
+            "categoryTitle": "Бизнес и карьера",
+            "color": "#eee7f7"
           },
           {
             "subcategory": "fitness",
             "title": "Физические тренировки",
             "category": "health",
-            "categoryTitle": "Здоровье и лайфстайл"
+            "categoryTitle": "Здоровье и лайфстайл",
+            "color": "#e9f7e7"
+          },
+          {
+            "subcategory": "plants",
+            "title": "Домашние растения",
+            "category": "home",
+            "categoryTitle": "Дом и уют",
+            "color": "#f7ebe5"
           }
         ]
       }
@@ -510,6 +566,7 @@
       "name": "Наталья",
       "city": "Москва",
       "age": 45,
+      "favorites": false,
       "birthDate": "1981-01-01",
       "gender": "female",
       "email": "natalia.ivanova@mail.ru",
@@ -529,7 +586,8 @@
             "subcategory": "plants",
             "title": "Домашние растения",
             "category": "home",
-            "categoryTitle": "Дом и уют"
+            "categoryTitle": "Дом и уют",
+            "color": "#f7ebe5"
           }
         ],
         "wantsToLearn": [
@@ -537,13 +595,15 @@
             "subcategory": "french",
             "title": "Французский",
             "category": "languages",
-            "categoryTitle": "Иностранные языки"
+            "categoryTitle": "Иностранные языки",
+            "color": "#ebe5c5"
           },
           {
             "subcategory": "self-development",
             "title": "Личностное развитие",
             "category": "education",
-            "categoryTitle": "Образование и развитие"
+            "categoryTitle": "Образование и развитие",
+            "color": "#e7f2f6"
           }
         ]
       }
@@ -553,6 +613,7 @@
       "name": "Кирилл",
       "city": "Санкт-Петербург",
       "age": 26,
+      "favorites": false,
       "birthDate": "2000-01-01",
       "gender": "male",
       "email": "kirill.antonov@mail.ru",
@@ -570,7 +631,8 @@
             "subcategory": "german",
             "title": "Немецкий",
             "category": "languages",
-            "categoryTitle": "Иностранные языки"
+            "categoryTitle": "Иностранные языки",
+            "color": "#ebe5c5"
           }
         ],
         "wantsToLearn": [
@@ -578,13 +640,15 @@
             "subcategory": "drawing",
             "title": "Рисование и иллюстрация",
             "category": "creative",
-            "categoryTitle": "Творчество и искусство"
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
           },
           {
             "subcategory": "entrepreneurship",
             "title": "Предпринимательство",
             "category": "business",
-            "categoryTitle": "Бизнес и карьера"
+            "categoryTitle": "Бизнес и карьера",
+            "color": "#eee7f7"
           }
         ]
       }
@@ -594,6 +658,7 @@
       "name": "Ольга",
       "city": "Новосибирск",
       "age": 39,
+      "favorites": false,
       "birthDate": "1987-01-01",
       "gender": "female",
       "email": "olga.zaitseva@mail.ru",
@@ -612,7 +677,8 @@
             "subcategory": "teaching-skills",
             "title": "Навыки преподавания",
             "category": "education",
-            "categoryTitle": "Образование и развитие"
+            "categoryTitle": "Образование и развитие",
+            "color": "#e7f2f6"
           }
         ],
         "wantsToLearn": [
@@ -620,13 +686,15 @@
             "subcategory": "photography",
             "title": "Фотография",
             "category": "creative",
-            "categoryTitle": "Творчество и искусство"
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
           },
           {
             "subcategory": "cooking",
             "title": "Приготовление еды",
             "category": "home",
-            "categoryTitle": "Дом и уют"
+            "categoryTitle": "Дом и уют",
+            "color": "#f7ebe5"
           }
         ]
       }
@@ -636,6 +704,7 @@
       "name": "Георгий",
       "city": "Краснодар",
       "age": 31,
+      "favorites": false,
       "birthDate": "1995-01-01",
       "gender": "male",
       "email": "georgy.makarov@mail.ru",
@@ -654,7 +723,8 @@
             "subcategory": "fitness",
             "title": "Физические тренировки",
             "category": "health",
-            "categoryTitle": "Здоровье и лайфстайл"
+            "categoryTitle": "Здоровье и лайфстайл",
+            "color": "#e9f7e7"
           }
         ],
         "wantsToLearn": [
@@ -662,13 +732,15 @@
             "subcategory": "english",
             "title": "Английский",
             "category": "languages",
-            "categoryTitle": "Иностранные языки"
+            "categoryTitle": "Иностранные языки",
+            "color": "#e7f2f6"
           },
           {
             "subcategory": "project-management",
             "title": "Проектное управление",
             "category": "business",
-            "categoryTitle": "Бизнес и карьера"
+            "categoryTitle": "Бизнес и карьера",
+            "color": "#eee7f7"
           }
         ]
       }
@@ -678,6 +750,7 @@
       "name": "Алина",
       "city": "Казань",
       "age": 24,
+      "favorites": false,
       "birthDate": "2002-01-01",
       "gender": "female",
       "email": "alina.popova@mail.ru",
@@ -695,7 +768,8 @@
             "subcategory": "french",
             "title": "Французский",
             "category": "languages",
-            "categoryTitle": "Иностранные языки"
+            "categoryTitle": "Иностранные языки",
+            "color": "#ebe5c5"
           }
         ],
         "wantsToLearn": [
@@ -703,13 +777,15 @@
             "subcategory": "cognitive-techniques",
             "title": "Когнитивные техники",
             "category": "education",
-            "categoryTitle": "Образование и развитие"
+            "categoryTitle": "Образование и развитие",
+            "color": "#e7f2f6"
           },
           {
             "subcategory": "mental-health",
             "title": "Ментальное здоровье",
             "category": "health",
-            "categoryTitle": "Здоровье и лайфстайл"
+            "categoryTitle": "Здоровье и лайфстайл",
+            "color": "#e9f7e7"
           }
         ]
       }
@@ -719,6 +795,7 @@
       "name": "Тимур",
       "city": "Москва",
       "age": 37,
+      "favorites": false,
       "birthDate": "1989-01-01",
       "gender": "male",
       "email": "timur.galimov@mail.ru",
@@ -737,7 +814,8 @@
             "subcategory": "home-finance",
             "title": "Домашние финансы",
             "category": "home",
-            "categoryTitle": "Дом и уют"
+            "categoryTitle": "Дом и уют",
+            "color": "#f7ebe5"
           }
         ],
         "wantsToLearn": [
@@ -745,13 +823,15 @@
             "subcategory": "music",
             "title": "Музыка и звук",
             "category": "creative",
-            "categoryTitle": "Творчество и искусство"
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
           },
           {
             "subcategory": "sleep-recovery",
             "title": "Сон и восстановление",
             "category": "health",
-            "categoryTitle": "Здоровье и лайфстайл"
+            "categoryTitle": "Здоровье и лайфстайл",
+            "color": "#e9f7e7"
           }
         ]
       }
@@ -761,6 +841,7 @@
       "name": "Дарья",
       "city": "Екатеринбург",
       "age": 28,
+      "favorites": false,
       "birthDate": "1998-01-01",
       "gender": "female",
       "email": "daria.karpova@mail.ru",
@@ -780,7 +861,8 @@
             "subcategory": "mindfulness",
             "title": "Осознанность",
             "category": "health",
-            "categoryTitle": "Здоровье и лайфстайл"
+            "categoryTitle": "Здоровье и лайфстайл",
+             "color": "#e9f7e7"
           }
         ],
         "wantsToLearn": [
@@ -788,13 +870,15 @@
             "subcategory": "team-management",
             "title": "Управление командой",
             "category": "business",
-            "categoryTitle": "Бизнес и карьера"
+            "categoryTitle": "Бизнес и карьера",
+             "color": "#eee7f7"
           },
           {
             "subcategory": "spanish",
             "title": "Испанский",
             "category": "languages",
-            "categoryTitle": "Иностранные языки"
+            "categoryTitle": "Иностранные языки",
+             "color": "#ebe5c5"
           }
         ]
       }
@@ -804,6 +888,7 @@
       "name": "Сергей",
       "city": "Санкт-Петербург",
       "age": 35,
+      "favorites": false,
       "birthDate": "1991-01-01",
       "gender": "male",
       "email": "sergey.borisov@mail.ru",
@@ -822,7 +907,8 @@
             "subcategory": "ielts-toefl",
             "title": "Подготовка к экзаменам (IELTS, TOEFL)",
             "category": "languages",
-            "categoryTitle": "Иностранные языки"
+            "categoryTitle": "Иностранные языки",
+             "color": "#ebe5c5"
           }
         ],
         "wantsToLearn": [
@@ -830,13 +916,15 @@
             "subcategory": "creative-writing",
             "title": "Креативное письмо",
             "category": "creative",
-            "categoryTitle": "Творчество и искусство"
+            "categoryTitle": "Творчество и искусство",
+             "color": "#f7e7f2"
           },
           {
             "subcategory": "repair",
             "title": "Ремонт",
             "category": "home",
-            "categoryTitle": "Дом и уют"
+            "categoryTitle": "Дом и уют",
+             "color": "#f7ebe5"
           }
         ]
       }
