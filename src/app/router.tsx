@@ -31,13 +31,10 @@ export const AppRouter = () => {
           <Route path="/favorites" element={<FavoritesPage />} />
           <Route path="/create" element={<CreateSkillPage />} />
           <Route path="*" element={<ErrorPage code={404} />} />
-      </Route>
-      <Route path="/login" element={<LoginPage />} />
-      <Route
-        path="/register"
-        element={<RegisterPage onClose={() => console.log('close')} />}
-      />
-    </Routes>
-  </BrowserRouter>
-);
+        </Route>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 };
