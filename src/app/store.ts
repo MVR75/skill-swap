@@ -1,10 +1,11 @@
-import { combineSlices, configureStore } from "@reduxjs/toolkit";
+import { combineSlices, configureStore } from '@reduxjs/toolkit';
 
 import {
   type TypedUseSelectorHook,
   useDispatch as dispatchHook,
-  useSelector as selectorHook
+  useSelector as selectorHook,
 } from 'react-redux';
+
 import { skillsSlice } from "../features/skills/skillsSlice";
 import { categoriesSlice } from "../features/categories/categoriesSlice";
 import { filtersSlice } from "../features/filters/filtersSlice";
@@ -16,7 +17,7 @@ export const rootReducer = combineSlices(
 );
 
 export const store = configureStore({
-  reducer: rootReducer
+  reducer: rootReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
