@@ -78,7 +78,7 @@ const SkillCard: React.FC<SkillCardProps> = (props) => {
         <h3 className={style.card__title}>Хочет научиться:</h3>
         <ul className={style.card__skillsList}>
          {wantsToLearn.length > 1 ? <> <Skills title={wantsToLearn[0].categoryTitle} colorTag={wantsToLearn[0].color}></Skills>
-    <div className={style.categoryNumber}>`+{wantsToLearn.length - 1}`</div>
+    <div className={style.categoryNumber}>+{wantsToLearn.length - 1}</div>
     </> : <Skills title={wantsToLearn[0].categoryTitle} colorTag={wantsToLearn[0].color}></Skills>} 
         </ul>
       </div>

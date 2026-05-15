@@ -6,4 +6,6 @@ export type TFiltersBarUIProps = {
   skillsFilter: TCheckboxGroupUIProps;
   genderFilter: TRadioGroupProps;
   cityFilter: TCheckboxGroupUIProps;
+  filterCount: number;
+  onClear: () => void;
 };

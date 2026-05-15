@@ -2,8 +2,22 @@
   display: grid;
   grid-template-columns: 324px 1fr;
   gap: 24px;
+  padding: 32px 36px;
 }
 
 .homePage__filter{
   height: fit-content;
+}
+
+.homePage__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.homePage__filteredCards {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 1020px;
 }
