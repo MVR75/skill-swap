@@ -1,4 +1,4 @@
-import type { TSkillCard } from "../entities/types";
+import type { TSkillCard } from '../entities/types';
 
 type TSkillsResponse = {
   users: TSkillCard[];
@@ -16,10 +16,10 @@ export const fetchSkills = async (): Promise<TSkillsResponse> => {
   return skills;
 };
 
-export const fetchSkillById = async (id: string): Promise<Skill> => {
-  const skills = await fetchSkills();
+export const fetchSkillById = async (id: string): Promise<TSkillCard> => {
+  const { users } = await fetchSkills();
 
-  const skill = skills.find((s) => s.id === id);
+  const skill = users.find((item) => item.id === id);
 
   if (!skill) {
     throw new Error('Навык не найден');
