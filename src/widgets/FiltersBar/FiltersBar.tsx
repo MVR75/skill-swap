@@ -19,8 +19,8 @@ import { selectActiveFilterItems } from "../../features/filters/selectors";
 
 const skillExchangeIntentOptions = [
   { value: "all", label: "Все" },
-  { value: "wantsToLearn", label: "Хочу научиться" },
-  { value: "canTeach", label: "Могу научить" },
+  { value: "canTeach", label: "Может научить" },
+  { value: "wantsToLearn", label: "Хочет научиться" }
 ];
 
 const genderOptions = [

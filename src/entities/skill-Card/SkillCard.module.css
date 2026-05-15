@@ -33,7 +33,9 @@
 }
 
 .card__subtitle{
-    font-size: var( --font-size-small);
+    font-size: var(--font-size-small);
+    font-family: var(--font-primary);
+    letter-spacing: 2%;
 }
 
 .card__imageWrapper, 

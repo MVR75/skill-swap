@@ -2,60 +2,88 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { TDeleteFilterPayload } from "./types";
 
 type TFiltersState = {
-  skillExchangeIntent: string;
-  skills: string[];
-  gender: string;
-  city: string[];
+  filters: {
+    skillExchangeIntent: string;
+    skills: string[];
+    gender: string;
+    city: string[];
+  };
+  hasActiveFilters: boolean;
 };
 
-const initialState: TFiltersState = {
+const filtersInitialState = {
   skillExchangeIntent: 'all',
   skills: [],
   gender: 'any',
   city: []
+}
+
+const initialState: TFiltersState = {
+  filters: filtersInitialState,
+  hasActiveFilters: false
 };
+
+const hasActiveFilters = (filters: TFiltersState['filters']) =>
+  filters.skillExchangeIntent !== 'all' ||
+  filters.gender !== 'any' ||
+  filters.skills.length > 0 ||
+  filters.city.length > 0;
 
 export const filtersSlice = createSlice({
   name: 'filters',
   initialState,
   reducers: {
     changeSkillIntent: (state, action: PayloadAction<string>) => {
-      state.skillExchangeIntent = action.payload;
+      state.filters.skillExchangeIntent = action.payload;
+      state.hasActiveFilters = hasActiveFilters(state.filters);
     },
     changeSkills: (state, action: PayloadAction<string[]>) => {
-      state.skills = action.payload;
+      state.filters.skills = action.payload;
+      state.hasActiveFilters = hasActiveFilters(state.filters);
     },
     changeGender: (state, action: PayloadAction<string>) => {
-      state.gender = action.payload;
+      state.filters.gender = action.payload;
+      state.hasActiveFilters = hasActiveFilters(state.filters);
     },
     changeCities: (state, action: PayloadAction<string[]>) => {
-      state.city = action.payload;
+      state.filters.city = action.payload;
+      state.hasActiveFilters = hasActiveFilters(state.filters);
     },
-    clearFilters: () => initialState,
+    clearFilters: () => ({
+      filters: {
+        ...filtersInitialState,
+        skills: [],
+        city: []
+      },
+      hasActiveFilters: false
+    }),
     deleteFilter: (state, action: PayloadAction<TDeleteFilterPayload>) => {
       if (action.payload.type === 'gender') {
-        state.gender = 'any';
+        state.filters.gender = 'any';
       }
 
       if (action.payload.type === 'skillExchangeIntent') {
-        state.skillExchangeIntent = 'all';
+        state.filters.skillExchangeIntent = 'all';
       }
 
       if (action.payload.type === 'city') {
-        state.city = state.city.filter((item) => item !== action.payload.value);
+        state.filters.city = state.filters.city.filter((item) => item !== action.payload.value);
       }
 
       if (action.payload.type === 'skill') {
-        state.skills = state.skills.filter((skill) => skill !== action.payload.value);
+        state.filters.skills = state.filters.skills.filter((skill) => skill !== action.payload.value);
       }
+
+      state.hasActiveFilters = hasActiveFilters(state.filters);
     }
   },
   selectors: {
-    selectSkillExchangeIntent: (state) => state.skillExchangeIntent,
-    selectSkills: (state) => state.skills,
-    selectGender: (state) => state.gender,
-    selectCities: (state) => state.city,
-    selectAllFilters: (state) => state
+    selectSkillExchangeIntent: (state) => state.filters.skillExchangeIntent,
+    selectSkills: (state) => state.filters.skills,
+    selectGender: (state) => state.filters.gender,
+    selectCities: (state) => state.filters.city,
+    selectAllFilters: (state) => state.filters,
+    selectHasActiveFilters: (state) => state.hasActiveFilters
   }
 });
 
@@ -64,7 +92,8 @@ export const {
   selectGender,
   selectCities,
   selectSkills,
-  selectAllFilters
+  selectAllFilters,
+  selectHasActiveFilters
 } = filtersSlice.selectors;
 
 export const {

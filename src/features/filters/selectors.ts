@@ -24,8 +24,8 @@ const genderLabels = {
 };
 
 const skillExchangeIntentLabels = {
-  canTeach: 'Могу научить',
-  wantsToLearn: 'Хочу научиться'
+  canTeach: 'Может научить',
+  wantsToLearn: 'Хочет научиться'
 };
 
 export const selectActiveFilterItems = createSelector(
