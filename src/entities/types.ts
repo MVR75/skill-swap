@@ -9,6 +9,7 @@ export type TSkillCategory = {
 export type TSkillCard = {
   id: string;
   name: string;
+  favorites: boolean;
   city: string;
   age: number;
   birthDate: string;
