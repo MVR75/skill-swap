@@ -66,20 +66,6 @@ export const userSlice = createSlice({
       saveFavoritesToStorage(action.payload);
     },
 
-    addFavorite: (state, action: PayloadAction<string>) => {
-      if (!state.favorites.includes(action.payload)) {
-        state.favorites.push(action.payload);
-        saveFavoritesToStorage(state.favorites);
-      }
-    },
-
-    removeFavorite: (state, action: PayloadAction<string>) => {
-      state.favorites = state.favorites.filter(
-        skillId => skillId !== action.payload
-      );
-      saveFavoritesToStorage(state.favorites);
-    },
-
     toggleFavorite: (state, action: PayloadAction<string>) => {
       if (state.favorites.includes(action.payload)) {
         state.favorites = state.favorites.filter(
@@ -117,8 +103,6 @@ export const {
   updateUserInfo,
   clearUserInfo,
   setFavorites,
-  addFavorite,
-  removeFavorite,
   toggleFavorite,
   setLoading,
   setError,

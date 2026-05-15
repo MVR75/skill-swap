@@ -1,0 +1,17 @@
+.filterChip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background-color: white;
+  border-radius: 12px;
+  letter-spacing: 2%;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.filterChip:hover {
+  opacity: 0.5;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}

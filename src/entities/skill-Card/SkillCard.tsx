@@ -1,5 +1,3 @@
-// features/skills/SkillCard.tsx
-
 import React from 'react';
 import style from './SkillCard.module.css';
 import { Button } from '../../shared/ui/button/Button';
@@ -8,12 +6,12 @@ import Like from '../../shared/ui/like/Like';
 import Skills from '../../shared/ui/skills/Skills';
 import { Icon } from '@mdi/react';
 import { mdiAccount } from '@mdi/js';
-import type { TSkillCategory } from '../../entities/types';
+import type { TSkillCategory } from '../types';
 import { useDispatch, useSelector } from '../../app/store';
 import { toggleFavorite, selectIsFavorite } from '../../features/Users/userSlice';
 
 interface SkillCardProps {
-  id: string;
+  id: string; 
   avatarUrl: string;
   name: string;
   city: string;
@@ -28,7 +26,6 @@ const SkillCard: React.FC<SkillCardProps> = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   
-  // Получаем состояние из userSlice
   const isFavorite = useSelector((state) => selectIsFavorite(state, props.id));
   
   const handleClick = () => {
@@ -80,7 +77,6 @@ const SkillCard: React.FC<SkillCardProps> = (props) => {
           )}
         </div>
       </div>
-      
       <div className={style.card__skills}>
         <h3 className={style.card__title}>Может научить:</h3>
         <ul className={style.card__skillsList}>
@@ -88,7 +84,6 @@ const SkillCard: React.FC<SkillCardProps> = (props) => {
             <Skills key={index} title={skill.categoryTitle} colorTag={skill.color} />
           ))}
         </ul>
-        
         <h3 className={style.card__title}>Хочет научиться:</h3>
         <ul className={style.card__skillsList}>
           {wantsToLearn.length > 1 ? (
@@ -103,7 +98,6 @@ const SkillCard: React.FC<SkillCardProps> = (props) => {
           )}
         </ul>
       </div>
-      
       <div className={style.card__actions}>
         <Button variant="primary" onClick={handleClick} className={style.button}>
           Подробнее
