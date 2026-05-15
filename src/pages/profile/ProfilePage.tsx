@@ -1,18 +1,13 @@
 import React from 'react';
 import style from './ProfilePage.module.css'
-import message from '../../../public/icons/message-text.svg'
-import email from '../../../public/icons/request.svg'
-import like from '../../../public/icons/like.svg';
-import idea from '../../../public/icons/idea.svg';
-import person from '../../../public/icons/user.svg';
 import edit from '../../../public/icons/edit.svg'
 import { Input } from '../../shared/ui/Input/Input';
-import { NavLink } from 'react-router-dom';
 import { Controller, useForm } from 'react-hook-form';
 import { DatePicker } from '../register/steps/Step2/ui/DatePicker/DatePicker';
-import { Button } from '../../shared/ui/Button/Button';
+import { Button } from '../../shared/ui/button/Button';
 import { AvatarUpload } from '../../shared/ui/AvatarUpload/AvatarUpload';
 import { CITIES } from '../register/steps/Step2/cities';
+import ProfileMenu from '../../shared/ui/ProfileMenu/ProfileMenu';
 
 interface ProfilePageProps {
     
@@ -37,7 +32,7 @@ interface FormValues {
 }
 
 const ProfilePage: React.FC = () => {
-    const { control, register, handleSubmit } = useForm<FormValues>({
+    const { control, register, handleSubmit, formState: {isDirty} } = useForm<FormValues>({
         defaultValues: {
             src: "https://avatars.mds.yandex.net/i?id=f83c2d898ae716aefd02824274a270a0_l-10139465-images-thumbs&n=13",
             email: "ivan@example.com",
@@ -54,67 +49,35 @@ const ProfilePage: React.FC = () => {
         console.log(data)
     }
 
-    const menuItems = [
-        {icon: email,
-        alt: 'Иконка почты',
-        text: 'Заявки',
-        to: '/profile/application'
-        },
-        {icon: message,
-        alt: 'Иконка сообщения',
-        text: 'Мои обмены',
-        to: '/profile/message'
-        },
-        {icon: like,
-        alt: 'Иконка лайка',
-        text: "Избранное",
-        to: '/favorites'
-        },
-        {icon: idea,
-        alt: 'Иконка лампочки',
-        text: 'Мои навыки',
-        to: '/profile/skills'
-        },
-        {icon: person,
-        alt: 'Иконка профиля',
-        text: 'Личные данные',
-        to: '/profile'
-        },
-    ]
-
     return (
-        <div className={style.profilePage}>
-            <nav className={style.profilePage__menu}>
-                    <ul className={style.profilePage__menuList}>
-                       {menuItems.map((item) => (
-                        <NavLink className={({isActive}) =>(isActive ? `${style.link_active}` : `${style.profilePage__menuItem}`)} key={item.text} to={item.to}>
-                        <img src={item.icon} alt={item.alt} aria-hidden='true' className={style.icon}/>{item.text}</NavLink>
-                       ))}
-                    </ul>
-            </nav>
-            <form className={style.profilePage__user} onSubmit={handleSubmit(onSubmit)}>
-                <div className={style.profilePage__userWrapper}>
-                <img className={style.profilePage__userImage} src="https://avatars.mds.yandex.net/i?id=f83c2d898ae716aefd02824274a270a0_l-10139465-images-thumbs&n=13"></img>
-                <div className={style.profilePage_changeAvarar}>
-                    <Controller
-                    name="avatar"
-                    control={control}
-                    render={({ field }) => (
-                    <AvatarUpload value={field.value} style='24px' onChange={field.onChange} icon={"/icons/gallery-edit.svg"}/>
-                    )}
-                    />
-                </div>
-                </div>
-                <div className={style.profilePage__userBio}>
-                    <div>
-                    <Input label='Почта' type='email' 
-                        rightIcon={<img src={edit} alt='Иконка редактировать' aria-hidden="true"/>}></Input>
-                    <button type='button' className={style.profilePage__button} onClick={()=>{}}>Изменить пароль</button>
-                    </div>
-                    <Input label='Имя' type='text' 
-                        rightIcon={<img src={edit} alt='Иконка редактировать' aria-hidden="true"/>}></Input>
-                    <div className={style.profilePage__wrapper}>
-                    <Controller
+    <div className={style.profilePage}>
+      <ProfileMenu></ProfileMenu>
+    <form className={style.profilePage__user} onSubmit={handleSubmit(onSubmit)}>
+      <div className={style.profilePage__userWrapper}>
+        <img className={style.profilePage__userImage} src="https://avatars.mds.yandex.net/i?id=f83c2d898ae716aefd02824274a270a0_l-10139465-images-thumbs&n=13"></img>
+        <div className={style.profilePage_changeAvarar}>
+          <Controller
+            name="avatar"
+            control={control}
+            render={({ field }) => (
+              <AvatarUpload value={field.value} style='24px' onChange={field.onChange} icon={"/icons/gallery-edit.svg"}/>
+            )}
+            />
+        </div>
+      </div>
+      <div className={style.profilePage__userBio}>
+          <div>
+            <Input label='Почта' type='email' {...register('email')}
+              rightIcon={<img src={edit} alt='Иконка редактировать'/>}>
+            </Input>
+            <button type='button' className={style.profilePage__button} onClick={()=>{}}>
+            Изменить пароль</button>
+          </div>
+          <Input label='Имя' type='text' {...register('name')}
+          rightIcon={<img src={edit} alt='Иконка редактировать'/>}>
+          </Input>
+          <div className={style.profilePage__wrapper}>
+            <Controller
             name="birthDate"
             control={control}
             render={({field}) => (
@@ -125,7 +88,7 @@ const ProfilePage: React.FC = () => {
               />
             )}
           />
-            <div className={style.field}>
+          <div className={style.field}>
           <label className={style.label} htmlFor="gender">
             Пол
           </label>
@@ -139,32 +102,32 @@ const ProfilePage: React.FC = () => {
           </div>
         </div>
         <div className={style.field}>
-        <label className={style.label} htmlFor="city">
+          <label className={style.label} htmlFor="city">
           Город
-        </label>
-        <select id="city" className={style.select} {...register('city')}>
-          <option value="">Не указан</option>
-          {CITIES.map((city) => (
-            <option key={city} value={city}>
+          </label>
+          <select id="city" className={style.select} {...register('city')}>
+            <option value="">Не указан</option>
+            {CITIES.map((city) => (
+              <option key={city} value={city}>
               {city}
-            </option>
-          ))}
-        </select>
-      </div>
+              </option>
+            ))}
+          </select>
+        </div>
       <div className={style.field}>
         <label className={style.label} htmlFor="about">О себе</label>
-        <textarea id='about' rows={4} cols={10} className={style.textarea}>
+        <textarea id='about' rows={4} cols={10} className={style.textarea} {...register('about')}>
         </textarea>
-         <span className={style.rightIcon}>
-                <img src={edit} alt='Иконка редактировать' aria-hidden="true"/>
-            </span>
-        </div>
-        <Button type="submit" variant="primary">
+        <span className={style.rightIcon}>
+          <img src={edit} alt='Иконка редактировать'/>
+        </span>
+      </div>
+      <Button type="submit" variant="primary" disabled={!isDirty}>
             Сохранить
-        </Button>
-                </div>
-            </form>
-        </div>
+      </Button>
+      </div>
+    </form>
+    </div>
     );
 };
 

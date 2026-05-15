@@ -55,21 +55,6 @@
     margin-top:12px ;
 }
 
-.profilePage__menu{
-    display: flex;
-    justify-content: center;
-    height: 750px;
-    background-color: var(--color-bg-card);
-    border-radius: 24px;
-}
-
-.profilePage__menuList{
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-top: 40px;
-}
-
 .profilePage__wrapper{
     display: flex;
     flex-direction: row;
@@ -116,15 +101,23 @@ background-color: var(--color-primary);
 }
 
 .select {
+  width: 100%;
   padding: var(--space-12) var(--space-16);
-  border: 1px solid black;
+  padding-right: calc(var(--space-16) + 16px + var(--space-8));
+  border: 1px solid var(--color-primary);
   border-radius: var(--radius-sm);
   background-color: var(--color-bg-card);
+  background-image: url('/icons/vector.svg');
+  background-repeat: no-repeat;
+  background-position: right var(--space-16) center;
+  background-size: 16px 16px;
   font-family: var(--font-primary);
   font-size: var(--font-size-body);
   line-height: var(--line-height-body);
   color: var(--color-text);
   cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 .select:hover {

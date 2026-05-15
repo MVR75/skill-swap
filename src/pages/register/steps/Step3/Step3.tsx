@@ -1,21 +1,23 @@
 import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-
 import { useSelector } from '../../../../app/store';
 import { Input } from '../../../../shared/ui/Input/Input';
 import { Button } from '../../../../shared/ui/button/Button';
-
 import { CategoryDropdown } from '../../ui/CategoryDropdown/CategoryDropdown';
-
 import { step3Schema, type Step3Data } from './schema';
 import styles from './Step3.module.css';
 import { ImageUpload } from '../../../../shared/ui/ImageUpload/ImageUpload';
+
 
 type Step3Props = {
   onSubmit: (data: Step3Data) => void;
   onBack: () => void;
   initialData?: Partial<Step3Data>;
 };
+
+const PLACEHOLDER_IMAGE = new File([''], 'placeholder.jpg', {
+  type: 'image/jpeg',
+});
 
 export function Step3({ onSubmit, onBack, initialData }: Step3Props) {
   const categories = useSelector((state) => state.categories.categories);
@@ -35,7 +37,7 @@ export function Step3({ onSubmit, onBack, initialData }: Step3Props) {
       teachCategories: initialData?.teachCategories ?? [],
       teachSubcategories: initialData?.teachSubcategories ?? [],
       teachAbout: initialData?.teachAbout ?? '',
-      teachImages: initialData?.teachImages ?? [],
+      teachImages: initialData?.teachImages ?? [PLACEHOLDER_IMAGE],
     },
   });
 
