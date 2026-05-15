@@ -23,6 +23,17 @@
     height: 244px;
 }
 
+.imageWrapper
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 244px;
+    height: 244px;
+    border-radius: var(--radius-full);
+    background-color: var(--color-primary);
+}
+
 .profilePage__userImage{
     width: 244px;
     height: 244px;
@@ -37,6 +48,7 @@
     bottom: 0px;
     right: 0px;
     background-color: var(--color-primary);
+    box-shadow: -8px -8px 8px 0px rgba(34, 60, 80, 0.2);
     border-radius: 50%;
     width: 56px;
     height: 56px;

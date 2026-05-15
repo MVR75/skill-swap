@@ -2,29 +2,15 @@ import { useRef, useState, useEffect } from 'react';
 import styles from './AvatarUpload.module.css';
 
 type AvatarUploadProps = {
-  value: File | null;
+  value?: File | null;
+  previewUrl?: string | null;
   onChange: (file: File | null) => void;
   icon?: string;
   style?: string;
 };
 
-export function AvatarUpload({ value, onChange, icon, style }: AvatarUploadProps) {
+export function AvatarUpload({ value, previewUrl, onChange, icon, style }: AvatarUploadProps) {
   const inputRef = useRef<HTMLInputElement>(null);
-  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (!value) {
-      setPreviewUrl(null);
-      return;
-    }
-
-    const url = URL.createObjectURL(value);
-    setPreviewUrl(url);
-
-    return () => {
-      URL.revokeObjectURL(url);
-    };
-  }, [value]);
 
   const handleClick = () => {
     inputRef.current?.click();
@@ -45,7 +31,7 @@ export function AvatarUpload({ value, onChange, icon, style }: AvatarUploadProps
         onClick={handleClick}
         aria-label={value ? 'Изменить аватар' : 'Загрузить аватар'}
       >
-        {previewUrl ? (
+        {previewUrl && value ? (
           <img
             src={previewUrl}
             alt=""

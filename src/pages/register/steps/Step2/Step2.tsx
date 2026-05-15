@@ -12,6 +12,7 @@ import { DatePicker } from './ui/DatePicker/DatePicker';
 import { step2Schema, type Step2Data } from './schema';
 import { CITIES } from './cities';
 import styles from './Step2.module.css';
+import { useEffect, useState } from 'react';
 
 type Step2Props = {
   onSubmit: (data: Step2Data) => void;
@@ -51,6 +52,21 @@ export function Step2({ onSubmit, onBack, initialData }: Step2Props) {
 
   const selectedCategories = watch('learnCategories');
   const selectedSubcategories = watch('learnSubcategories');
+  const avatarFile = watch('avatar');
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+  if (!avatarFile) {
+    setPreviewUrl(null);
+    return;
+  }
+  const objectUrl =
+    URL.createObjectURL(avatarFile);
+  setPreviewUrl(objectUrl);
+  return () => {
+    URL.revokeObjectURL(objectUrl);
+  };
+}, [avatarFile]);
 
   const categoryOptions = categories.map((cat) => ({
     value: cat.id,
@@ -88,7 +104,7 @@ export function Step2({ onSubmit, onBack, initialData }: Step2Props) {
           name="avatar"
           control={control}
           render={({ field }) => (
-            <AvatarUpload value={field.value} onChange={field.onChange} icon={"/icons/Icon-regg.svg"}/>
+            <AvatarUpload previewUrl={previewUrl} value={field.value} onChange={field.onChange} icon={"/icons/Icon-regg.svg"}/>
           )}
         />
         {errors.avatar && (

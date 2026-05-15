@@ -10,6 +10,8 @@ import { useEffect } from 'react';
 import { useDispatch } from './store';
 import { getSkills } from '../features/skills/skillsSlice';
 import { getCategories } from '../features/categories/categoriesSlice';
+import LoginPage from '../pages/login/LoginPage';
+import { RegisterPage } from '../pages/register/RegisterPage';
 
 export const AppRouter = () => {
   const dispatch = useDispatch();
@@ -22,7 +24,6 @@ export const AppRouter = () => {
   return (
     <BrowserRouter>
       <Routes>
-
         <Route element={<Layout />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/skill/:id" element={<SkillPage />} />
@@ -31,6 +32,8 @@ export const AppRouter = () => {
           <Route path="/create" element={<CreateSkillPage />} />
           <Route path="*" element={<ErrorPage code={404} />} />
         </Route>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
       </Routes>
     </BrowserRouter>
   );

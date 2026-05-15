@@ -1,17 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './ProfilePage.module.css'
 import edit from '../../../public/icons/edit.svg'
 import { Input } from '../../shared/ui/Input/Input';
-import { Controller, useForm } from 'react-hook-form';
+import { Controller, useForm} from 'react-hook-form';
 import { DatePicker } from '../register/steps/Step2/ui/DatePicker/DatePicker';
 import { Button } from '../../shared/ui/button/Button';
 import { AvatarUpload } from '../../shared/ui/AvatarUpload/AvatarUpload';
 import { CITIES } from '../register/steps/Step2/cities';
 import ProfileMenu from '../../shared/ui/ProfileMenu/ProfileMenu';
+import { useDispatch, useSelector } from '../../app/store';
+import { selectUserInfo, updateUserInfo } from '../../features/Users/userSlice';
+import { Icon } from '@mdi/react';
+import { mdiAccount } from '@mdi/js';
 
-interface ProfilePageProps {
-    
-}
 
 const GENDER_OPTIONS = [
   { value: 'unspecified', label: 'Не указан' },
@@ -21,7 +22,7 @@ const GENDER_OPTIONS = [
 
 interface FormValues {
     avatar?: File,
-    src: string,
+    src?: string,
     email: string,
     name: string,
     birthDate: Date | null,
@@ -31,36 +32,64 @@ interface FormValues {
     about: string
 }
 
+
 const ProfilePage: React.FC = () => {
-    const { control, register, handleSubmit, formState: {isDirty} } = useForm<FormValues>({
-        defaultValues: {
-            src: "https://avatars.mds.yandex.net/i?id=f83c2d898ae716aefd02824274a270a0_l-10139465-images-thumbs&n=13",
-            email: "ivan@example.com",
-            name: "Иван",
-            birthDate: new Date('2011-05-24'),
-            role: "user",
-            gender: "мужской",
-            city: 'Москва',
-            about: ''
-        }
+   const user = useSelector(selectUserInfo);
+   const dispatch = useDispatch();
+    const { control, register, handleSubmit, formState: {isDirty}, reset, watch } = useForm<FormValues>({
     })
 
     const onSubmit = (data: FormValues) => {
         console.log(data)
+        dispatch(updateUserInfo({...data, src: previewUrl ?? ''}));
     }
+
+    const avatarFile = watch('avatar');
+    const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (user) {
+      reset({
+        avatar: null,
+        src: user.src,
+        email: user.email,
+        name: user.name,
+        birthDate: user.birthDate,
+        gender: user.gender,
+        city: user.city,
+        about: user.about,
+      });
+    }
+  }, [user, reset]);
+
+  useEffect(() => {
+    if (!avatarFile) {
+      setPreviewUrl(user?.src ?? null);
+      return;
+    }
+    const objectUrl = URL.createObjectURL(avatarFile);
+    setPreviewUrl(objectUrl);
+    return () => {
+      URL.revokeObjectURL(objectUrl)
+    }},[avatarFile,user])
 
     return (
     <div className={style.profilePage}>
-      <ProfileMenu></ProfileMenu>
+      <ProfileMenu/>
     <form className={style.profilePage__user} onSubmit={handleSubmit(onSubmit)}>
       <div className={style.profilePage__userWrapper}>
-        <img className={style.profilePage__userImage} src="https://avatars.mds.yandex.net/i?id=f83c2d898ae716aefd02824274a270a0_l-10139465-images-thumbs&n=13"></img>
+        {previewUrl ? <img className={style.profilePage__userImage} src={previewUrl}></img> : 
+        <div className={style.imageWrapper}>
+          <Icon path={mdiAccount} size={4} color={'white'} />
+        </div>
+        }
         <div className={style.profilePage_changeAvarar}>
           <Controller
             name="avatar"
             control={control}
             render={({ field }) => (
-              <AvatarUpload value={field.value} style='24px' onChange={field.onChange} icon={"/icons/gallery-edit.svg"}/>
+              <AvatarUpload 
+              style='24px' previewUrl={previewUrl} onChange={field.onChange} icon={"/icons/gallery-edit.svg"}/>
             )}
             />
         </div>
