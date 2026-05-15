@@ -34,6 +34,13 @@
   font-size: var(--font-size-body);
   line-height: var(--line-height-body);
   text-decoration: none;
+
+  /* Сброс дефолтов для <button> (для семантики "пункт меню", когда тег button) */
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  cursor: pointer;
 }
 
 .skillsButton {
@@ -179,4 +186,15 @@
 .userButton:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 4px;
+}
+
+.notificationsWrapper {
+  position: relative;
+}
+
+.notificationsDropdown {
+  position: absolute;
+  top: calc(100% + var(--space-8));
+  right: 0;
+  z-index: 10;
 }
