@@ -36,3 +36,13 @@ export type TCategory = {
   color: string;
   subcategories: TSubcategory[];
 };
+
+export type TCreatedSkill = {
+  id: string;
+  teachTitle: string;
+  teachAbout: string;
+  teachCategories: string[];
+  teachSubcategories: string[];
+  teachPhotos: string[];
+  createdAt: string;
+};

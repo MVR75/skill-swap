@@ -1,6 +1,14 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import type { TSkillCard } from "../../entities/types"
-import { fetchSkills } from "../../api/skillsApi";
+import {
+  createAsyncThunk,
+  createSlice,
+  type PayloadAction,
+} from '@reduxjs/toolkit';
+import type { TSkillCard, TCreatedSkill } from '../../entities/types';
+import { fetchSkills } from '../../api/skillsApi';
+import {
+  getCreatedSkillsFromStorage,
+  saveCreatedSkillsToStorage,
+} from '../../pages/shared/lib/createdSkillsStorage';
 
 export const getSkills = createAsyncThunk<
   TSkillCard[],
@@ -19,25 +27,41 @@ export const getSkills = createAsyncThunk<
 
 type TSkillsState = {
   cards: TSkillCard[];
-}
+  createdSkills: TCreatedSkill[];
+};
 
 const initialState: TSkillsState = {
-  cards: []
+  cards: [],
+  createdSkills: getCreatedSkillsFromStorage(),
 };
 
 export const skillsSlice = createSlice({
   name: 'skills',
   initialState,
-  reducers: {},
+  reducers: {
+    addCreatedSkill: (state, action: PayloadAction<TCreatedSkill>) => {
+      state.createdSkills.push(action.payload);
+      saveCreatedSkillsToStorage(state.createdSkills);
+    },
+
+    removeCreatedSkill: (state, action: PayloadAction<string>) => {
+      state.createdSkills = state.createdSkills.filter(
+        (skill) => skill.id !== action.payload
+      );
+
+      saveCreatedSkillsToStorage(state.createdSkills);
+    },
+  },
   extraReducers: (builder) => {
-    builder
-      .addCase(getSkills.fulfilled, (state, action) => {
-        state.cards = action.payload;
-      })
+    builder.addCase(getSkills.fulfilled, (state, action) => {
+      state.cards = action.payload;
+    });
   },
   selectors: {
-    selectAllSkillCards: (state) => state.cards
-  }
+    selectAllSkillCards: (state) => state.cards,
+    selectCreatedSkills: (state) => state.createdSkills,
+  },
 });
 
-export const { selectAllSkillCards } = skillsSlice.selectors;
+export const { addCreatedSkill, removeCreatedSkill } = skillsSlice.actions;
+export const { selectAllSkillCards, selectCreatedSkills } = skillsSlice.selectors;

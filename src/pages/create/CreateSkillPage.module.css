@@ -1,0 +1,26 @@
+.page {
+  min-height: 100%;
+  padding: 48px 24px;
+  background-color: var(--color-bg-page);
+}
+
+.container {
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.title {
+  margin: 0 0 24px;
+  font-size: var(--font-size-h1);
+  line-height: var(--line-height-h1);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+}
+
+.formCard {
+  padding: 32px;
+  border: 1px solid #e8e8e0;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-bg-card);
+}
