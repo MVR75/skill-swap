@@ -1,11 +1,11 @@
-.homePage{
+.homePage {
   display: grid;
   grid-template-columns: 324px 1fr;
   gap: 24px;
   padding: 32px 36px;
 }
 
-.homePage__filter{
+.homePage__filter {
   height: fit-content;
 }
 
@@ -20,4 +20,24 @@
   flex-direction: column;
   gap: 40px;
   max-width: 1020px;
+}
+
+.homePage__recommended {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.homePage__scrollTrigger {
+  width: 100%;
+  height: 24px;
+}
+
+.homePage__loading {
+  margin: 0;
+  padding: 16px 0;
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  text-align: center;
+  color: var(--color-text);
 }

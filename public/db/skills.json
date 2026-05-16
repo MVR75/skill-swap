@@ -81,7 +81,6 @@
             "category": "health",
             "categoryTitle": "Здоровье и лайфстайл",
             "color": "#e9f7e7"
-
           },
           {
             "subcategory": "photography",
@@ -448,14 +447,14 @@
             "title": "Ремонт",
             "category": "home",
             "categoryTitle": "Дом и уют",
-             "color": "#f7ebe5"
+            "color": "#f7ebe5"
           },
           {
             "subcategory": "music",
             "title": "Музыка и звук",
             "category": "creative",
             "categoryTitle": "Творчество и искусство",
-             "color": "#f7e7f2"
+            "color": "#f7e7f2"
           }
         ]
       }
@@ -862,7 +861,7 @@
             "title": "Осознанность",
             "category": "health",
             "categoryTitle": "Здоровье и лайфстайл",
-             "color": "#e9f7e7"
+            "color": "#e9f7e7"
           }
         ],
         "wantsToLearn": [
@@ -871,14 +870,14 @@
             "title": "Управление командой",
             "category": "business",
             "categoryTitle": "Бизнес и карьера",
-             "color": "#eee7f7"
+            "color": "#eee7f7"
           },
           {
             "subcategory": "spanish",
             "title": "Испанский",
             "category": "languages",
             "categoryTitle": "Иностранные языки",
-             "color": "#ebe5c5"
+            "color": "#ebe5c5"
           }
         ]
       }
@@ -908,7 +907,7 @@
             "title": "Подготовка к экзаменам (IELTS, TOEFL)",
             "category": "languages",
             "categoryTitle": "Иностранные языки",
-             "color": "#ebe5c5"
+            "color": "#ebe5c5"
           }
         ],
         "wantsToLearn": [
@@ -917,14 +916,942 @@
             "title": "Креативное письмо",
             "category": "creative",
             "categoryTitle": "Творчество и искусство",
-             "color": "#f7e7f2"
+            "color": "#f7e7f2"
           },
           {
             "subcategory": "repair",
             "title": "Ремонт",
             "category": "home",
             "categoryTitle": "Дом и уют",
-             "color": "#f7ebe5"
+            "color": "#f7ebe5"
+          }
+        ]
+      }
+    },
+    {
+      "id": "21",
+      "name": "Иван",
+      "city": "Санкт-Петербург",
+      "age": 34,
+      "favorites": false,
+      "birthDate": "1992-01-01",
+      "gender": "male",
+      "email": "ivan.sokolov@mail.ru",
+      "avatarUrl": "https://taxpert.ru/neuroavatar/preview/a3a041e717ef0599.jpg",
+      "shortAbout": "Привет! Люблю ритм, кофе по утрам и людей, которые не боятся пробовать новое.",
+      "teachTitle": "Игра на барабанах",
+      "teachAbout": "Играю на барабанах уже больше 10 лет: от репетиций в гараже до выступлений на сцене с живыми группами. Научу основам техники, разбору любимых ритмов, импровизации и уверенной игре без партитуры.",
+      "teachPhotos": [
+        "https://c4.wallpaperflare.com/wallpaper/602/59/819/drum-drums-musical-instrument-stage-wallpaper-preview.jpg",
+        "https://p2.piqsels.com/preview/318/794/466/drums-set-people-man.jpg",
+        "https://p0.piqsels.com/preview/685/464/57/drum-set-music-cymbals.jpg"
+      ],
+      "skills": {
+        "canTeach": [
+          {
+            "subcategory": "music",
+            "title": "Музыка и звук",
+            "category": "creative",
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
+          }
+        ],
+        "wantsToLearn": [
+          {
+            "subcategory": "time-management",
+            "title": "Тайм-менеджмент",
+            "category": "business",
+            "categoryTitle": "Бизнес и карьера",
+            "color": "#eee7f7"
+          },
+          {
+            "subcategory": "yoga-meditation",
+            "title": "Йога и медитация",
+            "category": "health",
+            "categoryTitle": "Здоровье и лайфстайл",
+            "color": "#e8ecf7"
+          }
+        ]
+      }
+    },
+    {
+      "id": "22",
+      "name": "Илона",
+      "city": "Екатеринбург",
+      "age": 33,
+      "favorites": false,
+      "birthDate": "1993-01-01",
+      "gender": "female",
+      "email": "ilona.kuznetsova@mail.ru",
+      "avatarUrl": "https://taxpert.ru/neuroavatar/preview/938157d62ca0d5a0.jpg",
+      "shortAbout": "Помогаю говорить на английском спокойнее и увереннее, без страха ошибок.",
+      "teachTitle": "Разговорный английский",
+      "teachAbout": "Провожу мягкую разговорную практику для тех, кто понимает английский, но стесняется говорить. Разберём типичные ситуации, расширим словарь и научимся поддерживать диалог без постоянного перевода в голове.",
+      "teachPhotos": [
+        "https://p2.piqsels.com/preview/445/1001/182/girl-english-dictionary-study.jpg",
+        "https://p0.piqsels.com/preview/700/348/954/30-35-years-beautiful-book-girl.jpg",
+        "https://avatars.mds.yandex.net/i?id=ca6193eba0060603258fa9ad707a971f-5878998-images-thumbs&n=13"
+      ],
+      "skills": {
+        "canTeach": [
+          {
+            "subcategory": "english",
+            "title": "Английский",
+            "category": "languages",
+            "categoryTitle": "Иностранные языки",
+            "color": "#ebe5c5"
+          }
+        ],
+        "wantsToLearn": [
+          {
+            "subcategory": "mindfulness",
+            "title": "Осознанность",
+            "category": "health",
+            "categoryTitle": "Здоровье и лайфстайл",
+            "color": "#e9f7e7"
+          },
+          {
+            "subcategory": "photography",
+            "title": "Фотография",
+            "category": "creative",
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
+          }
+        ]
+      }
+    },
+    {
+      "id": "23",
+      "name": "Михаил",
+      "city": "Новосибирск",
+      "age": 29,
+      "favorites": false,
+      "birthDate": "1997-01-01",
+      "gender": "male",
+      "email": "mikhail.orlov@mail.ru",
+      "avatarUrl": "https://taxpert.ru/neuroavatar/preview/cb75661ab66d7aaa.jpg",
+      "shortAbout": "Работаю в маркетинге и люблю превращать хаос идей в понятный план.",
+      "teachTitle": "Маркетинг для маленьких проектов",
+      "teachAbout": "Помогу разобраться, как продвигать небольшой проект без огромного бюджета. Расскажу про позиционирование, аудиторию, контент-план, базовую аналитику и простые рекламные гипотезы.",
+      "teachPhotos": [
+        "https://avatars.mds.yandex.net/i?id=37da3719223abee9f992ac5f34b574b1_l-5453487-images-thumbs&n=13",
+        "https://avatars.mds.yandex.net/i?id=b383a489c734240f5b55959059966695_l-9287521-images-thumbs&n=13",
+        "https://f53d.ru/wp-content/uploads/2023/12/realnye-czeli-reklamy.jpg"
+      ],
+      "skills": {
+        "canTeach": [
+          {
+            "subcategory": "marketing",
+            "title": "Маркетинг и реклама",
+            "category": "business",
+            "categoryTitle": "Бизнес и карьера",
+            "color": "#eee7f7"
+          }
+        ],
+        "wantsToLearn": [
+          {
+            "subcategory": "video-editing",
+            "title": "Видеомонтаж",
+            "category": "creative",
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
+          },
+          {
+            "subcategory": "spanish",
+            "title": "Испанский",
+            "category": "languages",
+            "categoryTitle": "Иностранные языки",
+            "color": "#e7f2f6"
+          }
+        ]
+      }
+    },
+    {
+      "id": "24",
+      "name": "Мария",
+      "city": "Краснодар",
+      "age": 21,
+      "favorites": false,
+      "birthDate": "2005-01-01",
+      "gender": "female",
+      "email": "maria.volkova@mail.ru",
+      "avatarUrl": "https://taxpert.ru/neuroavatar/preview/6fc14c840870df8a.jpg",
+      "shortAbout": "Рисую персонажей и иллюстрации, люблю простые объяснения и творческие челленджи.",
+      "teachTitle": "Основы цифровой иллюстрации",
+      "teachAbout": "Покажу, как начать рисовать цифровые иллюстрации: от скетча и композиции до цвета и финальной обработки. Подойдёт новичкам, которые хотят перестать бояться пустого холста.",
+      "teachPhotos": [
+        "https://img.freepik.com/premium-photo/creativity-concept-with-graphic-tablet_926199-2285498.jpg?semt=ais_hybrid&w=740",
+        "https://avatars.mds.yandex.net/i?id=9191dfbb60df8e6908cc8da29ae43592_l-5474802-images-thumbs&n=13",
+        "https://i.pinimg.com/originals/54/69/6e/54696ec136b09abde5265deb365b380a.jpg"
+      ],
+      "skills": {
+        "canTeach": [
+          {
+            "subcategory": "drawing",
+            "title": "Рисование и иллюстрация",
+            "category": "creative",
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
+          }
+        ],
+        "wantsToLearn": [
+          {
+            "subcategory": "french",
+            "title": "Французский",
+            "category": "languages",
+            "categoryTitle": "Иностранные языки",
+            "color": "#ebe5c5"
+          },
+          {
+            "subcategory": "personal-brand",
+            "title": "Личный бренд",
+            "category": "business",
+            "categoryTitle": "Бизнес и карьера",
+            "color": "#eee7f7"
+          }
+        ]
+      }
+    },
+    {
+      "id": "25",
+      "name": "Виктория",
+      "city": "Кемерово",
+      "age": 30,
+      "favorites": false,
+      "birthDate": "1996-01-01",
+      "gender": "female",
+      "email": "viktoria.morozova@mail.ru",
+      "avatarUrl": "https://taxpert.ru/neuroavatar/preview/b2f1aa8de7ceb1bc.jpg",
+      "shortAbout": "Люблю порядок, списки и маленькие системы, которые освобождают голову.",
+      "teachTitle": "Организация дома без стресса",
+      "teachAbout": "Помогу разобрать хранение вещей и сделать дом удобнее. Вместе найдём простые правила для кухни, шкафа, рабочего места и сезонных вещей, чтобы порядок было легко поддерживать.",
+      "teachPhotos": [
+        "https://avatars.mds.yandex.net/i?id=6947113017d238ee4c31b17899f9ccd9_l-10369171-images-thumbs&n=13",
+        "https://i.pinimg.com/736x/9b/27/8a/9b278a74f0a5341e9eb9334bad63c3e4.jpg",
+        "https://avatars.mds.yandex.net/i?id=6d4311335994857c4fd595acf47e9767_l-4987708-images-thumbs&n=13"
+      ],
+      "skills": {
+        "canTeach": [
+          {
+            "subcategory": "cleaning",
+            "title": "Уборка и организация",
+            "category": "home",
+            "categoryTitle": "Дом и уют",
+            "color": "#f7ebe5"
+          }
+        ],
+        "wantsToLearn": [
+          {
+            "subcategory": "entrepreneurship",
+            "title": "Предпринимательство",
+            "category": "business",
+            "categoryTitle": "Бизнес и карьера",
+            "color": "#eee7f7"
+          },
+          {
+            "subcategory": "decor-diy",
+            "title": "Декор и DIY",
+            "category": "creative",
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7ebe5"
+          }
+        ]
+      }
+    },
+    {
+      "id": "26",
+      "name": "Алексей",
+      "city": "Москва",
+      "age": 38,
+      "favorites": false,
+      "birthDate": "1988-01-01",
+      "gender": "male",
+      "email": "alexey.petrov@mail.ru",
+      "avatarUrl": "https://taxpert.ru/neuroavatar/preview/371b85a9d676f3ae.jpg",
+      "shortAbout": "Руководил командами разработки и умею объяснять менеджмент без канцелярита.",
+      "teachTitle": "Управление небольшой командой",
+      "teachAbout": "Разберём, как ставить задачи, проводить встречи, давать обратную связь и не превращать работу команды в постоянные пожары. Подходит для начинающих тимлидов и владельцев маленьких проектов.",
+      "teachPhotos": [
+        "https://masheka.by/uploads/posts/2025-10/bg11-1.webp",
+        "https://s1.bloknot-krasnodar.ru/thumb/850x0xcut/upload/iblock/5d3/14a96m2nw3ygh9s442a4ioofge534p2f/Kazhdyy-shestoy-zhitel-Krasnodara-gotov-splotit-rabochiy-kollektiv.jpeg",
+        "https://avatars.mds.yandex.net/i?id=642e2d19122db5892b1c657e6d1e69a4f8791315-9068512-images-thumbs&n=13"
+      ],
+      "skills": {
+        "canTeach": [
+          {
+            "subcategory": "team-management",
+            "title": "Управление командой",
+            "category": "business",
+            "categoryTitle": "Бизнес и карьера",
+            "color": "#eee7f7"
+          }
+        ],
+        "wantsToLearn": [
+          {
+            "subcategory": "work-life-balance",
+            "title": "Баланс жизни и работы",
+            "category": "health",
+            "categoryTitle": "Здоровье и лайфстайл",
+            "color": "#e9f7e7"
+          },
+          {
+            "subcategory": "photography",
+            "title": "Фотография",
+            "category": "creative",
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
+          }
+        ]
+      }
+    },
+    {
+      "id": "27",
+      "name": "Анна",
+      "city": "Казань",
+      "age": 27,
+      "favorites": false,
+      "birthDate": "1999-01-01",
+      "gender": "female",
+      "email": "anna.fedorova@mail.ru",
+      "avatarUrl": "https://taxpert.ru/neuroavatar/preview/fe5f1e0ce507c822.jpg",
+      "shortAbout": "Фотографирую людей и город, помогаю увидеть свет даже в обычном дворе.",
+      "teachTitle": "Фотография на телефон",
+      "teachAbout": "Научу делать более живые фотографии на телефон: выбирать свет, строить кадр, работать с цветом и не перегружать снимок обработкой. Будет много практики и простых упражнений.",
+      "teachPhotos": [
+        "https://avatars.mds.yandex.net/i?id=0ade08bff8aa1ccb2c29ab81c5528444_l-13015018-images-thumbs&n=13",
+        "https://i.pinimg.com/736x/bc/62/4e/bc624ed57a5cb0b224d32aa2f3bed1b8.jpg",
+        "https://i.pinimg.com/originals/8e/bd/25/8ebd25bfacee40b7dfbd68cc870d3f6c.jpg"
+      ],
+      "skills": {
+        "canTeach": [
+          {
+            "subcategory": "photography",
+            "title": "Фотография",
+            "category": "creative",
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
+          }
+        ],
+        "wantsToLearn": [
+          {
+            "subcategory": "japanese",
+            "title": "Японский",
+            "category": "languages",
+            "categoryTitle": "Иностранные языки",
+            "color": "#ebe5c5"
+          },
+          {
+            "subcategory": "fitness",
+            "title": "Физические тренировки",
+            "category": "health",
+            "categoryTitle": "Здоровье и лайфстайл",
+            "color": "#e9f7e7"
+          }
+        ]
+      }
+    },
+    {
+      "id": "28",
+      "name": "Дмитрий",
+      "city": "Москва",
+      "age": 41,
+      "favorites": false,
+      "birthDate": "1985-01-01",
+      "gender": "male",
+      "email": "dmitry.lebedev@mail.ru",
+      "avatarUrl": "https://taxpert.ru/neuroavatar/preview/4302b99392e649cf.jpg",
+      "shortAbout": "Готовлю простую еду и верю, что домашний ужин не обязан занимать весь вечер.",
+      "teachTitle": "Быстрые домашние ужины",
+      "teachAbout": "Покажу, как готовить простые блюда на неделю, планировать покупки и не уставать от кухни. Подойдёт тем, кто хочет есть вкуснее, но не любит сложные рецепты.",
+      "teachPhotos": [
+        "https://i.pinimg.com/originals/e1/57/b3/e157b355c7fb53c343400e39ac66366e.jpg?nii=t",
+        "https://avatars.mds.yandex.net/i?id=c9051fff172274e4b3d32300b21a6361_l-8312878-images-thumbs&n=13",
+        "https://img.freepik.com/premium-photo/sports-woman-cooking-healthy-eat-home_1048944-22956871.jpg?semt=ais_hybrid&w=740&q=80"
+      ],
+      "skills": {
+        "canTeach": [
+          {
+            "subcategory": "cooking",
+            "title": "Приготовление еды",
+            "category": "home",
+            "categoryTitle": "Дом и уют",
+            "color": "#f7ebe5"
+          }
+        ],
+        "wantsToLearn": [
+          {
+            "subcategory": "german",
+            "title": "Немецкий",
+            "category": "languages",
+            "categoryTitle": "Иностранные языки",
+            "color": "#ebe5c5"
+          },
+          {
+            "subcategory": "sales",
+            "title": "Продажи и переговоры",
+            "category": "business",
+            "categoryTitle": "Бизнес и карьера",
+            "color": "#eee7f7"
+          }
+        ]
+      }
+    },
+    {
+      "id": "29",
+      "name": "Елена",
+      "city": "Санкт-Петербург",
+      "age": 36,
+      "favorites": false,
+      "birthDate": "1990-01-01",
+      "gender": "female",
+      "email": "elena.nikitina@mail.ru",
+      "avatarUrl": "https://taxpert.ru/neuroavatar/preview/477f3cb99b640bf0.jpg",
+      "shortAbout": "Пишу тексты для блогов и проектов, люблю точные формулировки и живой голос.",
+      "teachTitle": "Креативное письмо",
+      "teachAbout": "Помогу писать тексты легче: от коротких постов до личных историй. Разберём структуру, тональность, сильное начало, редактирование и упражнения для регулярной практики.",
+      "teachPhotos": [
+        "https://img.freepik.com/premium-photo/letter-with-text-pen-hands-roses-vintage-plates-beige-background_185193-129158.jpg?w=2000",
+        "https://cs6.livemaster.ru/storage/48/1b/dda15630f0b0648b135650ab44ou.jpg",
+        "https://avatars.mds.yandex.net/i?id=a51e25e3a0cf7ae0c9e48af760e2d29d963bc879-5275568-images-thumbs&n=13"
+      ],
+      "skills": {
+        "canTeach": [
+          {
+            "subcategory": "creative-writing",
+            "title": "Креативное письмо",
+            "category": "creative",
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
+          }
+        ],
+        "wantsToLearn": [
+          {
+            "subcategory": "speed-reading",
+            "title": "Скорочтение",
+            "category": "education",
+            "categoryTitle": "Образование и развитие",
+            "color": "#e7f2f6"
+          },
+          {
+            "subcategory": "acting",
+            "title": "Актёрское мастерство",
+            "category": "creative",
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
+          }
+        ]
+      }
+    },
+    {
+      "id": "30",
+      "name": "Павел",
+      "city": "Новосибирск",
+      "age": 32,
+      "favorites": false,
+      "birthDate": "1994-01-01",
+      "gender": "male",
+      "email": "pavel.egorov@mail.ru",
+      "avatarUrl": "https://taxpert.ru/neuroavatar/preview/52e5ec83076bf297.jpg",
+      "shortAbout": "Помогаю готовиться к интервью и собирать опыт в понятную историю.",
+      "teachTitle": "Резюме и подготовка к собеседованию",
+      "teachAbout": "Разберём резюме, сильные стороны, ответы на частые вопросы и самопрезентацию. Помогу подготовиться так, чтобы рассказ о себе звучал уверенно и конкретно.",
+      "teachPhotos": [
+        "https://img.freepik.com/premium-photo/portrait-woman-holding-mobile-phone_1048944-26731513.jpg?semt=ais_hybrid&w=740&q=80",
+        "https://img.freepik.com/premium-photo/businessman-job-seeker-review-his-resume-his-desk-before-send-finding-new-job-with-pen-necktie-glasses-digital-tablet_265022-23326.jpg?semt=ais_hybrid&w=740"
+      ],
+      "skills": {
+        "canTeach": [
+          {
+            "subcategory": "resume",
+            "title": "Резюме и собеседование",
+            "category": "business",
+            "categoryTitle": "Бизнес и карьера",
+            "color": "#eee7f7"
+          }
+        ],
+        "wantsToLearn": [
+          {
+            "subcategory": "repair",
+            "title": "Ремонт",
+            "category": "home",
+            "categoryTitle": "Дом и уют",
+            "color": "#f7ebe5"
+          },
+          {
+            "subcategory": "music",
+            "title": "Музыка и звук",
+            "category": "creative",
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
+          }
+        ]
+      }
+    },
+    {
+      "id": "31",
+      "name": "София",
+      "city": "Екатеринбург",
+      "age": 25,
+      "favorites": false,
+      "birthDate": "2001-01-01",
+      "gender": "female",
+      "email": "sofia.belova@mail.ru",
+      "avatarUrl": "https://taxpert.ru/neuroavatar/preview/df73ae786a05a36b.jpg",
+      "shortAbout": "Практикую йогу и мягкие техники восстановления после напряжённых недель.",
+      "teachTitle": "Йога и медитация для начинающих",
+      "teachAbout": "Покажу базовые практики йоги, дыхания и короткие медитации для повседневной жизни. Без сложных поз и давления: главное — регулярность и комфорт.",
+      "teachPhotos": [
+        "https://avatars.mds.yandex.net/i?id=f5db5cb129a076b429202ec15e9276c2_l-5524081-images-thumbs&n=13",
+        "https://nord-news.ru/img/newsimages/20260315/1_7b19ebd225d5.jpg",
+        "https://media.istockphoto.com/id/1336153683/ru/фото/студенты-проходящие-занятия-йогой-в-студии.jpg?s=612x612&w=0&k=20&c=U1vnBhed6zjMffI6x22uwNkfcZ4AwjeXNLtHUpNo-Aw=",
+        "https://static.vecteezy.com/system/resources/thumbnails/061/039/919/small_2x/spine-stretching-young-woman-is-doing-fitness-yoga-indoors-against-white-background-photo.JPG",
+        "https://horseka.ru/wp-content/uploads/2024/09/Йога-в-Horseka-3.jpg"
+      ],
+      "skills": {
+        "canTeach": [
+          {
+            "subcategory": "yoga-meditation",
+            "title": "Йога и медитация",
+            "category": "health",
+            "categoryTitle": "Здоровье и лайфстайл",
+            "color": "#e9f7e7"
+          }
+        ],
+        "wantsToLearn": [
+          {
+            "subcategory": "chinese",
+            "title": "Китайский",
+            "category": "languages",
+            "categoryTitle": "Иностранные языки",
+            "color": "#ebe5c5"
+          },
+          {
+            "subcategory": "home-finance",
+            "title": "Домашние финансы",
+            "category": "home",
+            "categoryTitle": "Дом и уют",
+            "color": "#f7ebe5"
+          }
+        ]
+      }
+    },
+    {
+      "id": "32",
+      "name": "Роман",
+      "city": "Казань",
+      "age": 28,
+      "favorites": false,
+      "birthDate": "1998-01-01",
+      "gender": "male",
+      "email": "roman.smirnov@mail.ru",
+      "avatarUrl": "https://taxpert.ru/neuroavatar/preview/f311c29f92438d4b.jpg",
+      "shortAbout": "Монтирую короткие ролики и люблю, когда история становится понятной за минуту.",
+      "teachTitle": "Видеомонтаж коротких роликов",
+      "teachAbout": "Расскажу, как собрать динамичный ролик: ритм, склейки, звук, титры, базовая цветокоррекция и экспорт. Подойдёт для Reels, Shorts и небольших промо-видео.",
+      "teachPhotos": [
+        "https://avatars.mds.yandex.net/get-ydo/1449941/2a0000017343a93e4ac72519b659d978818b/diploma",
+        "https://avatars.mds.yandex.net/i?id=082686c7874d202fcb65614f3afb636c_l-4555484-images-thumbs&n=13",
+        "https://p1.zoon.ru/preview/TMCDSntrvnOsrdVWNgzXaQ/2400x1500x75/1/c/a/original_540f288440c088c6138ba609_59b93f66ab201.jpg"
+      ],
+      "skills": {
+        "canTeach": [
+          {
+            "subcategory": "video-editing",
+            "title": "Видеомонтаж",
+            "category": "creative",
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
+          }
+        ],
+        "wantsToLearn": [
+          {
+            "subcategory": "marketing",
+            "title": "Маркетинг и реклама",
+            "category": "business",
+            "categoryTitle": "Бизнес и карьера",
+            "color": "#eee7f7"
+          },
+          {
+            "subcategory": "fitness",
+            "title": "Физические тренировки",
+            "category": "health",
+            "categoryTitle": "Здоровье и лайфстайл",
+            "color": "#e9f7e7"
+          },
+          {
+            "subcategory": "plants",
+            "title": "Домашние растения",
+            "category": "home",
+            "categoryTitle": "Дом и уют",
+            "color": "#f7ebe5"
+          }
+        ]
+      }
+    },
+    {
+      "id": "33",
+      "name": "Наталья",
+      "city": "Москва",
+      "age": 45,
+      "favorites": false,
+      "birthDate": "1981-01-01",
+      "gender": "female",
+      "email": "natalia.ivanova@mail.ru",
+      "avatarUrl": "https://taxpert.ru/neuroavatar/preview/11eda6b956241456.jpg",
+      "shortAbout": "Люблю растения и спокойные домашние ритуалы, которые делают пространство живым.",
+      "teachTitle": "Уход за домашними растениями",
+      "teachAbout": "Помогу подобрать растения под условия квартиры и разобраться с поливом, светом, пересадкой и типичными ошибками. Особенно полезно для тех, у кого растения часто не приживаются.",
+      "teachPhotos": [
+        "https://avatars.mds.yandex.net/i?id=6c02ef973e40b1690fb07bf9984f486f09494e12-10354927-images-thumbs&n=13",
+        "https://avatars.mds.yandex.net/i?id=bce74be30c52d2b991e1724a8a9a6c5b_l-12374505-images-thumbs&n=13",
+        "https://www.lebruitdesautres.com/wp-content/uploads/2025/07/Leau-de-cuisson-des-oeufs-redonne-vie-a-toutes-vos-plantes-dinterieur.png",
+        "https://avatars.mds.yandex.net/i?id=600e6d866e288c616b057938e73e654a_l-4428735-images-thumbs&n=13"
+      ],
+      "skills": {
+        "canTeach": [
+          {
+            "subcategory": "plants",
+            "title": "Домашние растения",
+            "category": "home",
+            "categoryTitle": "Дом и уют",
+            "color": "#f7ebe5"
+          }
+        ],
+        "wantsToLearn": [
+          {
+            "subcategory": "french",
+            "title": "Французский",
+            "category": "languages",
+            "categoryTitle": "Иностранные языки",
+            "color": "#ebe5c5"
+          },
+          {
+            "subcategory": "self-development",
+            "title": "Личностное развитие",
+            "category": "education",
+            "categoryTitle": "Образование и развитие",
+            "color": "#e7f2f6"
+          }
+        ]
+      }
+    },
+    {
+      "id": "34",
+      "name": "Кирилл",
+      "city": "Санкт-Петербург",
+      "age": 26,
+      "favorites": false,
+      "birthDate": "2000-01-01",
+      "gender": "male",
+      "email": "kirill.antonov@mail.ru",
+      "avatarUrl": "https://avatars.mds.yandex.net/i?id=59995f8c76bdeb6d8d3882980b907ce5_l-5424841-images-thumbs&n=13",
+      "shortAbout": "Учу немецкий и помогаю другим разобраться с грамматикой без паники.",
+      "teachTitle": "Немецкий для начинающих",
+      "teachAbout": "Объясню базовую грамматику немецкого, произношение и частые бытовые фразы. Будем двигаться от простых диалогов к уверенному чтению и пониманию.",
+      "teachPhotos": [
+        "https://i.ytimg.com/vi/6e5i3N-X7GU/maxresdefault.jpg",
+        "https://avatars.mds.yandex.net/i?id=07b9f5c71edc496c24390d3b4d522b2b_l-5873534-images-thumbs&n=13"
+      ],
+      "skills": {
+        "canTeach": [
+          {
+            "subcategory": "german",
+            "title": "Немецкий",
+            "category": "languages",
+            "categoryTitle": "Иностранные языки",
+            "color": "#ebe5c5"
+          }
+        ],
+        "wantsToLearn": [
+          {
+            "subcategory": "drawing",
+            "title": "Рисование и иллюстрация",
+            "category": "creative",
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
+          },
+          {
+            "subcategory": "entrepreneurship",
+            "title": "Предпринимательство",
+            "category": "business",
+            "categoryTitle": "Бизнес и карьера",
+            "color": "#eee7f7"
+          }
+        ]
+      }
+    },
+    {
+      "id": "35",
+      "name": "Ольга",
+      "city": "Новосибирск",
+      "age": 39,
+      "favorites": false,
+      "birthDate": "1987-01-01",
+      "gender": "female",
+      "email": "olga.zaitseva@mail.ru",
+      "avatarUrl": "https://img.freepik.com/premium-photo/young-traveler-german-flag-sweater-giving-thumbs-up_1301814-2064.jpg?semt=ais_hybrid&w=740",
+      "shortAbout": "Работаю с обучением взрослых и люблю, когда сложные темы становятся понятными.",
+      "teachTitle": "Навыки преподавания",
+      "teachAbout": "Покажу, как объяснять материал, строить занятие, задавать вопросы и давать обратную связь. Подойдёт тем, кто хочет обучать коллег, клиентов или вести мини-курсы.",
+      "teachPhotos": [
+        "https://avatars.mds.yandex.net/i?id=bd038bb341575e5b5195e56e6ef01b06_l-9106968-images-thumbs&n=13",
+        "https://upload.wikimedia.org/wikipedia/commons/a/ab/Bundesarchiv_B_145_Bild-F079064-0006%2C_Bonn%2C_Gymnasium.jpg",
+        "https://avatars.mds.yandex.net/i?id=b65736fe5d365a8a4505a6b1af9a1f9742cc7978-8497314-images-thumbs&n=13"
+      ],
+      "skills": {
+        "canTeach": [
+          {
+            "subcategory": "teaching-skills",
+            "title": "Навыки преподавания",
+            "category": "education",
+            "categoryTitle": "Образование и развитие",
+            "color": "#e7f2f6"
+          }
+        ],
+        "wantsToLearn": [
+          {
+            "subcategory": "photography",
+            "title": "Фотография",
+            "category": "creative",
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
+          },
+          {
+            "subcategory": "cooking",
+            "title": "Приготовление еды",
+            "category": "home",
+            "categoryTitle": "Дом и уют",
+            "color": "#f7ebe5"
+          }
+        ]
+      }
+    },
+    {
+      "id": "36",
+      "name": "Георгий",
+      "city": "Краснодар",
+      "age": 31,
+      "favorites": false,
+      "birthDate": "1995-01-01",
+      "gender": "male",
+      "email": "georgy.makarov@mail.ru",
+      "avatarUrl": "https://i.pinimg.com/originals/33/53/e8/3353e89fa1f7f773aa830563aca0f90c.jpg?nii=t",
+      "shortAbout": "Занимаюсь спортом без фанатизма и помогаю выстроить привычку движения.",
+      "teachTitle": "Физические тренировки дома",
+      "teachAbout": "Составим простую систему тренировок дома без сложного инвентаря. Разберём разминку, базовые упражнения, восстановление и безопасное увеличение нагрузки.",
+      "teachPhotos": [
+        "https://s.yimg.com/ny/api/res/1.2/c4dZxpe8ZPkJovxneo6yHg--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD02NzU-/https://media.zenfs.com/en/toms_guide_826/eae69130110b3cb836ecf5c97cda66b8",
+        "https://avatars.mds.yandex.net/i?id=df60e47364347af1b607e756894b9622_l-5888219-images-thumbs&n=13",
+        "https://avatars.mds.yandex.net/i?id=811b28f6f3c2fb975bd33adc51a62e0a20bdeb07-6879826-images-thumbs&n=13"
+      ],
+      "skills": {
+        "canTeach": [
+          {
+            "subcategory": "fitness",
+            "title": "Физические тренировки",
+            "category": "health",
+            "categoryTitle": "Здоровье и лайфстайл",
+            "color": "#e9f7e7"
+          }
+        ],
+        "wantsToLearn": [
+          {
+            "subcategory": "english",
+            "title": "Английский",
+            "category": "languages",
+            "categoryTitle": "Иностранные языки",
+            "color": "#e7f2f6"
+          },
+          {
+            "subcategory": "project-management",
+            "title": "Проектное управление",
+            "category": "business",
+            "categoryTitle": "Бизнес и карьера",
+            "color": "#eee7f7"
+          }
+        ]
+      }
+    },
+    {
+      "id": "37",
+      "name": "Алина",
+      "city": "Казань",
+      "age": 24,
+      "favorites": false,
+      "birthDate": "2002-01-01",
+      "gender": "female",
+      "email": "alina.popova@mail.ru",
+      "avatarUrl": "https://static.tildacdn.com/tild3535-3233-4438-b233-333565333038/6689.jpg",
+      "shortAbout": "Люблю французский язык, кино и маленькие ежедневные практики.",
+      "teachTitle": "Французский через диалоги",
+      "teachAbout": "Будем учить французский через короткие диалоги, произношение и простые жизненные ситуации. Подойдёт для новичков и тех, кто хочет освежить базу.",
+      "teachPhotos": [
+        "https://avatars.mds.yandex.net/i?id=96ceca018f402ed0e5545ac5e946de1a_l-10811798-images-thumbs&n=13",
+        "https://avatars.mds.yandex.net/i?id=64931db001e83774487c18441452622c_l-9849134-images-thumbs&n=13"
+      ],
+      "skills": {
+        "canTeach": [
+          {
+            "subcategory": "french",
+            "title": "Французский",
+            "category": "languages",
+            "categoryTitle": "Иностранные языки",
+            "color": "#ebe5c5"
+          }
+        ],
+        "wantsToLearn": [
+          {
+            "subcategory": "cognitive-techniques",
+            "title": "Когнитивные техники",
+            "category": "education",
+            "categoryTitle": "Образование и развитие",
+            "color": "#e7f2f6"
+          },
+          {
+            "subcategory": "mental-health",
+            "title": "Ментальное здоровье",
+            "category": "health",
+            "categoryTitle": "Здоровье и лайфстайл",
+            "color": "#e9f7e7"
+          }
+        ]
+      }
+    },
+    {
+      "id": "38",
+      "name": "Тимур",
+      "city": "Москва",
+      "age": 37,
+      "favorites": false,
+      "birthDate": "1989-01-01",
+      "gender": "male",
+      "email": "timur.galimov@mail.ru",
+      "avatarUrl": "https://avatars.mds.yandex.net/get-shedevrum/17663974/img_9be233e396ea11f0b3c12233075cab06/orig",
+      "shortAbout": "Разбираюсь в личных финансах и люблю простые таблицы без лишней магии.",
+      "teachTitle": "Домашние финансы",
+      "teachAbout": "Помогу настроить понятный учёт доходов и расходов, выделить категории, увидеть лишние траты и спланировать финансовую подушку без сложных приложений.",
+      "teachPhotos": [
+        "https://avatars.dzeninfra.ru/get-zen_doc/271828/pub_69bd4d4cc44034744550c916_69bd4d64007f8d6c271887eb/scale_1200",
+        "https://api-reforum.banki.ru/reforum/68/2d/44/fc/1c/t8qwjo24cacec642.jpeg",
+        "https://static.vecteezy.com/system/resources/previews/002/545/683/non_2x/financial-goal-wealth-management-and-investment-concept-vector.jpg"
+      ],
+      "skills": {
+        "canTeach": [
+          {
+            "subcategory": "home-finance",
+            "title": "Домашние финансы",
+            "category": "home",
+            "categoryTitle": "Дом и уют",
+            "color": "#f7ebe5"
+          }
+        ],
+        "wantsToLearn": [
+          {
+            "subcategory": "music",
+            "title": "Музыка и звук",
+            "category": "creative",
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
+          },
+          {
+            "subcategory": "sleep-recovery",
+            "title": "Сон и восстановление",
+            "category": "health",
+            "categoryTitle": "Здоровье и лайфстайл",
+            "color": "#e9f7e7"
+          }
+        ]
+      }
+    },
+    {
+      "id": "39",
+      "name": "Дарья",
+      "city": "Екатеринбург",
+      "age": 28,
+      "favorites": false,
+      "birthDate": "1998-01-01",
+      "gender": "female",
+      "email": "daria.karpova@mail.ru",
+      "avatarUrl": "https://img.freepik.com/free-psd/portrait-young-woman-black-hoodie-white-background_1142-53552.jpg?semt=ais_hybrid",
+      "shortAbout": "Практикую осознанность и помогаю снижать тревожность через маленькие шаги.",
+      "teachTitle": "Осознанность в повседневности",
+      "teachAbout": "Поделюсь простыми практиками осознанности: дыхание, наблюдение за состоянием, короткие паузы и мягкое планирование. Это не терапия, а поддерживающие бытовые инструменты.",
+      "teachPhotos": [
+        "https://avatars.mds.yandex.net/i?id=90ccb5c5bc0d9bc77f0efb59f9eeba1b_l-5233671-images-thumbs&n=13",
+        "https://epsylon.moscow/upload/044/u4481/9d/7c/opredelit-kakie-sily-upravljayut-vashei-zhiznyu-picture-norma.jpg",
+        "https://avatars.mds.yandex.net/i?id=904afcecfb418bfb0b884a057ec972ec_l-5234808-images-thumbs&n=13",
+        "https://avatars.mds.yandex.net/i?id=5c87e9fb6c93f033c1c7e78ecb814241_l-5498916-images-thumbs&n=13"
+      ],
+      "skills": {
+        "canTeach": [
+          {
+            "subcategory": "mindfulness",
+            "title": "Осознанность",
+            "category": "health",
+            "categoryTitle": "Здоровье и лайфстайл",
+            "color": "#e9f7e7"
+          }
+        ],
+        "wantsToLearn": [
+          {
+            "subcategory": "team-management",
+            "title": "Управление командой",
+            "category": "business",
+            "categoryTitle": "Бизнес и карьера",
+            "color": "#eee7f7"
+          },
+          {
+            "subcategory": "spanish",
+            "title": "Испанский",
+            "category": "languages",
+            "categoryTitle": "Иностранные языки",
+            "color": "#ebe5c5"
+          }
+        ]
+      }
+    },
+    {
+      "id": "40",
+      "name": "Сергей",
+      "city": "Санкт-Петербург",
+      "age": 35,
+      "favorites": false,
+      "birthDate": "1991-01-01",
+      "gender": "male",
+      "email": "sergey.borisov@mail.ru",
+      "avatarUrl": "https://avatars.mds.yandex.net/i?id=f83c2d898ae716aefd02824274a270a0_l-10139465-images-thumbs&n=13",
+      "shortAbout": "Готовился к IELTS сам и помогаю выстроить понятный план подготовки.",
+      "teachTitle": "Подготовка к IELTS и TOEFL",
+      "teachAbout": "Помогу составить план подготовки к языковому экзамену, разобрать формат заданий, частые ошибки и регулярную практику чтения, письма, аудирования и speaking.",
+      "teachPhotos": [
+        "https://static.tildacdn.com/tild6561-3039-4861-b434-646463613436/podgotovka-k-ielts.jpeg",
+        "https://habrastorage.org/webt/l3/pu/d9/l3pud9qgejyqxqmip-fldt_nth0.jpeg",
+        "https://i.ytimg.com/vi/9nJXSN_Y55g/maxresdefault.jpg"
+      ],
+      "skills": {
+        "canTeach": [
+          {
+            "subcategory": "ielts-toefl",
+            "title": "Подготовка к экзаменам (IELTS, TOEFL)",
+            "category": "languages",
+            "categoryTitle": "Иностранные языки",
+            "color": "#ebe5c5"
+          }
+        ],
+        "wantsToLearn": [
+          {
+            "subcategory": "creative-writing",
+            "title": "Креативное письмо",
+            "category": "creative",
+            "categoryTitle": "Творчество и искусство",
+            "color": "#f7e7f2"
+          },
+          {
+            "subcategory": "repair",
+            "title": "Ремонт",
+            "category": "home",
+            "categoryTitle": "Дом и уют",
+            "color": "#f7ebe5"
           }
         ]
       }
