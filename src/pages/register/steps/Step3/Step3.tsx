@@ -1,14 +1,13 @@
 import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-
 import { useSelector } from '../../../../app/store';
 import { Input } from '../../../../shared/ui/Input/Input';
 import { Button } from '../../../../shared/ui/button/Button';
-
 import { CategoryDropdown } from '../../ui/CategoryDropdown/CategoryDropdown';
-
 import { step3Schema, type Step3Data } from './schema';
 import styles from './Step3.module.css';
+import { ImageUpload } from '../../../../shared/ui/ImageUpload/ImageUpload';
+
 
 type Step3Props = {
   onSubmit: (data: Step3Data) => void;
@@ -127,10 +126,8 @@ export function Step3({ onSubmit, onBack, initialData }: Step3Props) {
       <Controller
         name="teachImages"
         control={control}
-        render={() => (
-          <div className={styles.imageUploadPlaceholder}>
-            Загрузка изображений (в разработке)
-          </div>
+        render={({ field }) => (
+          <ImageUpload value={field.value} onChange={field.onChange} />
         )}
       />
       {errors.teachImages && (

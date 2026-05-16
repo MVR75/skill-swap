@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from '../../app/store';
 import { getCategories } from '../../features/categories/categoriesSlice';
 import { Step1 } from './steps/Step1/Step1';
@@ -9,10 +10,6 @@ import { NotificationModal } from '../../shared/ui/NotificationModal/Notificatio
 import type { Step1Data } from './steps/Step1/schema';
 import type { Step2Data, Step3Data, RegisterFormData } from './types';
 import styles from './RegisterPage.module.css';
-
-type RegisterPageProps = {
-  onClose: () => void;
-};
 
 const TOTAL_STEPS = 3;
 
@@ -42,7 +39,7 @@ const STEP_CONTENT: Record<StepNumber, StepContent> = {
   },
 };
 
-export function RegisterPage({ onClose }: RegisterPageProps) {
+export function RegisterPage() {
   const [currentStep, setCurrentStep] = useState<StepNumber>(1);
   const [formData, setFormData] = useState<Partial<RegisterFormData>>({});
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
@@ -92,10 +89,16 @@ export function RegisterPage({ onClose }: RegisterPageProps) {
     setIsNotificationOpen(true);
   };
 
+  const navigate = useNavigate();
+
+  const handleClose = () => {
+    navigate('/login');
+  };
+
   const handleNotificationDone = () => {
     console.log('Регистрация завершена:', formData);
     setIsNotificationOpen(false);
-    onClose();
+    handleClose();
   };
 
   const handleBack = () => {
@@ -128,7 +131,7 @@ export function RegisterPage({ onClose }: RegisterPageProps) {
           <button
             type="button"
             className={styles.closeButton}
-            onClick={onClose}
+            onClick={handleClose}
             aria-label="Закрыть"
           >
             Закрыть

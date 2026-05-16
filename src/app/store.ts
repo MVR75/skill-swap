@@ -5,15 +5,16 @@ import {
   useDispatch as dispatchHook,
   useSelector as selectorHook,
 } from 'react-redux';
-
 import { skillsSlice } from "../features/skills/skillsSlice";
 import { categoriesSlice } from "../features/categories/categoriesSlice";
 import { filtersSlice } from "../features/filters/filtersSlice";
+import { userSlice } from "../features/Users/userSlice";
 
 export const rootReducer = combineSlices(
   skillsSlice,
   categoriesSlice,
-  filtersSlice
+  filtersSlice,
+  userSlice
 );
 
 export const store = configureStore({
