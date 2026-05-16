@@ -1,4 +1,4 @@
-type TActiveFilterType = 'gender' | 'skillExchangeIntent' | 'city' | 'skill';
+type TActiveFilterType = 'gender' | 'skillExchangeIntent' | 'city' | 'skill' | 'search'; // <-- ДОБАВЛЯЕМ 'search'
 
 export type TActiveFilterItem = {
   type: TActiveFilterType;

@@ -9,6 +9,24 @@ export const selectFilteredSkillCards = createSelector(
       (filters.skills.length === 0 && cardSkills.length > 0) ||
       filters.skills.some((skill) => cardSkills.includes(skill));
 
+    const matchesSearchQuery = (card: typeof cards[0]) => {
+      if (!filters.searchQuery.trim()) return true;
+      
+      const query = filters.searchQuery.toLowerCase().trim();
+      
+      const inCanTeach = card.skills.canTeach.some(
+        (skill) => skill.title.toLowerCase().includes(query) ||
+                  skill.categoryTitle.toLowerCase().includes(query)
+      );
+      
+      const inWantsToLearn = card.skills.wantsToLearn.some(
+        (skill) => skill.title.toLowerCase().includes(query) ||
+                  skill.categoryTitle.toLowerCase().includes(query)
+      );
+      
+      return inCanTeach || inWantsToLearn;
+    };
+
     return cards.filter((card) => {
       const matchesGender =
         filters.gender === "any" || card.gender === filters.gender;
@@ -38,7 +56,8 @@ export const selectFilteredSkillCards = createSelector(
       return (
         matchesGender &&
         matchesCity &&
-        matchesSkillExchangeIntent
+        matchesSkillExchangeIntent &&
+        matchesSearchQuery(card)
       );
     });
   }

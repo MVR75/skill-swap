@@ -8,11 +8,7 @@ export interface HeaderProps {
   isAuthenticated?: boolean;
   userName?: string;
   userAvatar?: string;
-
   showSearch?: boolean;
-  searchValue?: string;
-  onSearchChange?: (value: string) => void;
-
   onLoginClick?: () => void;
   onRegisterClick?: () => void;
   onLogoutClick?: () => void;
@@ -27,8 +23,6 @@ export function Header({
   userName = 'User',
   userAvatar,
   showSearch = true,
-  searchValue = '',
-  onSearchChange,
   onLoginClick,
   onRegisterClick,
   onFavoritesClick,
@@ -77,11 +71,21 @@ export function Header({
           <input
             id="header-search"
             className={styles.searchInput}
-            type="search"
+            type="text"
             placeholder="Искать навык"
             value={searchValue}
-            onChange={(event) => onSearchChange?.(event.target.value)}
+            onChange={(event) => handleSearchChange(event.target.value)}
           />
+          {searchValue && (
+            <button
+              type="button"
+              onClick={handleClearSearch}
+              className={styles.clearSearchBtn}
+              aria-label="Очистить поиск"
+            >
+              ✕
+            </button>
+          )}
         </label>
       )}
 

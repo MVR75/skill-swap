@@ -49,6 +49,10 @@
   gap: var(--space-8);
   font-size: var(--font-size-body);
   line-height: var(--line-height-body);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
 }
 
 .chevronIcon {
@@ -57,6 +61,7 @@
 }
 
 .search {
+  position: relative;
   display: flex;
   align-items: center;
   gap: var(--space-12);
@@ -90,6 +95,32 @@
   opacity: 0.5;
 }
 
+.clearSearchBtn {
+  position: absolute;
+  right: var(--space-16);
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+}
+
+.clearSearchBtn span,
+.clearSearchBtn svg {
+  font-size: 10px;
+  width: 10px;
+  height: 10px;
+  line-height: 1;
+  pointer-events: none;
+}
+
 .actions {
   display: flex;
   align-items: center;
@@ -104,6 +135,14 @@
   justify-content: center;
   width: 44px;
   height: 44px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--radius-full);
+}
+
+.iconButton:hover {
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .themeIcon {
@@ -136,6 +175,15 @@
   display: flex;
   align-items: center;
   gap: var(--space-16);
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 40px;
+  padding: var(--space-4) var(--space-12);
+}
+
+.userButton:hover {
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .userName {
@@ -158,9 +206,7 @@
   transition:
     color 0.2s ease,
     background-color 0.2s ease,
-    border-color 0.2s ease,
-    opacity 0.2s ease,
-    transform 0.1s ease;
+    opacity 0.2s ease;
 }
 
 .logoLink:hover,
