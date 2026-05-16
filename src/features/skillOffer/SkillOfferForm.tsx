@@ -1,25 +1,37 @@
 import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useSelector } from '../../../../app/store';
-import { Input } from '../../../../shared/ui/Input/Input';
-import { Button } from '../../../../shared/ui/button/Button';
-import { CategoryDropdown } from '../../ui/CategoryDropdown/CategoryDropdown';
-import { step3Schema, type Step3Data } from './schema';
-import styles from './Step3.module.css';
-import { ImageUpload } from '../../../../shared/ui/ImageUpload/ImageUpload';
 
+import { useSelector } from '../../app/store';
+import { Input } from '../../shared/ui/Input/Input';
+import { Button } from '../../shared/ui/button/Button';
+import { CategoryDropdown } from '../../pages/register/ui/CategoryDropdown/CategoryDropdown';
 
-type Step3Props = {
-  onSubmit: (data: Step3Data) => void;
-  onBack: () => void;
-  initialData?: Partial<Step3Data>;
+import {
+  skillOfferSchema,
+  type SkillOfferFormData,
+} from './model/schema';
+
+import styles from './SkillOfferForm.module.css';
+
+type SkillOfferFormProps = {
+  onSubmit: (data: SkillOfferFormData) => void;
+  onBack?: () => void;
+  initialData?: Partial<SkillOfferFormData>;
+  submitText?: string;
+  backText?: string;
 };
 
 const PLACEHOLDER_IMAGE = new File([''], 'placeholder.jpg', {
   type: 'image/jpeg',
 });
 
-export function Step3({ onSubmit, onBack, initialData }: Step3Props) {
+export function SkillOfferForm({
+  onSubmit,
+  onBack,
+  initialData,
+  submitText = 'Продолжить',
+  backText = 'Назад',
+}: SkillOfferFormProps) {
   const categories = useSelector((state) => state.categories.categories);
 
   const {
@@ -29,8 +41,8 @@ export function Step3({ onSubmit, onBack, initialData }: Step3Props) {
     watch,
     setValue,
     formState: { errors },
-  } = useForm<Step3Data>({
-    resolver: zodResolver(step3Schema),
+  } = useForm<SkillOfferFormData>({
+    resolver: zodResolver(skillOfferSchema),
     mode: 'onBlur',
     defaultValues: {
       teachTitle: initialData?.teachTitle ?? '',
@@ -84,6 +96,7 @@ export function Step3({ onSubmit, onBack, initialData }: Step3Props) {
         value={selectedCategories}
         onChange={handleCategoriesChange}
       />
+
       {errors.teachCategories && (
         <span className={styles.error}>{errors.teachCategories.message}</span>
       )}
@@ -107,6 +120,7 @@ export function Step3({ onSubmit, onBack, initialData }: Step3Props) {
         <label className={styles.label} htmlFor="teachAbout">
           Описание
         </label>
+
         <textarea
           id="teachAbout"
           className={styles.textarea}
@@ -116,6 +130,7 @@ export function Step3({ onSubmit, onBack, initialData }: Step3Props) {
           aria-describedby={errors.teachAbout ? 'teachAbout-error' : undefined}
           {...register('teachAbout')}
         />
+
         {errors.teachAbout && (
           <span id="teachAbout-error" role="alert" className={styles.error}>
             {errors.teachAbout.message}
@@ -126,8 +141,13 @@ export function Step3({ onSubmit, onBack, initialData }: Step3Props) {
       <Controller
         name="teachImages"
         control={control}
-        render={({ field }) => (
-          <ImageUpload value={field.value} onChange={field.onChange} />
+        render={() => (
+          <div className={styles.imageUploadPlaceholder}>
+            <span>Перетащите или выберите изображения навыка</span>
+            <button className={styles.imageUploadButton} type="button">
+              Выбрать изображения
+            </button>
+          </div>
         )}
       />
       {errors.teachImages && (
@@ -135,11 +155,14 @@ export function Step3({ onSubmit, onBack, initialData }: Step3Props) {
       )}
 
       <div className={styles.actions}>
-        <Button variant="outline" onClick={onBack}>
-          Назад
-        </Button>
+        {onBack && (
+          <Button variant="outline" onClick={onBack}>
+            {backText}
+          </Button>
+        )}
+
         <Button type="submit" variant="primary">
-          Продолжить
+          {submitText}
         </Button>
       </div>
     </form>

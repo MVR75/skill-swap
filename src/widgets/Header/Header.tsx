@@ -1,8 +1,8 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
 import { Button } from '../../shared/ui/button/Button';
-import { useDispatch, useSelector } from '../../app/store';
-import { selectSearchQuery, setSearchQuery } from '../../features/filters/filtersSlice';
+import { NotificationsDropdown } from '../NotificationsDropdown/NotificationsDropdown';
 
 export interface HeaderProps {
   isAuthenticated?: boolean;
@@ -12,35 +12,25 @@ export interface HeaderProps {
   onLoginClick?: () => void;
   onRegisterClick?: () => void;
   onLogoutClick?: () => void;
-  onNotificationsClick?: () => void;
+
   onFavoritesClick?: () => void;
   onProfileClick?: () => void;
   onSkillsClick?: () => void;
 }
 
 export function Header({
-  isAuthenticated = false,
+  isAuthenticated = true,
   userName = 'User',
   userAvatar,
   showSearch = true,
   onLoginClick,
   onRegisterClick,
-  onNotificationsClick,
   onFavoritesClick,
   onProfileClick,
   onSkillsClick,
 }: HeaderProps) {
-  const dispatch = useDispatch();
-  const searchValue = useSelector(selectSearchQuery);
-  
-  const handleSearchChange = (value: string) => {
-    dispatch(setSearchQuery(value));
-  };
-  
-  const handleClearSearch = () => {
-    dispatch(setSearchQuery(''));
-  };
-  
+  const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
+
   return (
     <header className={styles.header}>
       <Link
@@ -52,9 +42,9 @@ export function Header({
       </Link>
 
       <nav className={styles.nav} aria-label="Основная навигация">
-        <a href="#about" className={styles.navLink}>
+        <button type="button" className={styles.navLink}>
           О проекте
-        </a>
+        </button>
         <button
           type="button"
           className={styles.skillsButton}
@@ -62,7 +52,7 @@ export function Header({
         >
           Все навыки
           <img
-            src="/public/icons/vector.svg"
+            src="/icons/vector.svg"
             alt=""
             className={styles.chevronIcon}
             aria-hidden="true"
@@ -73,7 +63,7 @@ export function Header({
       {showSearch && (
         <label htmlFor="header-search" className={styles.search}>
           <img
-            src="/public/icons/search.svg"
+            src="/icons/search.svg"
             alt=""
             className={styles.searchIcon}
             aria-hidden="true"
@@ -106,7 +96,7 @@ export function Header({
           aria-label="Переключить тему"
         >
           <img
-            src="/public/icons/moon.svg"
+            src="/icons/moon.svg"
             alt=""
             className={styles.themeIcon}
             aria-hidden="true"
@@ -115,19 +105,29 @@ export function Header({
 
         {isAuthenticated ? (
           <>
-            <button
-              type="button"
-              className={styles.iconButton}
-              aria-label="Открыть уведомления"
-              onClick={onNotificationsClick}
-            >
-              <img
-                src="/public/icons/notification.svg"
-                alt=""
-                className={styles.actionIcon}
-                aria-hidden="true"
-              />
-            </button>
+            <div className={styles.notificationsWrapper}>
+              <button
+                type="button"
+                className={styles.iconButton}
+                aria-label="Открыть уведомления"
+                aria-expanded={isNotificationsOpen}
+                onClick={() => setIsNotificationsOpen((prev) => !prev)}
+              >
+                <img
+                  src="/icons/notification.svg"
+                  alt=""
+                  className={styles.actionIcon}
+                  aria-hidden="true"
+                />
+              </button>
+
+              <div className={styles.notificationsDropdown}>
+                <NotificationsDropdown
+                  isOpen={isNotificationsOpen}
+                  onClose={() => setIsNotificationsOpen(false)}
+                />
+              </div>
+            </div>
 
             <button
               type="button"
@@ -136,7 +136,7 @@ export function Header({
               onClick={onFavoritesClick}
             >
               <img
-                src="/public/icons/like.svg"
+                src="/icons/like.svg"
                 alt=""
                 className={styles.actionIcon}
                 aria-hidden="true"
@@ -153,7 +153,7 @@ export function Header({
                 <img src={userAvatar} alt="" className={styles.avatar} />
               ) : (
                 <img
-                  src="/public/icons/user-circle.svg"
+                  src="/icons/user-circle.svg"
                   alt=""
                   className={styles.avatar}
                   aria-hidden="true"
