@@ -7,6 +7,7 @@ type TFiltersState = {
     skills: string[];
     gender: string;
     city: string[];
+    searchQuery: string;
   };
   hasActiveFilters: boolean;
 };
@@ -15,7 +16,8 @@ const filtersInitialState = {
   skillExchangeIntent: 'all',
   skills: [],
   gender: 'any',
-  city: []
+  city: [],
+  searchQuery: ''
 }
 
 const initialState: TFiltersState = {
@@ -27,7 +29,8 @@ const hasActiveFilters = (filters: TFiltersState['filters']) =>
   filters.skillExchangeIntent !== 'all' ||
   filters.gender !== 'any' ||
   filters.skills.length > 0 ||
-  filters.city.length > 0;
+  filters.city.length > 0 ||
+  filters.searchQuery !== '';
 
 export const filtersSlice = createSlice({
   name: 'filters',
@@ -49,11 +52,16 @@ export const filtersSlice = createSlice({
       state.filters.city = action.payload;
       state.hasActiveFilters = hasActiveFilters(state.filters);
     },
+    setSearchQuery: (state, action: PayloadAction<string>) => {
+      state.filters.searchQuery = action.payload;
+      state.hasActiveFilters = hasActiveFilters(state.filters);
+    },
     clearFilters: () => ({
       filters: {
         ...filtersInitialState,
         skills: [],
-        city: []
+        city: [],
+        searchQuery: ''
       },
       hasActiveFilters: false
     }),
@@ -74,6 +82,10 @@ export const filtersSlice = createSlice({
         state.filters.skills = state.filters.skills.filter((skill) => skill !== action.payload.value);
       }
 
+      if (action.payload.type === 'search') {
+        state.filters.searchQuery = '';
+      }
+
       state.hasActiveFilters = hasActiveFilters(state.filters);
     }
   },
@@ -82,6 +94,7 @@ export const filtersSlice = createSlice({
     selectSkills: (state) => state.filters.skills,
     selectGender: (state) => state.filters.gender,
     selectCities: (state) => state.filters.city,
+    selectSearchQuery: (state) => state.filters.searchQuery,
     selectAllFilters: (state) => state.filters,
     selectHasActiveFilters: (state) => state.hasActiveFilters
   }
@@ -92,6 +105,7 @@ export const {
   selectGender,
   selectCities,
   selectSkills,
+  selectSearchQuery,
   selectAllFilters,
   selectHasActiveFilters
 } = filtersSlice.selectors;
@@ -101,6 +115,7 @@ export const {
   changeGender,
   changeCities,
   changeSkills,
+  setSearchQuery,
   clearFilters,
   deleteFilter
 } = filtersSlice.actions;
