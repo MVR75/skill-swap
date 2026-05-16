@@ -1,8 +1,14 @@
-// features/skills/skillsSlice.ts
-
-import { createAsyncThunk, createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type { TSkillCard } from "../../entities/types";
-import { fetchSkills } from "../../api/skillsApi";
+import {
+  createAsyncThunk,
+  createSlice,
+  type PayloadAction,
+} from '@reduxjs/toolkit';
+import type { TSkillCard, TCreatedSkill } from '../../entities/types';
+import { fetchSkills } from '../../api/skillsApi';
+import {
+  getCreatedSkillsFromStorage,
+  saveCreatedSkillsToStorage,
+} from '../../pages/shared/lib/createdSkillsStorage';
 
 export const getSkills = createAsyncThunk<
   TSkillCard[],
@@ -13,13 +19,15 @@ export const getSkills = createAsyncThunk<
     const response = await fetchSkills();
     return response.users;
   } catch (err) {
-    const message = err instanceof Error ? err.message : 'Не удалось загрузить данные';
+    const message =
+      err instanceof Error ? err.message : 'Не удалось загрузить данные';
     return rejectWithValue(message);
   }
 });
 
 type TSkillsState = {
   cards: TSkillCard[];
+  createdSkills: TCreatedSkill[];
 };
 
 const initialState: TSkillsState = {
@@ -51,8 +59,9 @@ export const skillsSlice = createSlice({
   },
   selectors: {
     selectAllSkillCards: (state) => state.cards,
-    selectSkillCardById: (state, id: string) => state.cards.find(card => card.id === id),
-  }
+    selectCreatedSkills: (state) => state.createdSkills,
+  },
 });
 
-export const { selectAllSkillCards, selectSkillCardById } = skillsSlice.selectors;
+export const { addCreatedSkill, removeCreatedSkill } = skillsSlice.actions;
+export const { selectAllSkillCards, selectCreatedSkills } = skillsSlice.selectors;

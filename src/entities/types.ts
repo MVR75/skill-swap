@@ -54,3 +54,11 @@ export type User = {
     gender: string,
     skills: string[]
 }
+export type TCreatedSkill = {
+  id: string;
+  title: string;
+  description: string;
+  category: string;
+  categoryTitle: string;
+  subcategory: string;
+};
