@@ -8,7 +8,7 @@ export type UserInfo = {
   name: string;
   birthDate: Date | null;
   role: string;
-  gender: 'мужской' | 'женский';
+  gender: 'мужской' | 'женский' | 'unspecified';
   city: string;
   about: string;
 };
@@ -30,12 +30,38 @@ const saveFavoritesToStorage = (favorites: string[]) => {
   localStorage.setItem('favorites', JSON.stringify(favorites));
 };
 
+const loadUserFromStorage = (): UserInfo | null => {
+  const saved = localStorage.getItem('user');
+  if (!saved) return null;
+  try {
+    const user = JSON.parse(saved);
+    if (user.birthDate) {
+      user.birthDate = new Date(user.birthDate);
+    }
+    return user;
+  } catch {
+    return null;
+  }
+};
+
+const saveUserToStorage = (user: UserInfo | null) => {
+  if (user) {
+    const userToSave = {
+      ...user,
+      birthDate: user.birthDate ? user.birthDate.toISOString() : null,
+    };
+    localStorage.setItem('user', JSON.stringify(userToSave));
+  } else {
+    localStorage.removeItem('user');
+  }
+};
+
 const initialState: UserState = {
-  userInfo: null,
+  userInfo: loadUserFromStorage(),
   favorites: loadFavoritesFromStorage(),
   loading: false,
   error: null,
-  isAuthenticated: false,
+  isAuthenticated: !!loadUserFromStorage(),
 };
 
 export const userSlice = createSlice({
@@ -45,6 +71,7 @@ export const userSlice = createSlice({
     setUserInfo: (state, action: PayloadAction<UserInfo>) => {
       state.userInfo = action.payload;
       state.isAuthenticated = true;
+      saveUserToStorage(action.payload);
     },
 
     updateUserInfo: (state, action: PayloadAction<Partial<UserInfo>>) => {
@@ -53,12 +80,14 @@ export const userSlice = createSlice({
           ...state.userInfo,
           ...action.payload,
         };
+        saveUserToStorage(state.userInfo);
       }
     },
 
     clearUserInfo: (state) => {
       state.userInfo = null;
       state.isAuthenticated = false;
+      saveUserToStorage(null);
     },
 
     setFavorites: (state, action: PayloadAction<string[]>) => {
@@ -75,7 +104,6 @@ export const userSlice = createSlice({
         state.favorites.push(action.payload);
       }
       saveFavoritesToStorage(state.favorites);
-      console.log('Favorites after toggle:', state.favorites);
     },
 
     setLoading: (state, action: PayloadAction<boolean>) => {

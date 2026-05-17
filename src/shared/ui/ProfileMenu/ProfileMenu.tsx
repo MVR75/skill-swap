@@ -17,12 +17,12 @@ const ProfileMenu: React.FC<ProfileMenuProps> = () => {
         {icon: email,
         alt: 'Иконка почты',
         text: 'Заявки',
-        to: '/'
+        to: '/profile?tab=requests'
         },
         {icon: message,
         alt: 'Иконка сообщения',
-        text: 'Мои обмены',
-        to: '/'
+        text: 'Мои обмены',
+        to: '/profile?tab=exchanges'
         },
         {icon: like,
         alt: 'Иконка лайка',
@@ -31,8 +31,8 @@ const ProfileMenu: React.FC<ProfileMenuProps> = () => {
         },
         {icon: idea,
         alt: 'Иконка лампочки',
-        text: 'Мои навыки',
-        to: '/create'
+        text: 'Мои навыки',
+        to: '/profile?tab=skills'
         },
         {icon: person,
         alt: 'Иконка профиля',

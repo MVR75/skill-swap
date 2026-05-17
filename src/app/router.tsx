@@ -18,8 +18,8 @@ export const AppRouter = () => {
 
   useEffect(() => {
     dispatch(getSkills());
-    dispatch(getCategories());
-  });
+    dispatch(getCategories())
+  }, [dispatch]);
 
   return (
     <BrowserRouter>

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from '../../app/store';
 import { getCategories } from '../../features/categories/categoriesSlice';
+import { setUserInfo } from '../../features/Users/userSlice';
 import { Step1 } from './steps/Step1/Step1';
 import { Step2 } from './steps/Step2/Step2';
 import { Step3 } from './steps/Step3/Step3';
@@ -47,6 +48,7 @@ export function RegisterPage() {
   const [previewPhotos, setPreviewPhotos] = useState<string[]>([]);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const categories = useSelector((state) => state.categories.categories);
 
   useEffect(() => {
@@ -85,20 +87,31 @@ export function RegisterPage() {
   };
 
   const handlePreviewDone = () => {
+    const userData = {
+      id: crypto.randomUUID(),
+      email: formData.email || '',
+      name: formData.name || '',
+      birthDate: formData.birthDate || null,
+      gender: (formData.gender as 'мужской' | 'женский' | 'unspecified') || 'unspecified',
+      city: formData.city || '',
+      about: '',
+      role: 'user',
+      src: previewPhotos[0] || '',
+    };
+    
+    dispatch(setUserInfo(userData));
+    
     setIsPreviewOpen(false);
     setIsNotificationOpen(true);
   };
-
-  const navigate = useNavigate();
 
   const handleClose = () => {
     navigate('/login');
   };
 
   const handleNotificationDone = () => {
-    console.log('Регистрация завершена:', formData);
     setIsNotificationOpen(false);
-    handleClose();
+    navigate('/profile');
   };
 
   const handleBack = () => {
@@ -208,10 +221,10 @@ export function RegisterPage() {
       <NotificationModal
         isOpen={isNotificationOpen}
         onClose={handleNotificationDone}
-        title="Ваше предложение создано"
-        message="Теперь вы можете предложить обмен"
+        title="Регистрация успешно завершена!"
+        message="Добро пожаловать в SkillSwap! Теперь вы можете предлагать обмен навыками"
         icon="success"
-        buttonText="Готово"
+        buttonText="Перейти в профиль"
       />
     </div>
   );
