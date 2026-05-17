@@ -13,9 +13,19 @@ export type UserInfo = {
   about: string;
 };
 
+export type TNotification = {
+  id: string;
+  title: string;
+  description: string;
+  date: string;
+  status: 'new' | 'viewed';
+  actionLabel?: string;
+};
+
 type UserState = {
   userInfo: UserInfo | null;
   favorites: string[];
+  notifications: TNotification[];
   loading: boolean;
   error: string | null;
   isAuthenticated: boolean;
@@ -30,9 +40,19 @@ const saveFavoritesToStorage = (favorites: string[]) => {
   localStorage.setItem('favorites', JSON.stringify(favorites));
 };
 
+const loadNotificationsFromStorage = (): TNotification[] => {
+  const saved = localStorage.getItem('notifications');
+  return saved ? JSON.parse(saved) : [];
+};
+
+const saveNotificationsToStorage = (notifications: TNotification[]) => {
+  localStorage.setItem('notifications', JSON.stringify(notifications));
+};
+
 const initialState: UserState = {
   userInfo: null,
   favorites: loadFavoritesFromStorage(),
+  notifications: loadNotificationsFromStorage(),
   loading: false,
   error: null,
   isAuthenticated: false,
@@ -59,6 +79,8 @@ export const userSlice = createSlice({
     clearUserInfo: (state) => {
       state.userInfo = null;
       state.isAuthenticated = false;
+      state.notifications = [];
+      saveNotificationsToStorage([]);
     },
 
     setFavorites: (state, action: PayloadAction<string[]>) => {
@@ -85,6 +107,63 @@ export const userSlice = createSlice({
     setError: (state, action: PayloadAction<string | null>) => {
       state.error = action.payload;
     },
+
+    
+    addNotification: (state, action: PayloadAction<TNotification>) => {
+      const exists = state.notifications.some(n => n.id === action.payload.id);
+      if (!exists) {
+        state.notifications.unshift(action.payload);
+        saveNotificationsToStorage(state.notifications);
+      }
+    },
+    
+    addMultipleNotifications: (state, action: PayloadAction<TNotification[]>) => {
+      const newNotifications = action.payload.filter(
+        newNotif => !state.notifications.some(existing => existing.id === newNotif.id)
+      );
+      state.notifications = [...newNotifications, ...state.notifications];
+      saveNotificationsToStorage(state.notifications);
+    },
+    
+    markNotificationAsRead: (state, action: PayloadAction<string>) => {
+      const notification = state.notifications.find(n => n.id === action.payload);
+      if (notification && notification.status === 'new') {
+        notification.status = 'viewed';
+        saveNotificationsToStorage(state.notifications);
+      }
+    },
+    
+    markAllNotificationsAsRead: (state) => {
+      state.notifications.forEach(notification => {
+        if (notification.status === 'new') {
+          notification.status = 'viewed';
+        }
+      });
+      saveNotificationsToStorage(state.notifications);
+    },
+    
+    removeNotification: (state, action: PayloadAction<string>) => {
+      state.notifications = state.notifications.filter(n => n.id !== action.payload);
+      saveNotificationsToStorage(state.notifications);
+    },
+    
+    clearAllNotifications: (state) => {
+      state.notifications = [];
+      saveNotificationsToStorage([]);
+    },
+    
+    clearViewedNotifications: (state) => {
+      state.notifications = state.notifications.filter(n => n.status === 'new');
+      saveNotificationsToStorage(state.notifications);
+    },
+    
+    updateNotification: (state, action: PayloadAction<{ id: string; updates: Partial<TNotification> }>) => {
+      const index = state.notifications.findIndex(n => n.id === action.payload.id);
+      if (index !== -1) {
+        state.notifications[index] = { ...state.notifications[index], ...action.payload.updates };
+        saveNotificationsToStorage(state.notifications);
+      }
+    },
   },
   
   selectors: {
@@ -95,6 +174,26 @@ export const userSlice = createSlice({
     selectFavoritesCount: (state) => state.favorites.length,
     selectLoading: (state) => state.loading,
     selectError: (state) => state.error,
+    
+    selectAllNotifications: (state) => state.notifications,
+    
+    selectUnreadNotificationsCount: (state) => 
+      state.notifications.filter(n => n.status === 'new').length,
+    
+    selectNewNotifications: (state) => 
+      state.notifications.filter(n => n.status === 'new'),
+    
+    selectViewedNotifications: (state) => 
+      state.notifications.filter(n => n.status === 'viewed'),
+    
+    selectNotificationById: (state, id: string) => 
+      state.notifications.find(n => n.id === id),
+    
+    selectHasUnreadNotifications: (state) => 
+      state.notifications.some(n => n.status === 'new'),
+    
+    selectRecentNotifications: (state, limit: number = 5) => 
+      state.notifications.slice(0, limit),
   },
 });
 
@@ -106,6 +205,14 @@ export const {
   toggleFavorite,
   setLoading,
   setError,
+  addNotification,
+  addMultipleNotifications,
+  markNotificationAsRead,
+  markAllNotificationsAsRead,
+  removeNotification,
+  clearAllNotifications,
+  clearViewedNotifications,
+  updateNotification,
 } = userSlice.actions;
 
 export const {
@@ -116,6 +223,13 @@ export const {
   selectFavoritesCount,
   selectLoading,
   selectError,
+  selectAllNotifications,
+  selectUnreadNotificationsCount,
+  selectNewNotifications,
+  selectViewedNotifications,
+  selectNotificationById,
+  selectHasUnreadNotifications,
+  selectRecentNotifications,
 } = userSlice.selectors;
 
 export default userSlice.reducer;

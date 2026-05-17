@@ -51,6 +51,24 @@ export const skillsSlice = createSlice({
 
       saveCreatedSkillsToStorage(state.createdSkills);
     },
+    
+    addUserSkillCard: (state, action: PayloadAction<TSkillCard>) => {
+      const exists = state.cards.some(card => card.id === action.payload.id);
+      if (!exists) {
+        state.cards.push(action.payload);
+      }
+    },
+    
+    updateUserSkillCard: (state, action: PayloadAction<TSkillCard>) => {
+      const index = state.cards.findIndex(card => card.id === action.payload.id);
+      if (index !== -1) {
+        state.cards[index] = action.payload;
+      }
+    },
+    
+    removeUserSkillCard: (state, action: PayloadAction<string>) => {
+      state.cards = state.cards.filter(card => card.id !== action.payload);
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getSkills.fulfilled, (state, action) => {
@@ -60,8 +78,31 @@ export const skillsSlice = createSlice({
   selectors: {
     selectAllSkillCards: (state) => state.cards,
     selectCreatedSkills: (state) => state.createdSkills,
+    
+    selectUserSkillCards: (state) => state.cards.filter(card => 
+      card.email === localStorage.getItem('userEmail') || 
+      (card as any).isUserCreated === true
+    ),
+    
+    selectSkillCardById: (state, id: string) => 
+      state.cards.find(card => card.id === id),
+    
+    selectUserCreatedSkills: (state) => state.createdSkills,
   },
 });
 
-export const { addCreatedSkill, removeCreatedSkill } = skillsSlice.actions;
-export const { selectAllSkillCards, selectCreatedSkills } = skillsSlice.selectors;
+export const { 
+  addCreatedSkill, 
+  removeCreatedSkill,
+  addUserSkillCard,
+  updateUserSkillCard,
+  removeUserSkillCard,
+} = skillsSlice.actions;
+
+export const { 
+  selectAllSkillCards, 
+  selectCreatedSkills,
+  selectUserSkillCards,
+  selectSkillCardById,
+  selectUserCreatedSkills,
+} = skillsSlice.selectors;
