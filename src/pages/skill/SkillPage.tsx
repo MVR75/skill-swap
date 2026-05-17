@@ -11,10 +11,11 @@ import {
 } from '../../features/skills/skillsSlice';
 import SkillCard from '../../entities/skill-Card/SkillCard';
 import Skills from '../../shared/ui/skills/Skills';
+import Like from '../../shared/ui/like/Like';
 import { ErrorPage } from '../error/ErrorPage';
 import { Button } from '../../shared/ui/button/Button';
 import { Icon } from '@mdi/react';
-import { mdiChevronLeft, mdiChevronRight } from '@mdi/js';
+import { mdiHeart, mdiHeartOutline, mdiChevronLeft, mdiChevronRight, mdiClockOutline } from '@mdi/js';
 import styles from './SkillPage.module.css';
 
 const getYearsText = (age: number) => {
@@ -36,6 +37,8 @@ const SkillPage = () => {
   const error = useSelector(selectSkillsError);
 
   const [photoIndex, setPhotoIndex] = useState(0);
+  const [isExchangeProposed, setIsExchangeProposed] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
 
   useEffect(() => {
     if (id) {
@@ -46,6 +49,8 @@ const SkillPage = () => {
 
   useEffect(() => {
     setPhotoIndex(0);
+    setIsLiked(false);
+    setIsExchangeProposed(false);
   }, [id]);
 
   const canTeachSkill = skill?.skills.canTeach[0];
@@ -125,8 +130,8 @@ const SkillPage = () => {
         {/* Правая колонка — навык */}
         <section className={styles.skillCard}>
           <div className={styles.cardActions}>
-            <button className={styles.actionButton} aria-label="Лайк">
-              <img src="/icons/like.svg" alt="" />
+            <button className={styles.actionButton} aria-label="Лайк" onClick={() => setIsLiked(!isLiked)}>
+              <Icon path={isLiked ? mdiHeart : mdiHeartOutline} size={0.85} color={isLiked ? '#ABD27A' : '#000'} />
             </button>
             <button className={styles.actionButton} aria-label="Поделиться">
               <img src="/icons/share.svg" alt="" />
@@ -144,8 +149,13 @@ const SkillPage = () => {
               </p>
               <p className={styles.description}>{skill.teachAbout}</p>
             </div>
-            <Button variant="primary" className={styles.exchangeButton}>
-              Предложить обмен
+            <Button
+              variant={isExchangeProposed ? 'outline' : 'primary'}
+              className={styles.exchangeButton}
+              onClick={() => setIsExchangeProposed(!isExchangeProposed)}
+              leftIcon={isExchangeProposed ? <Icon path={mdiClockOutline} size={0.9} /> : undefined}
+            >
+              {isExchangeProposed ? 'Обмен предложен' : 'Предложить обмен'}
             </Button>
           </div>
 

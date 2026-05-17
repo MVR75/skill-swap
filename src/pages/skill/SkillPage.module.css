@@ -14,7 +14,7 @@
 .contentGrid {
   display: grid;
   grid-template-columns: 270px 1fr;
-  gap: 22px;
+  gap: 20px;
   align-items: stretch;
 }
 
@@ -255,6 +255,11 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
+}
+
+.similarGrid > * {
+  width: 100%;
+  min-width: 0;
 }
 
 .emptyText {

@@ -3,13 +3,13 @@
     position: relative;
     flex-direction: column;
     justify-content: space-between;
-    align-items:start;
-    padding:var( --space-20);
-    width: 324px;
+    align-items: start;
+    padding: var(--space-20);
+    width: 100%;
     height: 368px;
     border-radius: var(--radius-tag);
     background-color: var(--color-bg-card);
-    font-family: var(--font-secondary),serif;
+    font-family: var(--font-secondary), serif;
 }
 
 .card__info{
@@ -29,11 +29,11 @@
 }
 
 .card__title{
-    font-size: var(--font-size-h3);
+    font-size: var(--font-size-medium);
 }
 
 .card__subtitle{
-    font-size: var( --font-size-small);
+    font-size: var(--font-size-small);
 }
 
 .card__imageWrapper, 
@@ -76,5 +76,9 @@ align-items: start;
 }
 
 .button{
-    width: 284px !important;
+    width: 100% !important;
+}
+
+.card__actions {
+    width: 100%;
 }
