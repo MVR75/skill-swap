@@ -5,6 +5,7 @@ import { useSelector } from '../../app/store';
 import { Input } from '../../shared/ui/Input/Input';
 import { Button } from '../../shared/ui/button/Button';
 import { CategoryDropdown } from '../../pages/register/ui/CategoryDropdown/CategoryDropdown';
+import { ImageUpload } from '../../shared/ui/ImageUpload/ImageUpload';
 
 import {
   skillOfferSchema,
@@ -141,13 +142,8 @@ export function SkillOfferForm({
       <Controller
         name="teachImages"
         control={control}
-        render={() => (
-          <div className={styles.imageUploadPlaceholder}>
-            <span>Перетащите или выберите изображения навыка</span>
-            <button className={styles.imageUploadButton} type="button">
-              Выбрать изображения
-            </button>
-          </div>
+        render={({ field }) => (
+          <ImageUpload value={field.value} onChange={field.onChange} />
         )}
       />
       {errors.teachImages && (
