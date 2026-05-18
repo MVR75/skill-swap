@@ -110,6 +110,33 @@ svg {
   --radius-full: 50%;
 }
 
+[data-theme='dark'] {
+  /* цвета: основные */
+  --color-primary: #8bb85a;
+  --color-link: #a3d472;
+  --color-error: #e05a42;
+
+  /* текст */
+  --color-text: #e4e8df;
+
+  /* фон */
+  --color-bg-page: #1a1f14;
+  --color-bg-card: #252b1e;
+
+  /* теги по категориям */
+  --color-tag-business: #2e2640;
+  --color-tag-languages: #2e2b1a;
+  --color-tag-home: #3a2820;
+  --color-tag-creative: #3a2035;
+  --color-tag-education: #1e2e35;
+  --color-tag-health: #1e3a1c;
+  --color-tag-number: #1e2240;
+}
+
+[data-theme='dark'] img:not([src$=".jpg"]):not([src$=".png"]):not([src$=".webp"]) {
+  filter: brightness(0) invert(1);
+}
+
 body {
   font-family: var(--font-primary);
   font-size: var(--font-size-body);
@@ -122,6 +149,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   max-width: 1440px;
   margin: 0 auto;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #root {
