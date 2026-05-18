@@ -28,6 +28,20 @@
   gap: 24px;
 }
 
+.homePage__recommendedTitle {
+  font-family: var(--font-heading), serif;
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-medium);
+}
+
+.homePage__recommendedGrid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3, minmax(320px, 1fr));
+  grid-template-rows: auto;
+  gap: 24px;
+}
+
 .homePage__scrollTrigger {
   width: 100%;
   height: 24px;
