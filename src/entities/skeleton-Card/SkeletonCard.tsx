@@ -16,23 +16,23 @@ interface SkeletonCardProps {
 const SkeletonCard: React.FC<SkeletonCardProps> = (props) => {
   const { showButton = true } = props;
   const buttonText = props.buttonText || 'Смотреть все';
-  
+
   const isShowAllButton = buttonText === 'Смотреть все';
-  
+
   return (
     <div className={style.skeletonCard}>
       <h2 className={style.skeletonCard__title}>{props.title}</h2>
       {showButton && (
         <div className={style.skeletonCard__buttonWrapper}>
-          <button 
-            className={style.button} 
-            type='button'
+          <button
+            className={style.button}
+            type="button"
             onClick={props.onButtonClick}
           >
             {!isShowAllButton && (
-              <img 
-                src="/icons/sort.svg" 
-                alt="Сортировка" 
+              <img
+                src="/icons/sort.svg"
+                alt="Сортировка"
                 style={{ width: '16px', height: '16px' }}
               />
             )}
@@ -44,19 +44,17 @@ const SkeletonCard: React.FC<SkeletonCardProps> = (props) => {
         </div>
       )}
       <div className={style.skeletonCard__grid}>
-        {props.skills.map((skill) => {
-          return (
-            <SkillCard 
-              key={skill.id}
-              id={skill.id}
-              avatarUrl={skill.avatarUrl} 
-              name={skill.name}
-              city={skill.city}
-              age={skill.age}
-              skills={skill.skills}
-            />
-          )
-        })}
+        {props.skills.map((skill) => (
+          <SkillCard
+            key={skill.id}
+            id={skill.id}
+            avatarUrl={skill.avatarUrl}
+            name={skill.name}
+            city={skill.city}
+            age={skill.age}
+            skills={skill.skills}
+          />
+        ))}
       </div>
     </div>
   );
