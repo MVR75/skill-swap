@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import style from './ProfilePage.module.css'
-import edit from '../../../public/icons/edit.svg'
+import edit from '/icons/edit.svg'
 import { Input } from '../../shared/ui/Input/Input';
 import { Controller, useForm} from 'react-hook-form';
 import { DatePicker } from '../register/steps/Step2/ui/DatePicker/DatePicker';

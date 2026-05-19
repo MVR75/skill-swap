@@ -3,7 +3,7 @@ import styles from './Footer.module.css';
 export const Footer = () => (
   <footer className={styles.footer}>
     <div>
-      <img src='../../../public/logo.svg' width={159} height={40}/>
+      <img src='/logo.svg' width={159} height={40}/>
     </div>
     <nav className={styles.footer__nav}>
       <ul className={styles.footer__list}>
