@@ -45,10 +45,14 @@ const ProfileMenu: React.FC<ProfileMenuProps> = () => {
         <nav className={style.profilePage__menu}>
         <ul className={style.profilePage__menuList}>
           {menuItems.map((item) => (
-            <NavLink className={({isActive}) =>(isActive ? `${style.link_active}` : `${style.profilePage__menuItem}`)} 
-            key={item.text} to={item.to}>
+            <NavLink 
+              className={({isActive}) => (isActive ? `${style.link_active}` : `${style.profilePage__menuItem}`)} 
+              key={item.text} 
+              to={item.to}
+              end={item.to === '/profile'}
+            >
               <img src={item.icon} alt={item.alt} className={style.icon}/>
-            {item.text}
+              {item.text}
             </NavLink>
           ))}
         </ul>

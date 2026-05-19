@@ -46,6 +46,7 @@ export function RegisterPage() {
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const [previewPhotos, setPreviewPhotos] = useState<string[]>([]);
+  const [avatarUrl, setAvatarUrl] = useState<string>('');
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -73,6 +74,10 @@ export function RegisterPage() {
   };
 
   const handleStep2Submit = (data: Step2Data) => {
+    if (data.avatar) {
+      const url = URL.createObjectURL(data.avatar);
+      setAvatarUrl(url);
+    }
     setFormData((prev) => ({ ...prev, ...data }));
     setCurrentStep(3);
   };
@@ -87,16 +92,20 @@ export function RegisterPage() {
   };
 
   const handlePreviewDone = () => {
+    const birthDateString = formData.birthDate 
+      ? new Date(formData.birthDate).toISOString() 
+      : null;
+    
     const userData = {
       id: crypto.randomUUID(),
       email: formData.email || '',
       name: formData.name || '',
-      birthDate: formData.birthDate || null,
+      birthDate: birthDateString,
       gender: (formData.gender as 'мужской' | 'женский' | 'unspecified') || 'unspecified',
       city: formData.city || '',
       about: '',
       role: 'user',
-      src: previewPhotos[0] || '',
+      src: avatarUrl || previewPhotos[0] || '',
     };
     
     dispatch(setUserInfo(userData));

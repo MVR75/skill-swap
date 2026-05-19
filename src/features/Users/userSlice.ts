@@ -2,11 +2,11 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 export type UserInfo = {
   id: string;
-  avatar?: File;
+  avatar?: string;
   src?: string;
   email: string;
   name: string;
-  birthDate: Date | null;
+  birthDate: string | null;
   role: string;
   gender: 'мужской' | 'женский' | 'unspecified';
   city: string;
@@ -34,11 +34,7 @@ const loadUserFromStorage = (): UserInfo | null => {
   const saved = localStorage.getItem('user');
   if (!saved) return null;
   try {
-    const user = JSON.parse(saved);
-    if (user.birthDate) {
-      user.birthDate = new Date(user.birthDate);
-    }
-    return user;
+    return JSON.parse(saved);
   } catch {
     return null;
   }
@@ -46,11 +42,7 @@ const loadUserFromStorage = (): UserInfo | null => {
 
 const saveUserToStorage = (user: UserInfo | null) => {
   if (user) {
-    const userToSave = {
-      ...user,
-      birthDate: user.birthDate ? user.birthDate.toISOString() : null,
-    };
-    localStorage.setItem('user', JSON.stringify(userToSave));
+    localStorage.setItem('user', JSON.stringify(user));
   } else {
     localStorage.removeItem('user');
   }
