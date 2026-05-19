@@ -108,6 +108,16 @@ svg {
   --radius-sm: 12px; /* кнопки, инпуты, карточки */
   --radius-tag: 20px;
   --radius-full: 50%;
+
+  /* login page */
+  --color-caption: #69735d;
+  --color-disabled-text: #9ca197;
+  --color-disabled: #e4e8df;
+  --color-card-input: #ffffff;
+  --color-link-pressed: #508826;
+  --color-accent: #abd27a;
+  --color-button-hover: #deebc5;
+  --color-background: #f9faf7;
 }
 
 [data-theme='dark'] {
@@ -131,10 +141,16 @@ svg {
   --color-tag-education: #1e2e35;
   --color-tag-health: #1e3a1c;
   --color-tag-number: #1e2240;
-}
 
-[data-theme='dark'] img:not([src$=".jpg"]):not([src$=".png"]):not([src$=".webp"]) {
-  filter: brightness(0) invert(1);
+  /* login page */
+  --color-caption: #9ca89a;
+  --color-disabled-text: #6b7566;
+  --color-disabled: #3a4234;
+  --color-card-input: #252b1e;
+  --color-link-pressed: #a3d472;
+  --color-accent: #8bb85a;
+  --color-button-hover: #3a5020;
+  --color-background: #1a1f14;
 }
 
 body {

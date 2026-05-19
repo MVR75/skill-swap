@@ -123,6 +123,11 @@
   height: 32px;
 }
 
+:global([data-theme='dark']) .galleryIcon,
+:global([data-theme='dark']) .addIcon {
+  filter: brightness(0) invert(1);
+}
+
 .errors {
   margin: var(--space-8) 0 0;
   padding: 0;
