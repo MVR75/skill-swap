@@ -9,6 +9,7 @@ export type TSkillCategory = {
 export type TSkillCard = {
   id: string;
   name: string;
+  favorites: boolean;
   city: string;
   age: number;
   birthDate: string;
@@ -36,3 +37,34 @@ export type TCategory = {
   color: string;
   subcategories: TSubcategory[];
 };
+
+export const ROLE = {
+    ADMIN: 'admin',
+    USER: 'user',
+} as const;
+
+export type Role = typeof ROLE[keyof typeof ROLE];
+
+export type User = {
+  id: string,
+    email: string,
+    date: Date,
+    name: string,
+    role: Role,
+    gender: string,
+    skills: string[]
+}
+export type TCreatedSkill = {
+  id: string;
+  title: string;
+  description: string;
+  category: string;
+  categoryTitle: string;
+  subcategory: string;
+};
+
+export type TAsyncStatus =
+  | 'idle'
+  | 'loading'
+  | 'succeeded'
+  | 'failed';

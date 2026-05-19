@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import style from './SkillCard.module.css';
 import { Button } from '../../shared/ui/button/Button';
 import { useNavigate } from 'react-router-dom';
@@ -7,6 +7,8 @@ import Skills from '../../shared/ui/skills/Skills';
 import { Icon } from '@mdi/react';
 import { mdiAccount } from '@mdi/js';
 import type { TSkillCategory } from '../types';
+import { useDispatch, useSelector } from '../../app/store';
+import { toggleFavorite, selectIsFavorite } from '../../features/Users/userSlice';
 
 interface SkillCardProps {
   id: string;
@@ -21,11 +23,17 @@ interface SkillCardProps {
 }
 
 const SkillCard: React.FC<SkillCardProps> = (props) => {
-  const [like, setLike] = useState(false);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const isFavorite = useSelector((state) => selectIsFavorite(state, props.id));
 
   const handleClick = () => {
     navigate(`/skill/${props.id}`);
+  };
+
+  const handleLikeClick = () => {
+    dispatch(toggleFavorite(props.id));
   };
 
   const canTeachSkills = props.skills.canTeach;
@@ -34,16 +42,29 @@ const SkillCard: React.FC<SkillCardProps> = (props) => {
   const getAgeWord = (age: number): string => {
     const lastDigit = age % 10;
     const lastTwoDigits = age % 100;
-    if (lastTwoDigits >= 11 && lastTwoDigits <= 14) return 'лет';
-    if (lastDigit === 1) return 'год';
-    if (lastDigit >= 2 && lastDigit <= 4) return 'года';
+
+    if (lastTwoDigits >= 11 && lastTwoDigits <= 14) {
+      return 'лет';
+    }
+
+    if (lastDigit === 1) {
+      return 'год';
+    }
+
+    if (lastDigit >= 2 && lastDigit <= 4) {
+      return 'года';
+    }
+
     return 'лет';
   };
 
   return (
     <div className={style.card}>
       <div className={style.card__info}>
-        <Like onClick={() => setLike(!like)} onFavorite={like} />
+        <Like
+          onClick={handleLikeClick}
+          onFavorite={isFavorite}
+        />
         <div>
           <h3 className={style.card__title}>{props.name}</h3>
           <p className={style.card__subtitle}>
@@ -62,19 +83,21 @@ const SkillCard: React.FC<SkillCardProps> = (props) => {
       <div className={style.card__skills}>
         <h3 className={style.card__title}>Может научить:</h3>
         <ul className={style.card__skillsList}>
-          {canTeachSkills.map((skill) => (
-            <Skills key={skill.subcategory} title={skill.title} colorTag={skill.color} />
+          {canTeachSkills.map((skill, index) => (
+            <Skills key={index} title={skill.categoryTitle} colorTag={skill.color} />
           ))}
         </ul>
         <h3 className={style.card__title}>Хочет научиться:</h3>
         <ul className={style.card__skillsList}>
           {wantsToLearn.length > 1 ? (
             <>
-              <Skills title={wantsToLearn[0].title} colorTag={wantsToLearn[0].color} />
+              <Skills title={wantsToLearn[0].categoryTitle} colorTag={wantsToLearn[0].color} />
               <div className={style.categoryNumber}>+{wantsToLearn.length - 1}</div>
             </>
           ) : (
-            <Skills title={wantsToLearn[0].title} colorTag={wantsToLearn[0].color} />
+            wantsToLearn.length === 1 && (
+              <Skills title={wantsToLearn[0].categoryTitle} colorTag={wantsToLearn[0].color} />
+            )
           )}
         </ul>
       </div>

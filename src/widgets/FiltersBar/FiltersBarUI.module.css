@@ -8,12 +8,31 @@
   background-color: var(--color-bg-card);
 }
 
+.filtersBar__titleContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
 .filtersBar__title {
   font-family: var(--font-heading);
   font-weight: var(--font-weight-medium);
   font-size: var(--font-size-h2);
   line-height: var(--line-height-h2);
   letter-spacing: -1.1%;
+}
+
+.filtersBar__clearButton {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  letter-spacing: 2%;
+  color: var(--color-link);
+}
+
+.filtersBar__clearButton:hover {
+  opacity: 0.5;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .filtersBar__componentsContainer {

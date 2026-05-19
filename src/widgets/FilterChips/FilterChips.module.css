@@ -1,0 +1,28 @@
+.filterChips {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) transparent;
+  padding-bottom: 4px;
+  min-height: 62px;
+}
+
+.filterChips::-webkit-scrollbar {
+  height: 4px;
+}
+
+.filterChips::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.filterChips::-webkit-scrollbar-thumb {
+  background-color: var(--color-link);
+  border-radius: 999px;
+}
+
+.filterChips::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-link-hover);
+}

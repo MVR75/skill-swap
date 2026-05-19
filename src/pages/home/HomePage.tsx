@@ -1,134 +1,148 @@
-import { useEffect, useState } from "react";
-import { FiltersBarUI } from "../../widgets/FiltersBar/FiltersBarUI";
+import { useState, useMemo } from 'react';
 import style from './HomePage.module.css';
-import SkeletonCard from "../../entities/skeleton-Card/SkeletonCard";
-import { fetchSkills } from "../../api/skillsApi";
-import type { TSkillCard } from "../../entities/types";
+import SkeletonCard from '../../entities/skeleton-Card/SkeletonCard';
+import { FiltersBar } from '../../widgets/FiltersBar/FiltersBar';
+import { useSelector } from '../../app/store';
+import { selectFilteredSkillCards } from '../../features/skills/selectors';
+import { FilterChips } from '../../widgets/FilterChips/FilterChips';
+import { selectAllSkillCards } from '../../features/skills/skillsSlice';
+import { selectHasActiveFilters } from '../../features/filters/filtersSlice';
+import { useInfiniteScroll } from '../../hooks/useInfiniteScroll';
+import SkillCard from '../../entities/skill-Card/SkillCard';
 
-const genderOptions = [
-  { value: "any", label: "Не имеет значения" },
-  { value: "man", label: "Мужской" },
-  { value: "woman", label: "Женский" },
-];
-
-const skillExchangeIntentOptions = [
-  { value: "all", label: "Все" },
-  { value: "wantToTeach", label: "Хочу научиться" },
-  { value: "canToTeach", label: "Могу научить" },
-];
-
-const businessOptions = [
-  { value: "painting", label: "Управление командой" },
-  { value: "photo", label: "Маркетинг и реклама" },
-  { value: "video", label: "Продажи и переговоры" },
-  { value: "music", label: "Личный бренд" },
-  { value: "sculpture", label: "Резюме и собеседование" },
-  { value: "design", label: "Тайм-менеджмент" },
-];
-
-const cityOptions = [
-  { value: "moscow", label: "Москва" },
-  { value: "spb", label: "Санкт-Петербург" },
-  { value: "nsk", label: "Новосибирск" },
-  { value: "ekb", label: "Екатеринбург" },
-  { value: "kazan", label: "Казань" },
-  { value: "sochi", label: "Сочи" },
-];
-
-const artOptions = [
-  { value: "frontend", label: "Рисование и иллюстрация" },
-  { value: "backend", label: "Фотография" },
-  { value: "qa", label: "Видеомонтаж" },
-  { value: "devops", label: "Музыка и звук" },
-];
+const POPULAR_PAGE_SIZE = 3;
+const NEW_PAGE_SIZE = 3;
+const RECOMMENDED_PAGE_SIZE = 9;
 
 const HomePage = () => {
-  const [gender, setGender] = useState("any");
-  const [skillExchangeIntent, setSkillExchangeIntent] = useState('all');
-  const [cityGroupState, setCityGroupState] = useState<string[]>([]);
-  const [businessTreeState, setBusinessTreeState] = useState<string[]>([]);
-  const [artTreeState, setArtTreeState] = useState<string[]>([]);
-  const [skills, setSkills] = useState<TSkillCard[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [isPopularExpanded, setIsPopularExpanded] = useState(false);
+  const [isNewExpanded, setIsNewExpanded] = useState(false);
+  const [isFilteredNewestFirst, setIsFilteredNewestFirst] = useState(false);
+  
+  const filteredCards = useSelector(selectFilteredSkillCards);
+  const allSkills = useSelector(selectAllSkillCards);
+  const hasActiveFilters = useSelector(selectHasActiveFilters);
 
-  useEffect(()=>{
-    const loadingSkills = async() =>{
-      try {
-        const data = await fetchSkills()
-        setSkills(data.users);
-      } catch (error) {
-        console.log(error)
-      }
-      finally{
-        setLoading(false)
-      }
+  const getNewestFirst = (cards: typeof allSkills) => {
+    return [...cards].reverse();
+  };
+
+  const displayedFilteredCards = useMemo(() => {
+    if (!hasActiveFilters) return [];
+    return isFilteredNewestFirst ? getNewestFirst(filteredCards) : filteredCards;
+  }, [filteredCards, hasActiveFilters, isFilteredNewestFirst]);
+
+  const allPopularSkills = useMemo(() => allSkills.slice(0, 9), [allSkills]);
+  
+  const displayedPopularSkills = useMemo(() => {
+    if (isPopularExpanded) {
+      return allPopularSkills;
     }
-    loadingSkills()
-  },[])
+    return allPopularSkills.slice(0, POPULAR_PAGE_SIZE);
+  }, [allPopularSkills, isPopularExpanded]);
 
-  const skillsFilter = {
-    type: "tree" as const,
-    name: "skills",
-    legend: "Навыки",
-    trees: [
-      {
-        name: "business",
-        label: "Бизнес и карьера",
-        options: businessOptions,
-        value: businessTreeState,
-        onChange: setBusinessTreeState,
-      },
-      {
-        name: "art",
-        label: "Творчество и искусство",
-        options: artOptions,
-        value: artTreeState,
-        onChange: setArtTreeState,
-      },
-    ]
+  const allNewSkills = useMemo(() => {
+    return [...allSkills].reverse();
+  }, [allSkills]);
+
+  const displayedNewSkills = useMemo(() => {
+    if (isNewExpanded) {
+      return allNewSkills;
+    }
+    return allNewSkills.slice(0, NEW_PAGE_SIZE);
+  }, [allNewSkills, isNewExpanded]);
+
+  const { visibleItems: recommendedSkills, isLoading, hasMore, observerRef } = useInfiniteScroll({
+    items: allSkills,
+    pageSize: RECOMMENDED_PAGE_SIZE,
+    loadDelay: 500,
+  });
+
+  const handlePopularToggle = () => {
+    setIsPopularExpanded(!isPopularExpanded);
   };
 
-  const genderFilter = {
-    name: 'gender',
-    legend: 'Пол автора',
-    options: genderOptions,
-    value: gender,
-    onChange: setGender
-  }
-
-  const skillExchangeIntentFilter = {
-    name: 'skillExchangeIntent',
-    options: skillExchangeIntentOptions,
-    value: skillExchangeIntent,
-    onChange: setSkillExchangeIntent
+  const handleNewToggle = () => {
+    setIsNewExpanded(!isNewExpanded);
   };
 
-  const cityFilter = {
-    type: "normal" as const,
-    name: "cities",
-    legend: "Город",
-    options: cityOptions,
-    value: cityGroupState,
-    onChange: setCityGroupState
+  const handleFilteredToggle = () => {
+    setIsFilteredNewestFirst(!isFilteredNewestFirst);
+  };
+
+  const getPopularButtonText = () => {
+    return isPopularExpanded ? 'Сначала новые' : 'Смотреть все';
+  };
+
+  const getNewButtonText = () => {
+    return isNewExpanded ? 'Сначала новые' : 'Смотреть все';
+  };
+
+  const getFilteredButtonText = () => {
+    return isFilteredNewestFirst ? 'Смотреть все' : 'Сначала новые';
   };
 
   return (
     <div className={style.homePage}>
       <div className={style.homePage__filter}>
-        <FiltersBarUI
-          skillExchangeIntentFilter={skillExchangeIntentFilter}
-          skillsFilter={skillsFilter}
-          genderFilter={genderFilter}
-          cityFilter={cityFilter}
-        /> 
+        <FiltersBar />
       </div>
-      {loading ? <p>Загрузка</p> : 
-        <div className={style.homePage__cards}>
-          <SkeletonCard title='Популярное' skills={skills}></SkeletonCard>
-          <SkeletonCard title='Новое' skills={skills}></SkeletonCard>
-          <SkeletonCard title='Рекомендуем' skills={skills}></SkeletonCard>
+      {hasActiveFilters ? (
+        <div className={style.homePage__filteredCards}>
+          <FilterChips />
+          <SkeletonCard
+            title={`Подходящие предложения: ${displayedFilteredCards.length}`}
+            skills={displayedFilteredCards}
+            buttonText={getFilteredButtonText()}
+            onButtonClick={handleFilteredToggle}
+          />
         </div>
-      }
+      ) : (
+        <div className={style.homePage__cards}>
+          <SkeletonCard 
+            title="Популярное" 
+            skills={displayedPopularSkills}
+            buttonText={getPopularButtonText()}
+            onButtonClick={handlePopularToggle}
+          />
+          <SkeletonCard 
+            title="Новое" 
+            skills={displayedNewSkills}
+            buttonText={getNewButtonText()}
+            onButtonClick={handleNewToggle}
+          />
+          <div className={style.homePage__recommended}>
+            <h2 className={style.homePage__recommendedTitle}>Рекомендуем</h2>
+            <div className={style.homePage__recommendedGrid}>
+              {recommendedSkills.map((skill) => (
+                <SkillCard 
+                  key={skill.id}
+                  id={skill.id}
+                  avatarUrl={skill.avatarUrl} 
+                  name={skill.name}
+                  city={skill.city}
+                  age={skill.age}
+                  skills={skill.skills}
+                />
+              ))}
+            </div>
+
+            {hasMore && (
+              <div
+                ref={observerRef}
+                className={style.homePage__scrollTrigger}
+                aria-hidden="true"
+              />
+            )}
+
+            {isLoading && (
+              <p className={style.homePage__loading}>
+                Загружаем предложения, подождите
+              </p>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

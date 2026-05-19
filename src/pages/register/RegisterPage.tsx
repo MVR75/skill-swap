@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from '../../app/store';
 import { getCategories } from '../../features/categories/categoriesSlice';
+import { addUserSkillCard } from '../../features/skills/skillsSlice';
+import type { TSkillCard, TSkillCategory } from '../../entities/types';
 import { Step1 } from './steps/Step1/Step1';
 import { Step2 } from './steps/Step2/Step2';
 import { Step3 } from './steps/Step3/Step3';
@@ -9,10 +12,6 @@ import { NotificationModal } from '../../shared/ui/NotificationModal/Notificatio
 import type { Step1Data } from './steps/Step1/schema';
 import type { Step2Data, Step3Data, RegisterFormData } from './types';
 import styles from './RegisterPage.module.css';
-
-type RegisterPageProps = {
-  onClose: () => void;
-};
 
 const TOTAL_STEPS = 3;
 
@@ -42,7 +41,7 @@ const STEP_CONTENT: Record<StepNumber, StepContent> = {
   },
 };
 
-export function RegisterPage({ onClose }: RegisterPageProps) {
+export function RegisterPage() {
   const [currentStep, setCurrentStep] = useState<StepNumber>(1);
   const [formData, setFormData] = useState<Partial<RegisterFormData>>({});
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
@@ -88,14 +87,56 @@ export function RegisterPage({ onClose }: RegisterPageProps) {
   };
 
   const handlePreviewDone = () => {
+    const categoryId = formData.teachCategories?.[0];
+    const category = categories.find((cat) => cat.id === categoryId);
+    const subcategoryIds = formData.teachSubcategories ?? [];
+
+    const canTeachSkills: TSkillCategory[] = subcategoryIds.map((subId) => {
+      const sub = category?.subcategories.find((s) => s.id === subId);
+      return {
+        subcategory: subId,
+        title: sub?.title ?? '',
+        category: categoryId ?? '',
+        categoryTitle: category?.title ?? '',
+        color: category?.color ?? '',
+      };
+    });
+
+    const skillCard: TSkillCard = {
+      id: crypto.randomUUID(),
+      name: formData.name ?? '',
+      favorites: false,
+      city: formData.city ?? '',
+      age: 0,
+      birthDate: formData.birthDate?.toISOString() ?? '',
+      gender: formData.gender ?? '',
+      email: formData.email ?? '',
+      avatarUrl: '',
+      shortAbout: '',
+      teachTitle: formData.teachTitle ?? '',
+      teachAbout: formData.teachAbout ?? '',
+      teachPhotos: previewPhotos,
+      skills: {
+        canTeach: canTeachSkills,
+        wantsToLearn: [],
+      },
+    };
+    dispatch(addUserSkillCard(skillCard));
+
     setIsPreviewOpen(false);
     setIsNotificationOpen(true);
+  };
+
+  const navigate = useNavigate();
+
+  const handleClose = () => {
+    navigate('/login');
   };
 
   const handleNotificationDone = () => {
     console.log('Регистрация завершена:', formData);
     setIsNotificationOpen(false);
-    onClose();
+    handleClose();
   };
 
   const handleBack = () => {
@@ -128,7 +169,7 @@ export function RegisterPage({ onClose }: RegisterPageProps) {
           <button
             type="button"
             className={styles.closeButton}
-            onClick={onClose}
+            onClick={handleClose}
             aria-label="Закрыть"
           >
             Закрыть

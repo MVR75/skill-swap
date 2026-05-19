@@ -1,6 +1,14 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import type { TSkillCard } from "../../entities/types";
-import { fetchSkills, fetchSkillById } from "../../api/skillsApi";
+import {
+  createAsyncThunk,
+  createSlice,
+  type PayloadAction,
+} from '@reduxjs/toolkit';
+import type { TSkillCard, TCreatedSkill, TAsyncStatus } from '../../entities/types';
+import { fetchSkills, fetchSkillById } from '../../api/skillsApi';
+import {
+  getCreatedSkillsFromStorage,
+  saveCreatedSkillsToStorage,
+} from '../../pages/shared/lib/createdSkillsStorage';
 
 export const getSkills = createAsyncThunk<TSkillCard[], void, { rejectValue: string }>(
   'skills/getSkills',
@@ -31,6 +39,8 @@ export const getSkillById = createAsyncThunk<TSkillCard, string, { rejectValue: 
 type TSkillsState = {
   cards: TSkillCard[];
   currentSkill: TSkillCard | null;
+  createdSkills: TCreatedSkill[];
+  status: TAsyncStatus;
   isLoading: boolean;
   error: string | null;
 };
@@ -38,6 +48,8 @@ type TSkillsState = {
 const initialState: TSkillsState = {
   cards: [],
   currentSkill: null,
+  createdSkills: getCreatedSkillsFromStorage(),
+  status: 'idle',
   isLoading: false,
   error: null,
 };
@@ -45,20 +57,49 @@ const initialState: TSkillsState = {
 export const skillsSlice = createSlice({
   name: 'skills',
   initialState,
-  reducers: {},
+  reducers: {
+    addCreatedSkill: (state, action: PayloadAction<TCreatedSkill>) => {
+      state.createdSkills.push(action.payload);
+      saveCreatedSkillsToStorage(state.createdSkills);
+    },
+    removeCreatedSkill: (state, action: PayloadAction<string>) => {
+      state.createdSkills = state.createdSkills.filter(
+        (skill) => skill.id !== action.payload
+      );
+      saveCreatedSkillsToStorage(state.createdSkills);
+    },
+    addUserSkillCard: (state, action: PayloadAction<TSkillCard>) => {
+      const exists = state.cards.some(card => card.id === action.payload.id);
+      if (!exists) {
+        state.cards.push(action.payload);
+      }
+    },
+    updateUserSkillCard: (state, action: PayloadAction<TSkillCard>) => {
+      const index = state.cards.findIndex(card => card.id === action.payload.id);
+      if (index !== -1) {
+        state.cards[index] = action.payload;
+      }
+    },
+    removeUserSkillCard: (state, action: PayloadAction<string>) => {
+      state.cards = state.cards.filter(card => card.id !== action.payload);
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getSkills.pending, (state) => {
+        state.status = 'loading';
         state.isLoading = true;
         state.error = null;
       })
       .addCase(getSkills.fulfilled, (state, action) => {
+        state.status = 'succeeded';
         state.cards = action.payload;
         state.isLoading = false;
       })
       .addCase(getSkills.rejected, (state, action) => {
+        state.status = 'failed';
         state.isLoading = false;
-        state.error = action.payload || 'Ошибка загрузки навыков';
+        state.error = action.payload ?? action.error.message ?? 'Не удалось загрузить данные';
       })
       .addCase(getSkillById.pending, (state) => {
         state.isLoading = true;
@@ -75,9 +116,37 @@ export const skillsSlice = createSlice({
         state.error = action.payload || 'Навык не найден';
       });
   },
+  selectors: {
+    selectAllSkillCards: (state) => state.cards,
+    selectCurrentSkill: (state) => state.currentSkill,
+    selectCreatedSkills: (state) => state.createdSkills,
+    selectUserSkillCards: (state) => state.cards.filter(card =>
+      card.email === localStorage.getItem('userEmail') ||
+      (card as any).isUserCreated === true
+    ),
+    selectSkillCardById: (state, id: string) =>
+      state.cards.find(card => card.id === id),
+    selectUserCreatedSkills: (state) => state.createdSkills,
+    selectSkillsLoading: (state) => state.isLoading,
+    selectSkillsError: (state) => state.error,
+  },
 });
 
-export const selectAllSkillCards = (state: { skills: TSkillsState }) => state.skills.cards;
-export const selectCurrentSkill = (state: { skills: TSkillsState }) => state.skills.currentSkill;
-export const selectSkillsLoading = (state: { skills: TSkillsState }) => state.skills.isLoading;
-export const selectSkillsError = (state: { skills: TSkillsState }) => state.skills.error;
+export const {
+  addCreatedSkill,
+  removeCreatedSkill,
+  addUserSkillCard,
+  updateUserSkillCard,
+  removeUserSkillCard,
+} = skillsSlice.actions;
+
+export const {
+  selectAllSkillCards,
+  selectCurrentSkill,
+  selectCreatedSkills,
+  selectUserSkillCards,
+  selectSkillCardById,
+  selectUserCreatedSkills,
+  selectSkillsLoading,
+  selectSkillsError,
+} = skillsSlice.selectors;

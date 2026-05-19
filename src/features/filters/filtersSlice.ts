@@ -1,42 +1,102 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import type { TDeleteFilterPayload } from "./types";
 
 type TFiltersState = {
-  skillExchangeIntent: string;
-  skills: string[];
-  gender: string;
-  city: string[];
+  filters: {
+    skillExchangeIntent: string;
+    skills: string[];
+    gender: string;
+    city: string[];
+    searchQuery: string;
+  };
+  hasActiveFilters: boolean;
 };
 
-const initialState: TFiltersState = {
+const filtersInitialState = {
   skillExchangeIntent: 'all',
   skills: [],
   gender: 'any',
-  city: []
+  city: [],
+  searchQuery: ''
+}
+
+const initialState: TFiltersState = {
+  filters: filtersInitialState,
+  hasActiveFilters: false
 };
+
+const hasActiveFilters = (filters: TFiltersState['filters']) =>
+  filters.skillExchangeIntent !== 'all' ||
+  filters.gender !== 'any' ||
+  filters.skills.length > 0 ||
+  filters.city.length > 0 ||
+  filters.searchQuery !== '';
 
 export const filtersSlice = createSlice({
   name: 'filters',
   initialState,
   reducers: {
     changeSkillIntent: (state, action: PayloadAction<string>) => {
-      state.skillExchangeIntent = action.payload;
+      state.filters.skillExchangeIntent = action.payload;
+      state.hasActiveFilters = hasActiveFilters(state.filters);
     },
     changeSkills: (state, action: PayloadAction<string[]>) => {
-      state.skills = action.payload;
+      state.filters.skills = action.payload;
+      state.hasActiveFilters = hasActiveFilters(state.filters);
     },
     changeGender: (state, action: PayloadAction<string>) => {
-      state.gender = action.payload;
+      state.filters.gender = action.payload;
+      state.hasActiveFilters = hasActiveFilters(state.filters);
     },
     changeCities: (state, action: PayloadAction<string[]>) => {
-      state.city = action.payload;
+      state.filters.city = action.payload;
+      state.hasActiveFilters = hasActiveFilters(state.filters);
+    },
+    setSearchQuery: (state, action: PayloadAction<string>) => {
+      state.filters.searchQuery = action.payload;
+      state.hasActiveFilters = hasActiveFilters(state.filters);
+    },
+    clearFilters: () => ({
+      filters: {
+        ...filtersInitialState,
+        skills: [],
+        city: [],
+        searchQuery: ''
+      },
+      hasActiveFilters: false
+    }),
+    deleteFilter: (state, action: PayloadAction<TDeleteFilterPayload>) => {
+      if (action.payload.type === 'gender') {
+        state.filters.gender = 'any';
+      }
+
+      if (action.payload.type === 'skillExchangeIntent') {
+        state.filters.skillExchangeIntent = 'all';
+      }
+
+      if (action.payload.type === 'city') {
+        state.filters.city = state.filters.city.filter((item) => item !== action.payload.value);
+      }
+
+      if (action.payload.type === 'skill') {
+        state.filters.skills = state.filters.skills.filter((skill) => skill !== action.payload.value);
+      }
+
+      if (action.payload.type === 'search') {
+        state.filters.searchQuery = '';
+      }
+
+      state.hasActiveFilters = hasActiveFilters(state.filters);
     }
   },
   selectors: {
-    selectSkillExchangeIntent: (state) => state.skillExchangeIntent,
-    selectSkills: (state) => state.skills,
-    selectGender: (state) => state.gender,
-    selectCities: (state) => state.city,
-    selectAllFilters: (state) => state,
+    selectSkillExchangeIntent: (state) => state.filters.skillExchangeIntent,
+    selectSkills: (state) => state.filters.skills,
+    selectGender: (state) => state.filters.gender,
+    selectCities: (state) => state.filters.city,
+    selectSearchQuery: (state) => state.filters.searchQuery,
+    selectAllFilters: (state) => state.filters,
+    selectHasActiveFilters: (state) => state.hasActiveFilters
   }
 });
 
@@ -45,12 +105,17 @@ export const {
   selectGender,
   selectCities,
   selectSkills,
-  selectAllFilters
+  selectSearchQuery,
+  selectAllFilters,
+  selectHasActiveFilters
 } = filtersSlice.selectors;
 
 export const {
   changeSkillIntent,
   changeGender,
   changeCities,
-  changeSkills
+  changeSkills,
+  setSearchQuery,
+  clearFilters,
+  deleteFilter
 } = filtersSlice.actions;

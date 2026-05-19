@@ -1,20 +1,17 @@
 import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
-import { Button } from '../../shared/ui/Button/Button';
+import { Button } from '../../shared/ui/button/Button';
+import { useDispatch, useSelector } from '../../app/store';
+import { selectSearchQuery, setSearchQuery } from '../../features/filters/filtersSlice';
 
 export interface HeaderProps {
   isAuthenticated?: boolean;
   userName?: string;
   userAvatar?: string;
-
   showSearch?: boolean;
-  searchValue?: string;
-  onSearchChange?: (value: string) => void;
-
   onLoginClick?: () => void;
   onRegisterClick?: () => void;
   onLogoutClick?: () => void;
-
   onNotificationsClick?: () => void;
   onFavoritesClick?: () => void;
   onProfileClick?: () => void;
@@ -26,8 +23,6 @@ export function Header({
   userName = 'User',
   userAvatar,
   showSearch = true,
-  searchValue = '',
-  onSearchChange,
   onLoginClick,
   onRegisterClick,
   onNotificationsClick,
@@ -35,6 +30,17 @@ export function Header({
   onProfileClick,
   onSkillsClick,
 }: HeaderProps) {
+  const dispatch = useDispatch();
+  const searchValue = useSelector(selectSearchQuery);
+  
+  const handleSearchChange = (value: string) => {
+    dispatch(setSearchQuery(value));
+  };
+  
+  const handleClearSearch = () => {
+    dispatch(setSearchQuery(''));
+  };
+  
   return (
     <header className={styles.header}>
       <Link
@@ -75,11 +81,21 @@ export function Header({
           <input
             id="header-search"
             className={styles.searchInput}
-            type="search"
+            type="text"
             placeholder="Искать навык"
             value={searchValue}
-            onChange={(event) => onSearchChange?.(event.target.value)}
+            onChange={(event) => handleSearchChange(event.target.value)}
           />
+          {searchValue && (
+            <button
+              type="button"
+              onClick={handleClearSearch}
+              className={styles.clearSearchBtn}
+              aria-label="Очистить поиск"
+            >
+              ✕
+            </button>
+          )}
         </label>
       )}
 
