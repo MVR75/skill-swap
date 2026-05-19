@@ -62,3 +62,9 @@ export type TCreatedSkill = {
   categoryTitle: string;
   subcategory: string;
 };
+
+export type TAsyncStatus =
+  | 'idle'
+  | 'loading'
+  | 'succeeded'
+  | 'failed';

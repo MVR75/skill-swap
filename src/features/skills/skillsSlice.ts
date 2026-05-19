@@ -3,7 +3,7 @@ import {
   createSlice,
   type PayloadAction,
 } from '@reduxjs/toolkit';
-import type { TSkillCard, TCreatedSkill } from '../../entities/types';
+import type { TSkillCard, TCreatedSkill, TAsyncStatus } from '../../entities/types';
 import { fetchSkills } from '../../api/skillsApi';
 import {
   getCreatedSkillsFromStorage,
@@ -28,11 +28,15 @@ export const getSkills = createAsyncThunk<
 type TSkillsState = {
   cards: TSkillCard[];
   createdSkills: TCreatedSkill[];
+  status: TAsyncStatus;
+  error: string | null;
 };
 
 const initialState: TSkillsState = {
   cards: [],
   createdSkills: getCreatedSkillsFromStorage(),
+  status: 'idle',
+  error: null
 };
 
 export const skillsSlice = createSlice({
@@ -53,9 +57,19 @@ export const skillsSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(getSkills.fulfilled, (state, action) => {
-      state.cards = action.payload;
-    });
+    builder
+      .addCase(getSkills.pending, (state) => {
+        state.status = 'loading';
+        state.error = null;
+      })
+      .addCase(getSkills.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.cards = action.payload;
+      })
+      .addCase(getSkills.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.payload ?? action.error.message ?? 'Не удалось загрузить данные';
+      });
   },
   selectors: {
     selectAllSkillCards: (state) => state.cards,
