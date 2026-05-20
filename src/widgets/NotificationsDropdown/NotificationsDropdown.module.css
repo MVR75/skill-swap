@@ -7,7 +7,7 @@
   gap: 40px;
   width: 556px;
   background: var(--color-bg-card);
-  border: 1px solid #69735D;
+  border: 1px solid var(--color-input-border, #b0b8a8);
   border-radius: var(--radius-sm);
 }
 
@@ -63,6 +63,6 @@
   font-family: var(--font-primary);
   font-size: var(--font-size-small);
   line-height: var(--line-height-small);
-  color: #69735D;
+  color: var(--color-caption, #69735D);
   margin: 0;
 }

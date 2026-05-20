@@ -30,7 +30,7 @@
 
 .primary {
   background-color: var(--color-primary);
-  color: var(--color-text);
+  color: #253017;
 }
 
 .primary:hover:not(:disabled) {
@@ -45,7 +45,7 @@
 
 .outline {
   background-color: var(--color-bg-card);
-  border-color: #69735d;
+  border-color: var(--color-input-border, #b0b8a8);
   color: var(--color-text);
 }
 

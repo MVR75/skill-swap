@@ -27,6 +27,10 @@
   width: auto;
 }
 
+:global([data-theme='dark']) .logo {
+  filter: invert(1) hue-rotate(180deg);
+}
+
 .progress {
   display: flex;
   flex-direction: column;

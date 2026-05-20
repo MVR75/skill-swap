@@ -59,7 +59,7 @@
   font-size: var(--font-size-body);
   line-height: var(--line-height-body);
   font-weight: var(--font-weight-regular);
-  color: #69735D;
+  color: var(--color-caption, #69735D);
   flex-shrink: 0;
   white-space: nowrap;
 }

@@ -48,5 +48,5 @@
   font-size: 12px;
   line-height: 16px;
   letter-spacing: 2%;
-  color: #69735d;
+  color: var(--color-caption, #69735d);
 }

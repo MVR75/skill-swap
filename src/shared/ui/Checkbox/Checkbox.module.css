@@ -21,8 +21,12 @@
   pointer-events: none;
 }
 
+:global([data-theme='dark']) .checkbox__icon {
+  filter: brightness(0) invert(1);
+}
+
 .checkbox__input:focus-visible + .checkbox__icon {
-  outline: 2px solid #ABD27A;
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
   border-radius: 6px;
 }
