@@ -97,7 +97,6 @@ export const userSlice = createSlice({
         state.favorites.push(action.payload);
       }
       saveFavoritesToStorage(state.favorites);
-      console.log('Favorites after toggle:', state.favorites);
     },
 
     setLoading: (state, action: PayloadAction<boolean>) => {

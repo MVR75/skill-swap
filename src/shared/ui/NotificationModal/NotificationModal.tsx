@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Button } from '../Button/Button';
+import { Button } from '../button/Button';
 import type { NotificationModalProps, NotificationIcon } from './types';
 import styles from './NotificationModal.module.css';
 

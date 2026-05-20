@@ -11,7 +11,6 @@ import {
 } from '../../features/skills/skillsSlice';
 import SkillCard from '../../entities/skill-Card/SkillCard';
 import Skills from '../../shared/ui/skills/Skills';
-import Like from '../../shared/ui/like/Like';
 import { ErrorPage } from '../error/ErrorPage';
 import { Button } from '../../shared/ui/button/Button';
 import { Icon } from '@mdi/react';

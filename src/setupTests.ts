@@ -1,5 +1,5 @@
 import { TextEncoder, TextDecoder } from 'util';
 
-Object.assign(global, { TextEncoder, TextDecoder });
+Object.assign(globalThis, { TextEncoder, TextDecoder });
 
 import '@testing-library/jest-dom';

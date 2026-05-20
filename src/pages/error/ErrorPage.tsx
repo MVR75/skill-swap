@@ -1,6 +1,6 @@
 import type { ErrorPageProps } from './types';
 import styles from './ErrorPage.module.css';
-import { Button } from '../../shared/ui/Button/Button';
+import { Button } from '../../shared/ui/button/Button';
 import { useNavigate } from 'react-router-dom';
 
 export function ErrorPage({

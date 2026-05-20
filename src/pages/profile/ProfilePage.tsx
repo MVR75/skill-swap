@@ -40,7 +40,6 @@ const ProfilePage: React.FC = () => {
     })
 
     const onSubmit = (data: FormValues) => {
-        console.log(data)
         dispatch(updateUserInfo({...data, src: previewUrl ?? ''}));
     }
 
@@ -50,7 +49,7 @@ const ProfilePage: React.FC = () => {
   useEffect(() => {
     if (user) {
       reset({
-        avatar: null,
+        avatar: undefined,
         src: user.src,
         email: user.email,
         name: user.name,
