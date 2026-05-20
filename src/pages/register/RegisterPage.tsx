@@ -134,7 +134,6 @@ export function RegisterPage() {
   };
 
   const handleNotificationDone = () => {
-    console.log('Регистрация завершена:', formData);
     setIsNotificationOpen(false);
     handleClose();
   };

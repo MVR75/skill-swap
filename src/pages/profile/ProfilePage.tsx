@@ -43,7 +43,6 @@ const ProfilePage: React.FC = () => {
     })
 
     const onSubmit = (data: FormValues) => {
-        console.log(data)
         dispatch(updateUserInfo({...data, src: previewUrl ?? ''}));
     }
 
