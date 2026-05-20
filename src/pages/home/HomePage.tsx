@@ -18,6 +18,7 @@ const HomePage = () => {
   const [isPopularExpanded, setIsPopularExpanded] = useState(false);
   const [isNewExpanded, setIsNewExpanded] = useState(false);
   const [isFilteredNewestFirst, setIsFilteredNewestFirst] = useState(false);
+  const [isFiltersOpen, setIsFiltersOpen] = useState(false);
   
   const filteredCards = useSelector(selectFilteredSkillCards);
   const allSkills = useSelector(selectAllSkillCards);
@@ -84,7 +85,34 @@ const HomePage = () => {
 
   return (
     <div className={style.homePage}>
-      <div className={style.homePage__filter}>
+      <button
+        type="button"
+        className={style.homePage__filterToggle}
+        onClick={() => setIsFiltersOpen(!isFiltersOpen)}
+        aria-label={isFiltersOpen ? 'Закрыть фильтры' : 'Открыть фильтры'}
+        aria-expanded={isFiltersOpen}
+      >
+        <img src="/icons/sort.svg" alt="" aria-hidden="true" />
+        <span>Фильтры</span>
+      </button>
+
+      {isFiltersOpen && (
+        <div
+          className={style.homePage__filterOverlay}
+          onClick={() => setIsFiltersOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+
+      <div className={`${style.homePage__filter} ${isFiltersOpen ? style.homePage__filterOpen : ''}`}>
+        <button
+          type="button"
+          className={style.homePage__filterClose}
+          onClick={() => setIsFiltersOpen(false)}
+          aria-label="Закрыть фильтры"
+        >
+          ✕
+        </button>
         <FiltersBar />
       </div>
       {hasActiveFilters ? (

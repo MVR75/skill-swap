@@ -38,8 +38,34 @@ font-weight: var(--font-weight-medium);
 .skeletonCard__grid{
     display: grid;
     width: 100%;
-    grid-template-columns:repeat(3, minmax(320px,1fr));
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
     gap: 24px;
     grid-area: cards;
+}
+
+@media (max-width: 1024px) {
+    .skeletonCard__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .skeletonCard {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            'title'
+            'button'
+            'cards';
+        gap: var(--space-16);
+    }
+
+    .skeletonCard__grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .skeletonCard__title {
+        font-size: var(--font-size-h2);
+    }
 }
