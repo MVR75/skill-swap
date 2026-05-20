@@ -1,5 +1,5 @@
 import React from 'react';
-// import like from '../../../../public/icons/Like.svg';
+// import like from '/icons/Like.svg';
 import style from './Like.module.css';
 import {Icon} from '@mdi/react';
 import { mdiHeart } from '@mdi/js';
