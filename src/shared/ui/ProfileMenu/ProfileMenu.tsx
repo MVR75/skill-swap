@@ -17,12 +17,12 @@ const ProfileMenu: React.FC<ProfileMenuProps> = () => {
         {icon: email,
         alt: 'Иконка почты',
         text: 'Заявки',
-        to: '/profile?tab=requests'
+        to: '/'
         },
         {icon: message,
         alt: 'Иконка сообщения',
-        text: 'Мои обмены',
-        to: '/profile?tab=exchanges'
+        text: 'Мои обмены',
+        to: '/'
         },
         {icon: like,
         alt: 'Иконка лайка',
@@ -31,8 +31,8 @@ const ProfileMenu: React.FC<ProfileMenuProps> = () => {
         },
         {icon: idea,
         alt: 'Иконка лампочки',
-        text: 'Мои навыки',
-        to: '/profile?tab=skills'
+        text: 'Мои навыки',
+        to: '/create'
         },
         {icon: person,
         alt: 'Иконка профиля',
@@ -45,14 +45,10 @@ const ProfileMenu: React.FC<ProfileMenuProps> = () => {
         <nav className={style.profilePage__menu}>
         <ul className={style.profilePage__menuList}>
           {menuItems.map((item) => (
-            <NavLink 
-              className={({isActive}) => (isActive ? `${style.link_active}` : `${style.profilePage__menuItem}`)} 
-              key={item.text} 
-              to={item.to}
-              end={item.to === '/profile'}
-            >
+            <NavLink className={({isActive}) =>(isActive ? `${style.link_active}` : `${style.profilePage__menuItem}`)} 
+            key={item.text} to={item.to}>
               <img src={item.icon} alt={item.alt} className={style.icon}/>
-              {item.text}
+            {item.text}
             </NavLink>
           ))}
         </ul>
