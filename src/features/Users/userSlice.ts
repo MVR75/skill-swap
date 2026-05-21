@@ -5,6 +5,7 @@ export type UserInfo = {
   avatar?: string;
   src?: string;
   email: string;
+  password?: string;
   name: string;
   birthDate: string | null;
   role: string;
@@ -13,9 +14,19 @@ export type UserInfo = {
   about: string;
 };
 
+export type TNotification = {
+  id: string;
+  title: string;
+  description: string;
+  date: string;
+  status: 'new' | 'viewed';
+  actionLabel?: string;
+};
+
 type UserState = {
   userInfo: UserInfo | null;
   favorites: string[];
+  notifications: TNotification[];
   loading: boolean;
   error: string | null;
   isAuthenticated: boolean;
@@ -30,30 +41,44 @@ const saveFavoritesToStorage = (favorites: string[]) => {
   localStorage.setItem('favorites', JSON.stringify(favorites));
 };
 
-const loadUserFromStorage = (): UserInfo | null => {
-  const saved = localStorage.getItem('user');
+const loadNotificationsFromStorage = (): TNotification[] => {
+  const saved = localStorage.getItem('notifications');
+  return saved ? JSON.parse(saved) : [];
+};
+
+const saveNotificationsToStorage = (notifications: TNotification[]) => {
+  localStorage.setItem('notifications', JSON.stringify(notifications));
+};
+
+const loadUserInfoFromStorage = (): UserInfo | null => {
+  const saved = localStorage.getItem('userInfo');
   if (!saved) return null;
   try {
-    return JSON.parse(saved);
+    const userInfo = JSON.parse(saved);
+    if (userInfo.birthDate) {
+      userInfo.birthDate = new Date(userInfo.birthDate);
+    }
+    return userInfo;
   } catch {
     return null;
   }
 };
 
-const saveUserToStorage = (user: UserInfo | null) => {
-  if (user) {
-    localStorage.setItem('user', JSON.stringify(user));
+const saveUserInfoToStorage = (userInfo: UserInfo | null) => {
+  if (userInfo) {
+    localStorage.setItem('userInfo', JSON.stringify(userInfo));
   } else {
-    localStorage.removeItem('user');
+    localStorage.removeItem('userInfo');
   }
 };
 
 const initialState: UserState = {
-  userInfo: loadUserFromStorage(),
+  userInfo: loadUserInfoFromStorage(),
   favorites: loadFavoritesFromStorage(),
+  notifications: loadNotificationsFromStorage(),
   loading: false,
   error: null,
-  isAuthenticated: !!loadUserFromStorage(),
+  isAuthenticated: !!loadUserInfoFromStorage(),
 };
 
 export const userSlice = createSlice({
@@ -63,7 +88,7 @@ export const userSlice = createSlice({
     setUserInfo: (state, action: PayloadAction<UserInfo>) => {
       state.userInfo = action.payload;
       state.isAuthenticated = true;
-      saveUserToStorage(action.payload);
+      saveUserInfoToStorage(action.payload);
     },
 
     updateUserInfo: (state, action: PayloadAction<Partial<UserInfo>>) => {
@@ -72,14 +97,23 @@ export const userSlice = createSlice({
           ...state.userInfo,
           ...action.payload,
         };
-        saveUserToStorage(state.userInfo);
+        saveUserInfoToStorage(state.userInfo);
+      }
+    },
+
+    updateUserPassword: (state, action: PayloadAction<string>) => {
+      if (state.userInfo) {
+        state.userInfo.password = action.payload;
+        saveUserInfoToStorage(state.userInfo);
       }
     },
 
     clearUserInfo: (state) => {
       state.userInfo = null;
       state.isAuthenticated = false;
-      saveUserToStorage(null);
+      state.notifications = [];
+      saveNotificationsToStorage([]);
+      saveUserInfoToStorage(null);
     },
 
     setFavorites: (state, action: PayloadAction<string[]>) => {
@@ -105,6 +139,62 @@ export const userSlice = createSlice({
     setError: (state, action: PayloadAction<string | null>) => {
       state.error = action.payload;
     },
+
+    addNotification: (state, action: PayloadAction<TNotification>) => {
+      const exists = state.notifications.some(n => n.id === action.payload.id);
+      if (!exists) {
+        state.notifications.unshift(action.payload);
+        saveNotificationsToStorage(state.notifications);
+      }
+    },
+    
+    addMultipleNotifications: (state, action: PayloadAction<TNotification[]>) => {
+      const newNotifications = action.payload.filter(
+        newNotif => !state.notifications.some(existing => existing.id === newNotif.id)
+      );
+      state.notifications = [...newNotifications, ...state.notifications];
+      saveNotificationsToStorage(state.notifications);
+    },
+    
+    markNotificationAsRead: (state, action: PayloadAction<string>) => {
+      const notification = state.notifications.find(n => n.id === action.payload);
+      if (notification && notification.status === 'new') {
+        notification.status = 'viewed';
+        saveNotificationsToStorage(state.notifications);
+      }
+    },
+    
+    markAllNotificationsAsRead: (state) => {
+      state.notifications.forEach(notification => {
+        if (notification.status === 'new') {
+          notification.status = 'viewed';
+        }
+      });
+      saveNotificationsToStorage(state.notifications);
+    },
+    
+    removeNotification: (state, action: PayloadAction<string>) => {
+      state.notifications = state.notifications.filter(n => n.id !== action.payload);
+      saveNotificationsToStorage(state.notifications);
+    },
+    
+    clearAllNotifications: (state) => {
+      state.notifications = [];
+      saveNotificationsToStorage([]);
+    },
+    
+    clearViewedNotifications: (state) => {
+      state.notifications = state.notifications.filter(n => n.status === 'new');
+      saveNotificationsToStorage(state.notifications);
+    },
+    
+    updateNotification: (state, action: PayloadAction<{ id: string; updates: Partial<TNotification> }>) => {
+      const index = state.notifications.findIndex(n => n.id === action.payload.id);
+      if (index !== -1) {
+        state.notifications[index] = { ...state.notifications[index], ...action.payload.updates };
+        saveNotificationsToStorage(state.notifications);
+      }
+    },
   },
   
   selectors: {
@@ -115,17 +205,46 @@ export const userSlice = createSlice({
     selectFavoritesCount: (state) => state.favorites.length,
     selectLoading: (state) => state.loading,
     selectError: (state) => state.error,
+    
+    selectAllNotifications: (state) => state.notifications,
+    
+    selectUnreadNotificationsCount: (state) => 
+      state.notifications.filter(n => n.status === 'new').length,
+    
+    selectNewNotifications: (state) => 
+      state.notifications.filter(n => n.status === 'new'),
+    
+    selectViewedNotifications: (state) => 
+      state.notifications.filter(n => n.status === 'viewed'),
+    
+    selectNotificationById: (state, id: string) => 
+      state.notifications.find(n => n.id === id),
+    
+    selectHasUnreadNotifications: (state) => 
+      state.notifications.some(n => n.status === 'new'),
+    
+    selectRecentNotifications: (state, limit: number = 5) => 
+      state.notifications.slice(0, limit),
   },
 });
 
 export const {
   setUserInfo,
   updateUserInfo,
+  updateUserPassword,
   clearUserInfo,
   setFavorites,
   toggleFavorite,
   setLoading,
   setError,
+  addNotification,
+  addMultipleNotifications,
+  markNotificationAsRead,
+  markAllNotificationsAsRead,
+  removeNotification,
+  clearAllNotifications,
+  clearViewedNotifications,
+  updateNotification,
 } = userSlice.actions;
 
 export const {
@@ -136,6 +255,13 @@ export const {
   selectFavoritesCount,
   selectLoading,
   selectError,
+  selectAllNotifications,
+  selectUnreadNotificationsCount,
+  selectNewNotifications,
+  selectViewedNotifications,
+  selectNotificationById,
+  selectHasUnreadNotifications,
+  selectRecentNotifications,
 } = userSlice.selectors;
 
 export default userSlice.reducer;

@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef } from 'react';
 import styles from './AvatarUpload.module.css';
 
 type AvatarUploadProps = {

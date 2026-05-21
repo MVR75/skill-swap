@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from '../../app/store';
 import { getCategories } from '../../features/categories/categoriesSlice';
-import { setUserInfo } from '../../features/Users/userSlice';
+import { addUserSkillCard } from '../../features/skills/skillsSlice';
+import type { TSkillCard, TSkillCategory } from '../../entities/types';
 import { Step1 } from './steps/Step1/Step1';
 import { Step2 } from './steps/Step2/Step2';
 import { Step3 } from './steps/Step3/Step3';
@@ -92,24 +93,42 @@ export function RegisterPage() {
   };
 
   const handlePreviewDone = () => {
-    const birthDateString = formData.birthDate 
-      ? new Date(formData.birthDate).toISOString() 
-      : null;
-    
-    const userData = {
+    const categoryId = formData.teachCategories?.[0];
+    const category = categories.find((cat) => cat.id === categoryId);
+    const subcategoryIds = formData.teachSubcategories ?? [];
+
+    const canTeachSkills: TSkillCategory[] = subcategoryIds.map((subId) => {
+      const sub = category?.subcategories.find((s) => s.id === subId);
+      return {
+        subcategory: subId,
+        title: sub?.title ?? '',
+        category: categoryId ?? '',
+        categoryTitle: category?.title ?? '',
+        color: category?.color ?? '',
+      };
+    });
+
+    const skillCard: TSkillCard = {
       id: crypto.randomUUID(),
-      email: formData.email || '',
-      name: formData.name || '',
-      birthDate: birthDateString,
-      gender: (formData.gender as 'мужской' | 'женский' | 'unspecified') || 'unspecified',
-      city: formData.city || '',
-      about: '',
-      role: 'user',
-      src: avatarUrl || previewPhotos[0] || '',
+      name: formData.name ?? '',
+      favorites: false,
+      city: formData.city ?? '',
+      age: 0,
+      birthDate: formData.birthDate?.toISOString() ?? '',
+      gender: formData.gender ?? '',
+      email: formData.email ?? '',
+      avatarUrl: '',
+      shortAbout: '',
+      teachTitle: formData.teachTitle ?? '',
+      teachAbout: formData.teachAbout ?? '',
+      teachPhotos: previewPhotos,
+      skills: {
+        canTeach: canTeachSkills,
+        wantsToLearn: [],
+      },
     };
-    
-    dispatch(setUserInfo(userData));
-    
+    dispatch(addUserSkillCard(skillCard));
+
     setIsPreviewOpen(false);
     setIsNotificationOpen(true);
   };

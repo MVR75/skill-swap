@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from 'react';
 import { DayPicker } from 'react-day-picker';
 import { ru } from 'date-fns/locale';
 import { format } from 'date-fns';
-import { Button } from '../../../../../../shared/ui/Button/Button';
+import { Button } from '../../../../../../shared/ui/button/Button';
 import styles from './DatePicker.module.css';
 
 type DatePickerProps = {

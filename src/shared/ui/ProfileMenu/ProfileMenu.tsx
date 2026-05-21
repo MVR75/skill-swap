@@ -1,9 +1,9 @@
 import React from 'react';
-import message from '../../../../public/icons/message-text.svg';
-import email from '../../../../public/icons/request.svg'
-import like from '../../../../public/icons/like.svg';
-import idea from '../../../../public/icons/idea.svg';
-import person from '../../../../public/icons/user.svg';
+import message from '/icons/message-text.svg';
+import email from '/icons/request.svg'
+import like from '/icons/like.svg';
+import idea from '/icons/idea.svg';
+import person from '/icons/user.svg';
 import style from './ProfileMenu.module.css'
 import { NavLink } from 'react-router-dom';
 
