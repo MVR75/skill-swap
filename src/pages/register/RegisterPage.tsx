@@ -47,8 +47,10 @@ export function RegisterPage() {
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const [previewPhotos, setPreviewPhotos] = useState<string[]>([]);
+  const [avatarUrl, setAvatarUrl] = useState<string>('');
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const categories = useSelector((state) => state.categories.categories);
 
   useEffect(() => {
@@ -73,6 +75,10 @@ export function RegisterPage() {
   };
 
   const handleStep2Submit = (data: Step2Data) => {
+    if (data.avatar) {
+      const url = URL.createObjectURL(data.avatar);
+      setAvatarUrl(url);
+    }
     setFormData((prev) => ({ ...prev, ...data }));
     setCurrentStep(3);
   };
@@ -127,15 +133,13 @@ export function RegisterPage() {
     setIsNotificationOpen(true);
   };
 
-  const navigate = useNavigate();
-
   const handleClose = () => {
     navigate('/login');
   };
 
   const handleNotificationDone = () => {
     setIsNotificationOpen(false);
-    handleClose();
+    navigate('/profile');
   };
 
   const handleBack = () => {
@@ -245,10 +249,10 @@ export function RegisterPage() {
       <NotificationModal
         isOpen={isNotificationOpen}
         onClose={handleNotificationDone}
-        title="Ваше предложение создано"
-        message="Теперь вы можете предложить обмен"
+        title="Регистрация успешно завершена!"
+        message="Добро пожаловать в SkillSwap! Теперь вы можете предлагать обмен навыками"
         icon="success"
-        buttonText="Готово"
+        buttonText="Перейти в профиль"
       />
     </div>
   );

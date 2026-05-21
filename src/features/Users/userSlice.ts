@@ -2,14 +2,14 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 export type UserInfo = {
   id: string;
-  avatar?: File;
+  avatar?: string;
   src?: string;
   email: string;
   password?: string;
   name: string;
-  birthDate: Date | null;
+  birthDate: string | null;
   role: string;
-  gender: 'мужской' | 'женский';
+  gender: 'мужской' | 'женский' | 'unspecified';
   city: string;
   about: string;
 };
