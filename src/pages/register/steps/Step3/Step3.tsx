@@ -7,6 +7,7 @@ import { CategoryDropdown } from '../../ui/CategoryDropdown/CategoryDropdown';
 import { step3Schema, type Step3Data } from './schema';
 import styles from './Step3.module.css';
 import { ImageUpload } from '../../../../shared/ui/ImageUpload/ImageUpload';
+import { useEffect, useState } from 'react';
 
 
 type Step3Props = {
@@ -15,12 +16,24 @@ type Step3Props = {
   initialData?: Partial<Step3Data>;
 };
 
-const PLACEHOLDER_IMAGE = new File([''], 'placeholder.jpg', {
-  type: 'image/jpeg',
+// const PLACEHOLDER_IMAGE = new File([''], 'placeholder.jpg', {
+//   type: 'image/jpeg',
+// });
+
+const toBase64 = (file: File) => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
 });
 
 export function Step3({ onSubmit, onBack, initialData }: Step3Props) {
   const categories = useSelector((state) => state.categories.categories);
+  const [images, setImages] = useState([]);
+
+  useEffect(()=>{
+  setImages(Promise.all((initialData.teachImages||[]).map(toBase64)))
+},[initialData.teachImages])
 
   const {
     register,
@@ -37,7 +50,7 @@ export function Step3({ onSubmit, onBack, initialData }: Step3Props) {
       teachCategories: initialData?.teachCategories ?? [],
       teachSubcategories: initialData?.teachSubcategories ?? [],
       teachAbout: initialData?.teachAbout ?? '',
-      teachImages: initialData?.teachImages ?? [PLACEHOLDER_IMAGE],
+      teachImages: initialData.teachImages || images,
     },
   });
 

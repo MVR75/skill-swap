@@ -26,12 +26,20 @@ interface FormValues {
     src?: string,
     email: string,
     name: string,
-    birthDate: Date | null,
+    birthDate: string | null,
     role: string,
-    gender: "мужской" | "женский",
+    gender: "female" | "male" | 'unspecified',
     city: string,
     about: string
 }
+
+const toBase64 = (file: File) => new Promise((resolve, reject) => {
+  console.log('here:', typeof file, file)
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+});
 
 const ProfilePage: React.FC = () => {
    const user = useSelector(selectUserInfo);
@@ -42,8 +50,8 @@ const ProfilePage: React.FC = () => {
    const { control, register, handleSubmit, formState: {isDirty}, reset, watch } = useForm<FormValues>({
     })
 
-    const onSubmit = (data: FormValues) => {
-        dispatch(updateUserInfo({...data, src: previewUrl ?? ''}));
+    const onSubmit = async (data: FormValues) => {
+        dispatch(updateUserInfo({...data, src: avatarFile ? await toBase64(avatarFile) : user.src }));
     }
 
     const avatarFile = watch('avatar');
@@ -64,16 +72,20 @@ const ProfilePage: React.FC = () => {
       }
     }, [user, reset]);
 
-    useEffect(() => {
-      if (!avatarFile) {
-        setPreviewUrl(user?.src ?? null);
-        return;
-      }
-      const objectUrl = URL.createObjectURL(avatarFile);
-      setPreviewUrl(objectUrl);
-      return () => {
-        URL.revokeObjectURL(objectUrl)
-      }},[avatarFile,user])
+    useEffect(
+      () => {
+        if (!avatarFile) {
+          setPreviewUrl(user?.src);
+          return;
+        }
+        const objectUrl = URL.createObjectURL(avatarFile);
+        setPreviewUrl(objectUrl);
+        return () => {
+          URL.revokeObjectURL(objectUrl)
+        }
+      },
+      [avatarFile,user]
+    )
 
     const handlePasswordChange = (newPassword: string) => {
       dispatch(updateUserPassword(newPassword));

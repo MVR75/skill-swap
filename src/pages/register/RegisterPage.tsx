@@ -12,7 +12,7 @@ import { NotificationModal } from '../../shared/ui/NotificationModal/Notificatio
 import type { Step1Data } from './steps/Step1/schema';
 import type { Step2Data, Step3Data, RegisterFormData } from './types';
 import styles from './RegisterPage.module.css';
-import { setUserInfo, type UserInfo,} from '../../features/Users/userSlice';
+import { setUserInfo, updateUserInfo, type UserInfo,} from '../../features/Users/userSlice';
 
 const TOTAL_STEPS = 3;
 
@@ -54,6 +54,13 @@ export function RegisterPage() {
   const navigate = useNavigate();
   const categories = useSelector((state) => state.categories.categories);
 
+  const toBase64 = (file: File) => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+});
+
   useEffect(() => {
     dispatch(getCategories());
   }, [dispatch]);
@@ -93,7 +100,7 @@ export function RegisterPage() {
     setIsPreviewOpen(false);
   };
 
-  const handlePreviewDone = () => {
+  const handlePreviewDone = async () => {
     const categoryId = formData.teachCategories?.[0];
     const category = categories.find((cat) => cat.id === categoryId);
     const subcategoryIds = formData.teachSubcategories ?? [];
@@ -131,16 +138,15 @@ export function RegisterPage() {
 
     const user: UserInfo = {
       id: crypto.randomUUID(),
-  avatar: avatarUrl,
-  src: '',
-  email: formData.email ?? '',
-  password: formData.password ?? '',
-  name: formData.name ?? '',
-  birthDate: formData.birthDate?.toISOString() ?? '',
-  role: "user",
-  gender: formData.gender ?? 'unspecified', 
-  city: formData.city ?? '',
-  about: formData.teachAbout,
+      src: formData.avatar ? await toBase64(formData.avatar) : '',
+      email: formData.email ?? '',
+      password: formData.password ?? '',
+      name: formData.name ?? '',
+      birthDate: formData.birthDate?.toISOString() ?? '',
+      role: "user",
+      gender: formData.gender, 
+      city: formData.city ?? '',
+      about: formData.teachAbout,
     }
 
     dispatch(addUserSkillCard(skillCard));
