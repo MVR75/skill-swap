@@ -2,13 +2,14 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 export type UserInfo = {
   id: string;
-  avatar?: File;
+  avatar?: string;
   src?: string;
   email: string;
+  password?: string;
   name: string;
-  birthDate: Date | null;
+  birthDate: string | null;
   role: string;
-  gender: 'мужской' | 'женский';
+  gender: 'мужской' | 'женский' | 'unspecified';
   city: string;
   about: string;
 };
@@ -49,13 +50,35 @@ const saveNotificationsToStorage = (notifications: TNotification[]) => {
   localStorage.setItem('notifications', JSON.stringify(notifications));
 };
 
+const loadUserInfoFromStorage = (): UserInfo | null => {
+  const saved = localStorage.getItem('userInfo');
+  if (!saved) return null;
+  try {
+    const userInfo = JSON.parse(saved);
+    if (userInfo.birthDate) {
+      userInfo.birthDate = new Date(userInfo.birthDate);
+    }
+    return userInfo;
+  } catch {
+    return null;
+  }
+};
+
+const saveUserInfoToStorage = (userInfo: UserInfo | null) => {
+  if (userInfo) {
+    localStorage.setItem('userInfo', JSON.stringify(userInfo));
+  } else {
+    localStorage.removeItem('userInfo');
+  }
+};
+
 const initialState: UserState = {
-  userInfo: null,
+  userInfo: loadUserInfoFromStorage(),
   favorites: loadFavoritesFromStorage(),
   notifications: loadNotificationsFromStorage(),
   loading: false,
   error: null,
-  isAuthenticated: false,
+  isAuthenticated: !!loadUserInfoFromStorage(),
 };
 
 export const userSlice = createSlice({
@@ -65,6 +88,7 @@ export const userSlice = createSlice({
     setUserInfo: (state, action: PayloadAction<UserInfo>) => {
       state.userInfo = action.payload;
       state.isAuthenticated = true;
+      saveUserInfoToStorage(action.payload);
     },
 
     updateUserInfo: (state, action: PayloadAction<Partial<UserInfo>>) => {
@@ -73,6 +97,14 @@ export const userSlice = createSlice({
           ...state.userInfo,
           ...action.payload,
         };
+        saveUserInfoToStorage(state.userInfo);
+      }
+    },
+
+    updateUserPassword: (state, action: PayloadAction<string>) => {
+      if (state.userInfo) {
+        state.userInfo.password = action.payload;
+        saveUserInfoToStorage(state.userInfo);
       }
     },
 
@@ -81,6 +113,7 @@ export const userSlice = createSlice({
       state.isAuthenticated = false;
       state.notifications = [];
       saveNotificationsToStorage([]);
+      saveUserInfoToStorage(null);
     },
 
     setFavorites: (state, action: PayloadAction<string[]>) => {
@@ -97,7 +130,6 @@ export const userSlice = createSlice({
         state.favorites.push(action.payload);
       }
       saveFavoritesToStorage(state.favorites);
-      console.log('Favorites after toggle:', state.favorites);
     },
 
     setLoading: (state, action: PayloadAction<boolean>) => {
@@ -108,7 +140,6 @@ export const userSlice = createSlice({
       state.error = action.payload;
     },
 
-    
     addNotification: (state, action: PayloadAction<TNotification>) => {
       const exists = state.notifications.some(n => n.id === action.payload.id);
       if (!exists) {
@@ -200,6 +231,7 @@ export const userSlice = createSlice({
 export const {
   setUserInfo,
   updateUserInfo,
+  updateUserPassword,
   clearUserInfo,
   setFavorites,
   toggleFavorite,

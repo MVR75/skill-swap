@@ -3,36 +3,55 @@ import {
   createSlice,
   type PayloadAction,
 } from '@reduxjs/toolkit';
-import type { TSkillCard, TCreatedSkill } from '../../entities/types';
-import { fetchSkills } from '../../api/skillsApi';
+import type { TSkillCard, TCreatedSkill, TAsyncStatus } from '../../entities/types';
+import { fetchSkills, fetchSkillById } from '../../api/skillsApi';
 import {
   getCreatedSkillsFromStorage,
   saveCreatedSkillsToStorage,
 } from '../../pages/shared/lib/createdSkillsStorage';
 
-export const getSkills = createAsyncThunk<
-  TSkillCard[],
-  void,
-  { rejectValue: string }
->('skills/get', async (_, { rejectWithValue }) => {
-  try {
-    const response = await fetchSkills();
-    return response.users;
-  } catch (err) {
-    const message =
-      err instanceof Error ? err.message : 'Не удалось загрузить данные';
-    return rejectWithValue(message);
+export const getSkills = createAsyncThunk<TSkillCard[], void, { rejectValue: string }>(
+  'skills/getSkills',
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await fetchSkills();
+      return response.users;
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Не удалось загрузить данные';
+      return rejectWithValue(message);
+    }
   }
-});
+);
+
+export const getSkillById = createAsyncThunk<TSkillCard, string, { rejectValue: string }>(
+  'skills/getSkillById',
+  async (id, { rejectWithValue }) => {
+    try {
+      const skill = await fetchSkillById(id);
+      return skill;
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Навык не найден';
+      return rejectWithValue(message);
+    }
+  }
+);
 
 type TSkillsState = {
   cards: TSkillCard[];
+  currentSkill: TSkillCard | null;
   createdSkills: TCreatedSkill[];
+  status: TAsyncStatus;
+  isLoading: boolean;
+  error: string | null;
 };
 
 const initialState: TSkillsState = {
   cards: [],
+  currentSkill: null,
   createdSkills: getCreatedSkillsFromStorage(),
+  status: 'idle',
+  isLoading: false,
+  error: null,
 };
 
 export const skillsSlice = createSlice({
@@ -43,66 +62,91 @@ export const skillsSlice = createSlice({
       state.createdSkills.push(action.payload);
       saveCreatedSkillsToStorage(state.createdSkills);
     },
-
     removeCreatedSkill: (state, action: PayloadAction<string>) => {
       state.createdSkills = state.createdSkills.filter(
         (skill) => skill.id !== action.payload
       );
-
       saveCreatedSkillsToStorage(state.createdSkills);
     },
-    
     addUserSkillCard: (state, action: PayloadAction<TSkillCard>) => {
       const exists = state.cards.some(card => card.id === action.payload.id);
       if (!exists) {
         state.cards.push(action.payload);
       }
     },
-    
     updateUserSkillCard: (state, action: PayloadAction<TSkillCard>) => {
       const index = state.cards.findIndex(card => card.id === action.payload.id);
       if (index !== -1) {
         state.cards[index] = action.payload;
       }
     },
-    
     removeUserSkillCard: (state, action: PayloadAction<string>) => {
       state.cards = state.cards.filter(card => card.id !== action.payload);
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(getSkills.fulfilled, (state, action) => {
-      state.cards = action.payload;
-    });
+    builder
+      .addCase(getSkills.pending, (state) => {
+        state.status = 'loading';
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(getSkills.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.cards = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(getSkills.rejected, (state, action) => {
+        state.status = 'failed';
+        state.isLoading = false;
+        state.error = action.payload ?? action.error.message ?? 'Не удалось загрузить данные';
+      })
+      .addCase(getSkillById.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+        state.currentSkill = null;
+      })
+      .addCase(getSkillById.fulfilled, (state, action) => {
+        state.currentSkill = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(getSkillById.rejected, (state, action) => {
+        state.currentSkill = null;
+        state.isLoading = false;
+        state.error = action.payload || 'Навык не найден';
+      });
   },
   selectors: {
     selectAllSkillCards: (state) => state.cards,
+    selectCurrentSkill: (state) => state.currentSkill,
     selectCreatedSkills: (state) => state.createdSkills,
-    
-    selectUserSkillCards: (state) => state.cards.filter(card => 
-      card.email === localStorage.getItem('userEmail') || 
+    selectUserSkillCards: (state) => state.cards.filter(card =>
+      card.email === localStorage.getItem('userEmail') ||
       (card as any).isUserCreated === true
     ),
-    
-    selectSkillCardById: (state, id: string) => 
+    selectSkillCardById: (state, id: string) =>
       state.cards.find(card => card.id === id),
-    
     selectUserCreatedSkills: (state) => state.createdSkills,
+    selectSkillsLoading: (state) => state.isLoading,
+    selectSkillsError: (state) => state.error,
   },
 });
 
-export const { 
-  addCreatedSkill, 
+export const {
+  addCreatedSkill,
   removeCreatedSkill,
   addUserSkillCard,
   updateUserSkillCard,
   removeUserSkillCard,
 } = skillsSlice.actions;
 
-export const { 
-  selectAllSkillCards, 
+export const {
+  selectAllSkillCards,
+  selectCurrentSkill,
   selectCreatedSkills,
   selectUserSkillCards,
   selectSkillCardById,
   selectUserCreatedSkills,
+  selectSkillsLoading,
+  selectSkillsError,
 } = skillsSlice.selectors;

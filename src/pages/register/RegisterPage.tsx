@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from '../../app/store';
 import { getCategories } from '../../features/categories/categoriesSlice';
+import { addUserSkillCard } from '../../features/skills/skillsSlice';
+import type { TSkillCard, TSkillCategory } from '../../entities/types';
 import { Step1 } from './steps/Step1/Step1';
 import { Step2 } from './steps/Step2/Step2';
 import { Step3 } from './steps/Step3/Step3';
@@ -45,8 +47,10 @@ export function RegisterPage() {
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const [previewPhotos, setPreviewPhotos] = useState<string[]>([]);
+  const [avatarUrl, setAvatarUrl] = useState<string>('');
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const categories = useSelector((state) => state.categories.categories);
 
   useEffect(() => {
@@ -71,6 +75,10 @@ export function RegisterPage() {
   };
 
   const handleStep2Submit = (data: Step2Data) => {
+    if (data.avatar) {
+      const url = URL.createObjectURL(data.avatar);
+      setAvatarUrl(url);
+    }
     setFormData((prev) => ({ ...prev, ...data }));
     setCurrentStep(3);
   };
@@ -85,20 +93,53 @@ export function RegisterPage() {
   };
 
   const handlePreviewDone = () => {
+    const categoryId = formData.teachCategories?.[0];
+    const category = categories.find((cat) => cat.id === categoryId);
+    const subcategoryIds = formData.teachSubcategories ?? [];
+
+    const canTeachSkills: TSkillCategory[] = subcategoryIds.map((subId) => {
+      const sub = category?.subcategories.find((s) => s.id === subId);
+      return {
+        subcategory: subId,
+        title: sub?.title ?? '',
+        category: categoryId ?? '',
+        categoryTitle: category?.title ?? '',
+        color: category?.color ?? '',
+      };
+    });
+
+    const skillCard: TSkillCard = {
+      id: crypto.randomUUID(),
+      name: formData.name ?? '',
+      favorites: false,
+      city: formData.city ?? '',
+      age: 0,
+      birthDate: formData.birthDate?.toISOString() ?? '',
+      gender: formData.gender ?? '',
+      email: formData.email ?? '',
+      avatarUrl: '',
+      shortAbout: '',
+      teachTitle: formData.teachTitle ?? '',
+      teachAbout: formData.teachAbout ?? '',
+      teachPhotos: previewPhotos,
+      skills: {
+        canTeach: canTeachSkills,
+        wantsToLearn: [],
+      },
+    };
+    dispatch(addUserSkillCard(skillCard));
+
     setIsPreviewOpen(false);
     setIsNotificationOpen(true);
   };
-
-  const navigate = useNavigate();
 
   const handleClose = () => {
     navigate('/login');
   };
 
   const handleNotificationDone = () => {
-    console.log('Регистрация завершена:', formData);
     setIsNotificationOpen(false);
-    handleClose();
+    navigate('/profile');
   };
 
   const handleBack = () => {
@@ -208,10 +249,10 @@ export function RegisterPage() {
       <NotificationModal
         isOpen={isNotificationOpen}
         onClose={handleNotificationDone}
-        title="Ваше предложение создано"
-        message="Теперь вы можете предложить обмен"
+        title="Регистрация успешно завершена!"
+        message="Добро пожаловать в SkillSwap! Теперь вы можете предлагать обмен навыками"
         icon="success"
-        buttonText="Готово"
+        buttonText="Перейти в профиль"
       />
     </div>
   );

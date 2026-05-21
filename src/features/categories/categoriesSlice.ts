@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import type { TCategory } from "../../entities/types";
+import type { TAsyncStatus, TCategory } from "../../entities/types";
 import { fetchCategories } from "../../api/categoriesApi";
 
 export const getCategories = createAsyncThunk<
@@ -18,10 +18,14 @@ export const getCategories = createAsyncThunk<
 
 type TCategoriesState = {
   categories: TCategory[];
+  status: TAsyncStatus;
+  error: string | null;
 };
 
 const initialState: TCategoriesState = {
-  categories: []
+  categories: [],
+  status: 'idle',
+  error: null
 };
 
 export const categoriesSlice = createSlice({
@@ -30,8 +34,17 @@ export const categoriesSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+      .addCase(getCategories.pending, (state) => {
+        state.status = 'loading';
+        state.error = null;
+      })
       .addCase(getCategories.fulfilled, (state, action) => {
         state.categories = action.payload;
+        state.status = 'succeeded';
+      })
+      .addCase(getCategories.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.payload ?? action.error.message ?? 'Не удалось загрузить данные';
       })
   },
   selectors: {

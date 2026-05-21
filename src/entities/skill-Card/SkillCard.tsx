@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from '../../app/store';
 import { toggleFavorite, selectIsFavorite } from '../../features/Users/userSlice';
 
 interface SkillCardProps {
-  id: string; 
+  id: string;
   avatarUrl: string;
   name: string;
   city: string;
@@ -19,23 +19,23 @@ interface SkillCardProps {
   skills: {
     canTeach: TSkillCategory[];
     wantsToLearn: TSkillCategory[];
-  }
+  };
 }
 
 const SkillCard: React.FC<SkillCardProps> = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
+
   const isFavorite = useSelector((state) => selectIsFavorite(state, props.id));
-  
+
   const handleClick = () => {
     navigate(`/skill/${props.id}`);
   };
-  
+
   const handleLikeClick = () => {
     dispatch(toggleFavorite(props.id));
   };
-  
+
   const canTeachSkills = props.skills.canTeach;
   const wantsToLearn = props.skills.wantsToLearn;
 
@@ -67,16 +67,19 @@ const SkillCard: React.FC<SkillCardProps> = (props) => {
         />
         <div>
           <h3 className={style.card__title}>{props.name}</h3>
-          <p className={style.card__subtitle}>{props.city}, {props.age} {getAgeWord(props.age)}</p>
+          <p className={style.card__subtitle}>
+            {props.city}, {props.age} {getAgeWord(props.age)}
+          </p>
         </div>
         <div className={style.card__imageWrapper}>
           {props.avatarUrl ? (
             <img className={style.card__image} src={props.avatarUrl} alt={props.name} />
           ) : (
-            <Icon path={mdiAccount} size={2} color={'white'} />
+            <Icon path={mdiAccount} size={2} color="white" />
           )}
         </div>
       </div>
+
       <div className={style.card__skills}>
         <h3 className={style.card__title}>Может научить:</h3>
         <ul className={style.card__skillsList}>
@@ -98,6 +101,7 @@ const SkillCard: React.FC<SkillCardProps> = (props) => {
           )}
         </ul>
       </div>
+
       <div className={style.card__actions}>
         <Button variant="primary" onClick={handleClick} className={style.button}>
           Подробнее

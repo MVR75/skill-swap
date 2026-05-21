@@ -64,7 +64,7 @@ export function Header({
         >
           Все навыки
           <img
-            src="/public/icons/vector.svg"
+            src="/icons/vector.svg"
             alt=""
             className={styles.chevronIcon}
             aria-hidden="true"
@@ -75,7 +75,7 @@ export function Header({
       {showSearch && (
         <label htmlFor="header-search" className={styles.search}>
           <img
-            src="/public/icons/search.svg"
+            src="/icons/search.svg"
             alt=""
             className={styles.searchIcon}
             aria-hidden="true"
@@ -109,7 +109,7 @@ export function Header({
           onClick={toggleTheme}
         >
           <img
-            src={theme === 'light' ? '/icons/moon.svg' : '/icons/sun.svg'}
+            src="/icons/moon.svg"
             alt=""
             className={styles.themeIcon}
             aria-hidden="true"
@@ -125,7 +125,7 @@ export function Header({
               onClick={onNotificationsClick}
             >
               <img
-                src="/public/icons/notification.svg"
+                src="/icons/notification.svg"
                 alt=""
                 className={styles.actionIcon}
                 aria-hidden="true"
@@ -139,7 +139,7 @@ export function Header({
               onClick={onFavoritesClick}
             >
               <img
-                src="/public/icons/like.svg"
+                src="/icons/like.svg"
                 alt=""
                 className={styles.actionIcon}
                 aria-hidden="true"
@@ -156,7 +156,7 @@ export function Header({
                 <img src={userAvatar} alt="" className={styles.avatar} />
               ) : (
                 <img
-                  src="/public/icons/user-circle.svg"
+                  src="/icons/user-circle.svg"
                   alt=""
                   className={styles.avatar}
                   aria-hidden="true"
