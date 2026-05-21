@@ -12,6 +12,7 @@ import { NotificationModal } from '../../shared/ui/NotificationModal/Notificatio
 import type { Step1Data } from './steps/Step1/schema';
 import type { Step2Data, Step3Data, RegisterFormData } from './types';
 import styles from './RegisterPage.module.css';
+import { setUserInfo, type UserInfo,} from '../../features/Users/userSlice';
 
 const TOTAL_STEPS = 3;
 
@@ -127,14 +128,30 @@ export function RegisterPage() {
         wantsToLearn: [],
       },
     };
+
+    const user: UserInfo = {
+      id: crypto.randomUUID(),
+  avatar: avatarUrl,
+  src: '',
+  email: formData.email ?? '',
+  password: formData.password ?? '',
+  name: formData.name ?? '',
+  birthDate: formData.birthDate?.toISOString() ?? '',
+  role: "user",
+  gender: formData.gender ?? 'unspecified', 
+  city: formData.city ?? '',
+  about: formData.teachAbout,
+    }
+
     dispatch(addUserSkillCard(skillCard));
+    dispatch(setUserInfo(user));
 
     setIsPreviewOpen(false);
     setIsNotificationOpen(true);
   };
 
   const handleClose = () => {
-    navigate('/login');
+    navigate('/');
   };
 
   const handleNotificationDone = () => {

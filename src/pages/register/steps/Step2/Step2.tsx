@@ -22,8 +22,8 @@ type Step2Props = {
 
 const GENDER_OPTIONS = [
   { value: 'unspecified', label: 'Не указан' },
-  { value: 'male', label: 'Мужской' },
-  { value: 'female', label: 'Женский' },
+  { value: 'mужской', label: 'Мужской' },
+  { value: 'женский', label: 'Женский' },
 ];
 
 export function Step2({ onSubmit, onBack, initialData }: Step2Props) {

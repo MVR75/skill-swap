@@ -9,7 +9,7 @@ export type UserInfo = {
   name: string;
   birthDate: string | null;
   role: string;
-  gender: 'мужской' | 'женский' | 'unspecified';
+  gender: 'female' | 'male' | 'unspecified';
   city: string;
   about: string;
 };
@@ -23,7 +23,7 @@ export type TNotification = {
   actionLabel?: string;
 };
 
-type UserState = {
+export type UserState = {
   userInfo: UserInfo | null;
   favorites: string[];
   notifications: TNotification[];

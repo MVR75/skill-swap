@@ -80,7 +80,7 @@ const LoginPage = () => {
         name: foundUser.name,
         role: foundUser.role,
         birthDate: null,
-        gender: 'мужской',
+        gender: 'male',
         city: '',
         about: '',
       };
