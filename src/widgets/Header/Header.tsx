@@ -3,6 +3,7 @@ import styles from './Header.module.css';
 import { Button } from '../../shared/ui/button/Button';
 import { useDispatch, useSelector } from '../../app/store';
 import { selectSearchQuery, setSearchQuery } from '../../features/filters/filtersSlice';
+import { useThemeContext } from '../../shared/context/ThemeContext';
 
 export interface HeaderProps {
   isAuthenticated?: boolean;
@@ -32,6 +33,7 @@ export function Header({
 }: HeaderProps) {
   const dispatch = useDispatch();
   const searchValue = useSelector(selectSearchQuery);
+  const { theme, toggleTheme } = useThemeContext();
   
   const handleSearchChange = (value: string) => {
     dispatch(setSearchQuery(value));
@@ -103,7 +105,8 @@ export function Header({
         <button
           type="button"
           className={styles.iconButton}
-          aria-label="Переключить тему"
+          aria-label={theme === 'light' ? 'Включить тёмную тему' : 'Включить светлую тему'}
+          onClick={toggleTheme}
         >
           <img
             src="/icons/moon.svg"

@@ -26,3 +26,12 @@
   letter-spacing: 2%;
   color: var(--color-link);
 }
+
+.checkboxGroup__hideButton img {
+  width: 16px;
+  height: 16px;
+}
+
+:global([data-theme='dark']) .checkboxGroup__hideButton img {
+  filter: brightness(0) invert(1);
+}

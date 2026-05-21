@@ -108,6 +108,53 @@ svg {
   --radius-sm: 12px; /* кнопки, инпуты, карточки */
   --radius-tag: 20px;
   --radius-full: 50%;
+
+  /* login page */
+  --color-caption: #4a5640;
+  --color-disabled-text: #9ca197;
+  --color-disabled: #e4e8df;
+  --color-card-input: #ffffff;
+  --color-link-pressed: #508826;
+  --color-accent: #abd27a;
+  --color-button-hover: #deebc5;
+  --color-background: #f9faf7;
+  --color-input-border: #b0b8a8;
+  --color-placeholder: #7a8570;
+}
+
+[data-theme='dark'] {
+  /* цвета: основные */
+  --color-primary: #8bb85a;
+  --color-link: #a3d472;
+  --color-error: #e05a42;
+
+  /* текст */
+  --color-text: #e4e8df;
+
+  /* фон */
+  --color-bg-page: #1a1f14;
+  --color-bg-card: #252b1e;
+
+  /* теги по категориям */
+  --color-tag-business: #2e2640;
+  --color-tag-languages: #2e2b1a;
+  --color-tag-home: #3a2820;
+  --color-tag-creative: #3a2035;
+  --color-tag-education: #1e2e35;
+  --color-tag-health: #1e3a1c;
+  --color-tag-number: #1e2240;
+
+  /* login page */
+  --color-caption: #9ca89a;
+  --color-disabled-text: #6b7566;
+  --color-disabled: #3a4234;
+  --color-card-input: #2a3222;
+  --color-link-pressed: #a3d472;
+  --color-accent: #8bb85a;
+  --color-button-hover: #3a5020;
+  --color-background: #1a1f14;
+  --color-input-border: #5a6650;
+  --color-placeholder: #8a9680;
 }
 
 body {
@@ -122,6 +169,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   max-width: 1440px;
   margin: 0 auto;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #root {

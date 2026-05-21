@@ -22,6 +22,10 @@
   height: auto;
 }
 
+:global([data-theme='dark']) .logo {
+  filter: invert(1) hue-rotate(180deg);
+}
+
 .nav {
   display: flex;
   align-items: center;
@@ -145,6 +149,10 @@
   background-color: rgba(0, 0, 0, 0.05);
 }
 
+:global([data-theme='dark']) .iconButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
 .themeIcon {
   width: 28px;
   height: 28px;
@@ -153,6 +161,12 @@
 .actionIcon {
   width: 30px;
   height: 30px;
+}
+
+:global([data-theme='dark']) .actionIcon,
+:global([data-theme='dark']) .searchIcon,
+:global([data-theme='dark']) .chevronIcon {
+  filter: brightness(0) invert(1);
 }
 
 .authButtons {
@@ -184,6 +198,10 @@
 
 .userButton:hover {
   background-color: rgba(0, 0, 0, 0.05);
+}
+
+:global([data-theme='dark']) .userButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .userName {

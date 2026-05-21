@@ -15,7 +15,7 @@
 .dividerLine {
   flex: 1;
   height: 1px;
-  background-color: #111808; /* TODO: вынести в --color-input-border */
+  background-color: var(--color-text);
   opacity: 0.3;
 }
 

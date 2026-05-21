@@ -1,19 +1,6 @@
-:root {
-  --color-text: #253017;
-  --color-caption: #69735d;
-  --color-disabled-text: #9ca197;
-  --color-disabled: #e4e8df;
-  --color-card-input: #ffffff;
-  --color-link-pressed: #508826;
-  --color-accent: #abd27a;
-  --color-button-hover: #deebc5;
-  --color-background: #f9faf7;
-  --color-error: #bf3920;
-}
-
 .page {
   min-height: 100vh;
-  background: var(--color-background);
+  background: var(--color-background, var(--color-bg-page));
   color: var(--color-text);
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
@@ -42,6 +29,10 @@
   width: 153px;
   height: auto;
   display: block;
+}
+
+:global([data-theme='dark']) .logoIcon {
+  filter: invert(1) hue-rotate(180deg);
 }
 
 .closeButton {
@@ -132,7 +123,7 @@
 .socialButton {
   width: 100%;
   height: 48px;
-  border: 1px solid var(--color-caption);
+  border: 1px solid var(--color-input-border, var(--color-caption));
   border-radius: 10px;
   background: var(--color-card-input);
   color: var(--color-text);
@@ -214,7 +205,7 @@
 .passwordWrapper input {
   width: 100%;
   height: 48px;
-  border: 1px solid var(--color-caption);
+  border: 1px solid var(--color-input-border, var(--color-caption));
   border-radius: 10px;
   background: var(--color-card-input);
   color: var(--color-text);
@@ -230,7 +221,7 @@
 
 .field input::placeholder,
 .passwordWrapper input::placeholder {
-  color: var(--color-caption);
+  color: var(--color-placeholder, var(--color-caption));
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
 }
@@ -333,7 +324,7 @@
   border: none;
   border-radius: 10px;
   background: var(--color-accent);
-  color: var(--color-text);
+  color: #253017;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -392,6 +383,8 @@
   justify-content: center;
   padding: 64px;
   text-align: center;
+  background: #ffffff;
+  color: #253017;
 }
 
 .bulb {
@@ -403,7 +396,7 @@
 
 .infoText h2 {
   margin: 0 0 14px;
-  color: var(--color-text);
+  color: #253017;
   font-family: 'Jost', sans-serif;
   font-size: 24px;
   font-weight: 500;
@@ -413,7 +406,7 @@
 .infoText p {
   max-width: 390px;
   margin: 0 auto;
-  color: var(--color-text);
+  color: #253017;
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   font-weight: 400;

@@ -29,6 +29,11 @@
   color: var(--color-link);
 }
 
+.filtersBar__clearButton img {
+  width: 16px;
+  height: 16px;
+}
+
 .filtersBar__clearButton:hover {
   opacity: 0.5;
   text-decoration: underline;

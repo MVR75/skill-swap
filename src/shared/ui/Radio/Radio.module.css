@@ -20,7 +20,7 @@
   justify-content: center;
   width: 20px;
   height: 20px;
-  border: 1.5px solid black;
+  border: 1.5px solid var(--color-text);
   border-radius: 50%;
 }
 
@@ -30,7 +30,7 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: #508826;
+  background-color: var(--color-link);
   scale: 0;
 }
 
@@ -42,7 +42,7 @@
 }
 
 .input:checked + .control {
-  border-color: #508826;
+  border-color: var(--color-link);
   background-color: transparent;
 }
 
@@ -51,6 +51,6 @@
 }
 
 .input:focus-visible + .control {
-  outline: 2px solid #508826;
+  outline: 2px solid var(--color-link);
   outline-offset: 3px;
 }
