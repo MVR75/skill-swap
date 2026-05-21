@@ -16,10 +16,6 @@ type Step3Props = {
   initialData?: Partial<Step3Data>;
 };
 
-// const PLACEHOLDER_IMAGE = new File([''], 'placeholder.jpg', {
-//   type: 'image/jpeg',
-// });
-
 const toBase64 = (file: File) => new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);

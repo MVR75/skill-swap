@@ -34,7 +34,6 @@ interface FormValues {
 }
 
 const toBase64 = (file: File) => new Promise((resolve, reject) => {
-  console.log('here:', typeof file, file)
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => resolve(reader.result);

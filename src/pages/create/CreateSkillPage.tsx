@@ -82,7 +82,7 @@ const CreateSkillPage = () => {
       favorites: false,
       city: userInfo?.city ?? '',
       age: 0,
-      birthDate: userInfo?.birthDate?.toISOString() ?? '',
+      birthDate: userInfo?.birthDate?.toString() ?? '',
       gender: userInfo?.gender ?? '',
       email: userInfo?.email ?? '',
       avatarUrl: userInfo?.src ?? '',
