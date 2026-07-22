@@ -33,7 +33,7 @@ export function Step1({ onSubmit, onGoogleClick, onAppleClick }: Step1Props) {
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)} noValidate>
       <Button
         variant="outline"
-        leftIcon={<img src="/icons/google.svg" alt="" aria-hidden="true" />}
+        leftIcon={<img src={`${import.meta.env.BASE_URL}icons/google.svg`} alt="" aria-hidden="true" />}
         onClick={onGoogleClick}
       >
         Продолжить с Google
@@ -41,7 +41,7 @@ export function Step1({ onSubmit, onGoogleClick, onAppleClick }: Step1Props) {
 
       <Button
         variant="outline"
-        leftIcon={<img src="/icons/apple.svg" alt="" aria-hidden="true" />}
+        leftIcon={<img src={`${import.meta.env.BASE_URL}icons/apple.svg`} alt="" aria-hidden="true" />}
         onClick={onAppleClick}
       >
         Продолжить с Apple
@@ -77,7 +77,7 @@ export function Step1({ onSubmit, onGoogleClick, onAppleClick }: Step1Props) {
             aria-label={isPasswordVisible ? 'Скрыть пароль' : 'Показать пароль'}
           >
             <img
-              src={isPasswordVisible ? '/icons/eye.svg' : '/icons/eye-off.svg'}
+              src={isPasswordVisible ? `${import.meta.env.BASE_URL}icons/eye.svg` : `${import.meta.env.BASE_URL}icons/eye-off.svg`}
               alt=""
               aria-hidden="true"
             />

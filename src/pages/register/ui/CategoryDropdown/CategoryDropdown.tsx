@@ -114,7 +114,7 @@ export function CategoryDropdown({
       >
         <span className={styles.triggerText}>{triggerText}</span>
         <img
-          src={isOpen ? '/icons/chevron-up.svg' : '/icons/vector.svg'}
+          src={isOpen ? `${import.meta.env.BASE_URL}icons/chevron-up.svg` : `${import.meta.env.BASE_URL}icons/vector.svg`}
           alt=""
           className={styles.chevron}
           aria-hidden="true"

@@ -31,7 +31,7 @@ const SkeletonCard: React.FC<SkeletonCardProps> = (props) => {
           >
             {!isShowAllButton && (
               <img
-                src="/icons/sort.svg"
+                src={`${import.meta.env.BASE_URL}icons/sort.svg`}
                 alt="Сортировка"
                 style={{ width: '16px', height: '16px' }}
               />

@@ -50,7 +50,7 @@ export function Header({
         className={styles.logoLink}
         aria-label="Перейти на главную страницу"
       >
-        <img src="/logo.svg" alt="SkillSwap" className={styles.logo} />
+        <img src={`${import.meta.env.BASE_URL}/logo.svg`} alt="SkillSwap" className={styles.logo} />
       </Link>
 
       <nav className={styles.nav} aria-label="Основная навигация">
@@ -64,7 +64,7 @@ export function Header({
         >
           Все навыки
           <img
-            src="/icons/vector.svg"
+            src={`${import.meta.env.BASE_URL}icons/vector.svg`}
             alt=""
             className={styles.chevronIcon}
             aria-hidden="true"
@@ -75,7 +75,7 @@ export function Header({
       {showSearch && (
         <label htmlFor="header-search" className={styles.search}>
           <img
-            src="/icons/search.svg"
+            src={`${import.meta.env.BASE_URL}icons/search.svg`}
             alt=""
             className={styles.searchIcon}
             aria-hidden="true"
@@ -109,7 +109,7 @@ export function Header({
           onClick={toggleTheme}
         >
           <img
-            src="/icons/moon.svg"
+            src={`${import.meta.env.BASE_URL}icons/moon.svg`}
             alt=""
             className={styles.themeIcon}
             aria-hidden="true"

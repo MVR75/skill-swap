@@ -133,10 +133,10 @@ const SkillPage = () => {
               <Icon path={isLiked ? mdiHeart : mdiHeartOutline} size={0.85} color={isLiked ? '#ABD27A' : '#000'} />
             </button>
             <button className={styles.actionButton} aria-label="Поделиться">
-              <img src="/icons/share.svg" alt="" />
+              <img src={`${import.meta.env.BASE_URL}icons/share.svg`} alt="" />
             </button>
             <button className={styles.actionButton} aria-label="Ещё">
-              <img src="/icons/more.svg" alt="" />
+              <img src={`${import.meta.env.BASE_URL}icons/more.svg`} alt="" />
             </button>
           </div>
 

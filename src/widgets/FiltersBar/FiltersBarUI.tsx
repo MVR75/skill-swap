@@ -4,7 +4,7 @@ import { CheckboxGroupUI } from '../../shared/ui/CheckboxGroup/CheckboxGroup';
 import type { TFiltersBarUIProps } from './type';
 import styles from './FiltersBarUI.module.css';
 
-const crossIcon = '/icons/cross-green.svg';
+const crossIcon = `${import.meta.env.BASE_URL}icons/cross-green.svg`;
 
 export const FiltersBarUI: FC<TFiltersBarUIProps> = ({
   skillExchangeIntentFilter,

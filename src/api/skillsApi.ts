@@ -5,7 +5,7 @@ type TSkillsResponse = {
 };
 
 export const fetchSkills = async (): Promise<TSkillsResponse> => {
-  const response = await fetch('/db/skills.json');
+  const response = await fetch(`${import.meta.env.BASE_URL}/db/skills.json`);
 
   if (!response.ok) {
     throw new Error('Ошибка загрузки');

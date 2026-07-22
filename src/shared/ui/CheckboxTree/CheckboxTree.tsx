@@ -3,8 +3,8 @@ import { CheckboxUI } from '../Checkbox/Checkbox';
 import type { TCheckboxTreeUIProps } from './type';
 import styles from './CheckboxTree.module.css';
 
-const arrowUp = '/icons/chevron-up.svg';
-const arrowDown = '/icons/vector.svg';
+const arrowUp = `${import.meta.env.BASE_URL}icons/chevron-up.svg`;
+const arrowDown = `${import.meta.env.BASE_URL}icons/vector.svg`;
 
 export const CheckboxTreeUI: FC<TCheckboxTreeUIProps> = ({
   name,

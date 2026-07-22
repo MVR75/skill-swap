@@ -4,9 +4,9 @@ import type { NotificationModalProps, NotificationIcon } from './types';
 import styles from './NotificationModal.module.css';
 
 const ICON_SRC: Record<NotificationIcon, string> = {
-  success: '/icons/notification-success.svg',
-  error: '/icons/cross.svg',
-  info: '/icons/notification-info.svg',
+  success: `${import.meta.env.BASE_URL}icons/notification-success.svg`,
+  error: `${import.meta.env.BASE_URL}icons/cross.svg`,
+  info: `${import.meta.env.BASE_URL}icons/notification-info.svg`,
 };
 
 export const NotificationModal = ({

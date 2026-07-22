@@ -2,9 +2,9 @@ import {useEffect, useRef, type FC} from 'react';
 import type { TCheckboxProps } from './type';
 import styles from './Checkbox.module.css';
 
-const emptyCheckbox = '/icons/checkbox-empty.svg';
-const doneCheckbox = '/icons/checkbox-done.svg';
-const indeterminateCheckbox = '/icons/checkbox-indeterminate.svg';
+const emptyCheckbox = `${import.meta.env.BASE_URL}icons/checkbox-empty.svg`;
+const doneCheckbox = `${import.meta.env.BASE_URL}icons/checkbox-done.svg`;
+const indeterminateCheckbox = `${import.meta.env.BASE_URL}icons/checkbox-indeterminate.svg`;
 
 export const CheckboxUI: FC<TCheckboxProps> = ({
   label,

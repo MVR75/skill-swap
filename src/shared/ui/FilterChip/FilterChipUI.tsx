@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import type { TFilterChipUIProps } from './type';
 import styles from './FilterChipUI.module.css';
 
-const cross = '/icons/cross.svg';
+const cross = `${import.meta.env.BASE_URL}icons/cross.svg`;
 
 export const FilterChipUI: FC<TFilterChipUIProps> = ({
   text,

@@ -20,7 +20,7 @@ export function ErrorPage({
     defaultTitle = 'Страница не найдена';
     defaultMessage =
       'К сожалению, эта страница недоступна. Вернитесь на главную страницу или попробуйте позже';
-    iconSrc = '/icons/error-404.svg';
+    iconSrc = `${import.meta.env.BASE_URL}icons/error-404.svg`;
   } else if (code === 500) {
     defaultTitle = 'На сервере произошла ошибка';
     defaultMessage = 'Попробуйте позже или вернитесь на главную страницу';

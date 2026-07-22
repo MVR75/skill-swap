@@ -26,17 +26,17 @@ type StepContent = {
 
 const STEP_CONTENT: Record<StepNumber, StepContent> = {
   1: {
-    illustration: '/icons/light-bulb.svg',
+    illustration: `${import.meta.env.BASE_URL}icons/light-bulb.svg`,
     title: 'Добро пожаловать в SkillSwap!',
     text: 'Присоединяйтесь к SkillSwap и обменивайтесь знаниями и навыками с другими людьми',
   },
   2: {
-    illustration: '/icons/user-info.svg',
+    illustration: `${import.meta.env.BASE_URL}icons/user-info.svg`,
     title: 'Расскажите немного о себе',
     text: 'Это поможет другим людям лучше вас узнать, чтобы выбрать для обмена',
   },
   3: {
-    illustration: '/icons/school-board.svg',
+    illustration: `${import.meta.env.BASE_URL}icons/school-board.svg`,
     title: 'Укажите, чем вы готовы поделиться',
     text: 'Так другие люди смогут увидеть ваши предложения и предложить вам обмен!',
   },
@@ -188,8 +188,8 @@ export function RegisterPage() {
     <div className={styles.page}>
       <header className={styles.header}>
         <div className={styles.headerTop}>
-          <a href="/" className={styles.logoLink} aria-label="На главную">
-            <img src="/logo.svg" alt="SkillSwap" className={styles.logo} />
+          <a href={`${import.meta.env.BASE_URL}`} className={styles.logoLink} aria-label="На главную">
+            <img src={`${import.meta.env.BASE_URL}logo.svg`} alt="SkillSwap" className={styles.logo} />
           </a>
 
           <button
@@ -200,7 +200,7 @@ export function RegisterPage() {
           >
             Закрыть
             <img
-              src="/icons/cross.svg"
+              src={`${import.meta.env.BASE_URL}icons/cross.svg`}
               alt=""
               className={styles.closeIcon}
               aria-hidden="true"

@@ -106,7 +106,7 @@ export function DatePicker({
           {displayValue || placeholder}
         </span>
         <img
-          src="/icons/calendar.svg"
+          src={`${import.meta.env.BASE_URL}icons/calendar.svg`}
           alt=""
           className={styles.calendarIcon}
           aria-hidden="true"

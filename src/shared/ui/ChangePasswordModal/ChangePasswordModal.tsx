@@ -76,7 +76,7 @@ export function ChangePasswordModal({
                 className={styles.eyeButton}
               >
                 <img
-                  src={showOldPassword ? '/icons/eye.svg' : '/icons/eye-off.svg'}
+                  src={showOldPassword ? `${import.meta.env.BASE_URL}icons/eye.svg` : `${import.meta.env.BASE_URL}icons/eye-off.svg`}
                   alt=""
                 />
               </button>
@@ -97,7 +97,7 @@ export function ChangePasswordModal({
                 className={styles.eyeButton}
               >
                 <img
-                  src={showNewPassword ? '/icons/eye.svg' : '/icons/eye-off.svg'}
+                  src={showNewPassword ? `${import.meta.env.BASE_URL}icons/eye.svg` : `${import.meta.env.BASE_URL}icons/eye-off.svg`}
                   alt=""
                 />
               </button>
@@ -117,7 +117,7 @@ export function ChangePasswordModal({
                 className={styles.eyeButton}
               >
                 <img
-                  src={showConfirmPassword ? '/icons/eye.svg' : '/icons/eye-off.svg'}
+                  src={showConfirmPassword ? `${import.meta.env.BASE_URL}icons/eye.svg` : `${import.meta.env.BASE_URL}icons/eye-off.svg`}
                   alt=""
                 />
               </button>

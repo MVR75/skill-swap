@@ -10,12 +10,12 @@ type TCategoriesModalProps = {
 };
 
 const categoryIcons: Record<string, string> = {
-  business: '/icons/briefcase.svg',
-  creative: '/icons/palette.svg',
-  languages: '/icons/global.svg',
-  education: '/icons/book.svg',
-  home: '/icons/home.svg',
-  health: '/icons/lifestyle.svg',
+  business: `${import.meta.env.BASE_URL}icons/briefcase.svg`,
+  creative: `${import.meta.env.BASE_URL}icons/palette.svg`,
+  languages: `${import.meta.env.BASE_URL}icons/global.svg`,
+  education: `${import.meta.env.BASE_URL}icons/book.svg`,
+  home: `${import.meta.env.BASE_URL}icons/home.svg`,
+  health: `${import.meta.env.BASE_URL}icons/lifestyle.svg`,
 };
 
 export function CategoriesModal({ isOpen, onClose }: TCategoriesModalProps) {

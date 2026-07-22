@@ -109,7 +109,7 @@ export function ImageUpload({ value, onChange }: ImageUploadProps) {
           </span>
           <span className={styles.emptyAction}>
             <img
-              src="/icons/gallery-add.svg"
+              src={`${import.meta.env.BASE_URL}icons/gallery-add.svg`}
               alt=""
               className={styles.galleryIcon}
               aria-hidden="true"
@@ -136,7 +136,7 @@ export function ImageUpload({ value, onChange }: ImageUploadProps) {
                   onClick={() => handleRemove(index)}
                   aria-label="Удалить изображение"
                 >
-                  <img src="/icons/cross.svg" alt="" aria-hidden="true" />
+                  <img src={`${import.meta.env.BASE_URL}icons/cross.svg`} alt="" aria-hidden="true" />
                 </button>
               </div>
             );
@@ -149,7 +149,7 @@ export function ImageUpload({ value, onChange }: ImageUploadProps) {
               aria-label="Добавить изображение"
             >
               <img
-                src="/icons/gallery-add.svg"
+                src={`${import.meta.env.BASE_URL}icons/gallery-add.svg`}
                 alt=""
                 className={styles.addIcon}
                 aria-hidden="true"

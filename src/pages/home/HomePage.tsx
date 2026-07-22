@@ -92,7 +92,7 @@ const HomePage = () => {
         aria-label={isFiltersOpen ? 'Закрыть фильтры' : 'Открыть фильтры'}
         aria-expanded={isFiltersOpen}
       >
-        <img src="/icons/sort.svg" alt="" aria-hidden="true" />
+        <img src={`${import.meta.env.BASE_URL}icons/sort.svg`} alt="" aria-hidden="true" />
         <span>Фильтры</span>
       </button>
 

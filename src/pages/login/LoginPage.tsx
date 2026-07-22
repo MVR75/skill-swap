@@ -113,7 +113,7 @@ const LoginPage = () => {
     <main className={styles.page}>
       <header className={styles.header}>
         <Link to="/" className={styles.logo} aria-label="SkillSwap">
-          <img className={styles.logoIcon} src="/logo.svg" alt="SkillSwap" />
+          <img className={styles.logoIcon} src={`${import.meta.env.BASE_URL}logo.svg`} alt="SkillSwap" />
         </Link>
         <button
           className={styles.closeButton}
@@ -136,7 +136,7 @@ const LoginPage = () => {
               <button className={styles.socialButton} type="button">
                 <img
                   className={styles.socialIcon}
-                  src="/icons/google.svg"
+                  src={`${import.meta.env.BASE_URL}icons/google.svg`}
                   alt=""
                   aria-hidden="true"
                 />
@@ -146,7 +146,7 @@ const LoginPage = () => {
               <button className={styles.socialButton} type="button">
                 <img
                   className={styles.socialIcon}
-                  src="/icons/apple.svg"
+                  src={`${import.meta.env.BASE_URL}icons/apple.svg`}
                   alt=""
                   aria-hidden="true"
                 />
@@ -203,7 +203,7 @@ const LoginPage = () => {
                     <img
                       className={styles.eyeIcon}
                       src={
-                        showPassword ? '/icons/eye-slash.svg' : '/icons/eye.svg'
+                        showPassword ? `${import.meta.env.BASE_URL}icons/eye-slash.svg` : `${import.meta.env.BASE_URL}icons/eye.svg`
                       }
                       alt=""
                       aria-hidden="true"
@@ -245,7 +245,7 @@ const LoginPage = () => {
           <aside className={styles.infoCard}>
             <img
               className={styles.bulb}
-              src="/icons/light-bulb.svg"
+              src={`${import.meta.env.BASE_URL}icons/light-bulb.svg`}
               alt=""
               aria-hidden="true"
             />
